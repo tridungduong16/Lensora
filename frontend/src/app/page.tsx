@@ -12,8 +12,8 @@ import {
   Star,
 } from "lucide-react";
 import Image from "next/image";
+import { HeroCarousel } from "@/components/marketing/hero-carousel";
 import logo from "../../logo.jpg";
-import modelImage from "../../models.png";
 
 const navItems = [
   { label: "Kính mắt", href: "#collections" },
@@ -209,15 +209,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-media" aria-hidden="true">
-            <Image
-              alt="Người mẫu đeo kính Anh Thi"
-              priority
-              src={modelImage}
-              className="hero-image"
-              sizes="(min-width: 900px) 42vw, 100vw"
-              placeholder="empty"
-            />
+          <div className="hero-media">
+            <HeroCarousel />
           </div>
         </section>
 
