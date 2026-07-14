@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import model1 from "../../../model1.jpg";
@@ -10,15 +10,15 @@ import model3 from "../../../model3.jpg";
 const heroSlides = [
   {
     src: model1,
-    alt: "Người mẫu đeo kính Anh Thi — phong cách tối giản",
+    alt: "Người mẫu đeo kính thuốc Anh Thi — phong cách tối giản",
   },
   {
     src: model2,
-    alt: "Người mẫu đeo kính Anh Thi — bộ sưu tập hiện đại",
+    alt: "Người mẫu đeo kính thuốc Anh Thi — bộ sưu tập hiện đại",
   },
   {
     src: model3,
-    alt: "Người mẫu đeo kính Anh Thi — thiết kế cao cấp",
+    alt: "Người mẫu đeo kính thuốc Anh Thi — thiết kế cao cấp",
   },
 ] as const;
 
@@ -27,21 +27,26 @@ const FADE_DURATION_S = 0.85;
 
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
     const timer = window.setInterval(() => {
       setIndex((current) => (current + 1) % heroSlides.length);
     }, INTERVAL_MS);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [shouldReduceMotion]);
 
   const activeSlide = heroSlides[index];
 
   return (
     <div
       className="hero-carousel"
-      aria-label="Hình ảnh người mẫu Kính Anh Thi"
+      aria-label="Hình ảnh người mẫu Kính thuốc Anh Thi"
       aria-live="polite"
     >
       {heroSlides.map((slide, slideIndex) => (
@@ -63,15 +68,19 @@ export function HeroCarousel() {
         </motion.div>
       ))}
 
-      <div className="hero-carousel-dots" aria-hidden="true">
+      <div className="hero-carousel-dots" aria-label="Chọn ảnh người mẫu">
         {heroSlides.map((_, dotIndex) => (
-          <span
+          <button
+            aria-label={`Xem ảnh ${dotIndex + 1}`}
+            aria-pressed={dotIndex === index}
             key={dotIndex}
             className={
               dotIndex === index
                 ? "hero-carousel-dot is-active"
                 : "hero-carousel-dot"
             }
+            onClick={() => setIndex(dotIndex)}
+            type="button"
           />
         ))}
       </div>
