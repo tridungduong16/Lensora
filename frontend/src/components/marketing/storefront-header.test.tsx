@@ -23,3 +23,19 @@ test("opens and closes the mobile navigation", async () => {
     screen.queryByRole("navigation", { name: "Điều hướng trên di động" }),
   ).not.toBeInTheDocument();
 });
+
+test("balances six desktop navigation links around the logo", () => {
+  const navItems = Array.from({ length: 6 }, (_, index) => ({
+    label: `Mục ${index + 1}`,
+    href: `/muc-${index + 1}`,
+  }));
+
+  render(<StorefrontHeader navItems={navItems} />);
+
+  expect(
+    screen.getByRole("navigation", { name: "Điều hướng chính bên trái" }),
+  ).toHaveTextContent("Mục 1Mục 2Mục 3");
+  expect(
+    screen.getByRole("navigation", { name: "Điều hướng chính bên phải" }),
+  ).toHaveTextContent("Mục 4Mục 5Mục 6");
+});

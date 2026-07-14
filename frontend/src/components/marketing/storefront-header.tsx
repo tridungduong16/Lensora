@@ -17,8 +17,9 @@ type StorefrontHeaderProps = {
 
 export function StorefrontHeader({ navItems }: StorefrontHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const leftNavItems = navItems.slice(0, 2);
-  const rightNavItems = navItems.slice(2);
+  const middleIndex = Math.ceil(navItems.length / 2);
+  const leftNavItems = navItems.slice(0, middleIndex);
+  const rightNavItems = navItems.slice(middleIndex);
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -34,7 +35,7 @@ export function StorefrontHeader({ navItems }: StorefrontHeaderProps) {
         </nav>
 
         <Link className="brand" href="/" aria-label="Trang chủ Kính thuốc Anh Thi">
-          <Image alt="Kính thuốc Anh Thi" className="brand-logo" height={56} src={logo} width={56} />
+          <Image alt="Kính thuốc Anh Thi" className="brand-logo" height={144} src={logo} width={144} />
         </Link>
 
         <nav className="desktop-nav desktop-nav--right" aria-label="Điều hướng chính bên phải">

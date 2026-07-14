@@ -11,19 +11,10 @@ import {
 import Link from "next/link";
 import { AppointmentForm } from "@/components/marketing/appointment-form";
 import { HeroCarousel } from "@/components/marketing/hero-carousel";
-import {
-  StorefrontHeader,
-  type NavigationItem,
-} from "@/components/marketing/storefront-header";
+import { StorefrontFooter } from "@/components/marketing/storefront-footer";
+import { StorefrontHeader } from "@/components/marketing/storefront-header";
+import { storefrontNavigation } from "@/components/marketing/storefront-navigation";
 import { filterProducts } from "@/lib/product-filter";
-
-const navItems: NavigationItem[] = [
-  { label: "Kính mắt", href: "/?category=Kính%20mắt#bestsellers" },
-  { label: "Kính mát", href: "/?category=Kính%20mát#bestsellers" },
-  { label: "Gọng kính", href: "/?category=Gọng%20kính#bestsellers" },
-  { label: "Đo mắt", href: "/#eye-exam" },
-  { label: "Cửa hàng", href: "/#locations" },
-];
 
 const trustSignals = [
   {
@@ -167,16 +158,14 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div className="site-shell">
-      <StorefrontHeader navItems={navItems} />
+      <StorefrontHeader navItems={storefrontNavigation} />
 
       <main>
         <section className="hero-section" aria-labelledby="page-title">
           <div className="hero-copy">
-            <h1 id="page-title">Kính thuốc Anh Thi — rõ hơn từng chi tiết.</h1>
-            <p className="hero-description">
-              Gọng kính, kính mát và dịch vụ đo mắt được chọn lọc để bạn nhìn rõ,
-              đeo thoải mái và tự tin mỗi ngày.
-            </p>
+            <h1 id="page-title">
+              Kính thuốc Anh Thi - niềm tin và hi vọng cho đôi mắt của bạn
+            </h1>
 
             <div className="hero-actions" aria-label="Lối tắt mua sắm">
               <Link className="primary-button" href="/#eye-exam">
@@ -374,15 +363,7 @@ export default async function Home({ searchParams }: HomeProps) {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <p>© 2026 Kính thuốc Anh Thi</p>
-        <div>
-          <Link href="/#collections">Bộ sưu tập</Link>
-          <Link href="/#bestsellers">Sản phẩm</Link>
-          <Link href="/#eye-exam">Đo mắt</Link>
-          <Link href="/#locations">Cửa hàng</Link>
-        </div>
-      </footer>
+      <StorefrontFooter />
     </div>
   );
 }
