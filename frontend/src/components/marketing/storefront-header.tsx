@@ -2,6 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 export type NavigationItem = {
@@ -18,6 +19,7 @@ export function StorefrontHeader({
   navItems,
   overlay = false,
 }: StorefrontHeaderProps) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const middleIndex = Math.ceil(navItems.length / 2);
@@ -31,16 +33,44 @@ export function StorefrontHeader({
   );
 
   useEffect(() => {
-    if (!overlay) {
+    if (!overlay || typeof IntersectionObserver === "undefined") {
       return;
     }
 
-    const updateScrollState = () => setIsScrolled(window.scrollY > 24);
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
+    const hero = document.querySelector(".editorial-hero");
+    if (!hero) {
+      return;
+    }
 
-    return () => window.removeEventListener("scroll", updateScrollState);
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsScrolled(!entry.isIntersecting),
+      { threshold: 0.08 },
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, [overlay]);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [closeMenu, isMenuOpen]);
 
   const headerClassName = [
     "site-header",
@@ -55,7 +85,11 @@ export function StorefrontHeader({
       <div className="desktop-navigation">
         <nav className="desktop-nav desktop-nav--left" aria-label="Điều hướng chính bên trái">
           {leftNavItems.map((item) => (
-            <Link href={item.href} key={item.label}>
+            <Link
+              aria-current={pathname === item.href ? "page" : undefined}
+              href={item.href}
+              key={item.label}
+            >
               {item.label}
             </Link>
           ))}
@@ -68,7 +102,11 @@ export function StorefrontHeader({
 
         <nav className="desktop-nav desktop-nav--right" aria-label="Điều hướng chính bên phải">
           {rightNavItems.map((item) => (
-            <Link href={item.href} key={item.label}>
+            <Link
+              aria-current={pathname === item.href ? "page" : undefined}
+              href={item.href}
+              key={item.label}
+            >
               {item.label}
             </Link>
           ))}
@@ -99,7 +137,12 @@ export function StorefrontHeader({
         <div className="mobile-menu-panel" id="mobile-navigation">
           <nav aria-label="Điều hướng trên di động" className="mobile-nav">
             {navItems.map((item) => (
-              <Link href={item.href} key={item.label} onClick={closeMenu}>
+              <Link
+                aria-current={pathname === item.href ? "page" : undefined}
+                href={item.href}
+                key={item.label}
+                onClick={closeMenu}
+              >
                 {item.label}
               </Link>
             ))}

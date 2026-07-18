@@ -228,6 +228,14 @@ h3 {
   color: var(--color-muted);
 }
 
+.desktop-nav a[aria-current="page"],
+.mobile-nav a[aria-current="page"] {
+  color: var(--color-navy);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -274,6 +282,12 @@ h3 {
 .mobile-menu:hover {
   color: var(--color-on-navy);
   background: var(--color-navy);
+}
+
+.header-appointment:active,
+.mobile-appointment:active,
+.mobile-menu:active {
+  transform: translateY(1px);
 }
 
 .mobile-menu-panel {
