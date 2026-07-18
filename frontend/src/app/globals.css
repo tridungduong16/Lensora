@@ -887,9 +887,13 @@ section[id] {
   gap: var(--spacing-16);
 }
 
-.appointment-form label {
+.appointment-field {
   display: grid;
   gap: var(--spacing-8);
+  align-content: start;
+}
+
+.appointment-form label {
   color: rgb(255 253 248 / 72%);
   font-size: 12px;
   font-weight: 700;
@@ -921,6 +925,16 @@ section[id] {
   border-color: var(--color-on-navy);
 }
 
+.field-error {
+  color: #ffd4cf;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.appointment-form input[aria-invalid="true"] {
+  border-color: #ffd4cf;
+}
+
 .appointment-actions {
   display: grid;
   justify-items: start;
@@ -949,6 +963,14 @@ section[id] {
 .appointment-status {
   color: var(--color-on-navy);
   font-weight: 700;
+}
+
+.appointment-phone {
+  color: var(--color-on-navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 .review-layout {
