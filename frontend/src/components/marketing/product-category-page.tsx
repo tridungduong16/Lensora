@@ -21,7 +21,7 @@ export function ProductCategoryPage({
     <div className="site-shell">
       <StorefrontHeader navItems={storefrontNavigation} />
 
-      <main>
+      <main id="main-content">
         <section className="section" aria-labelledby="category-title">
           <div className="product-heading-row">
             <div className="section-heading">

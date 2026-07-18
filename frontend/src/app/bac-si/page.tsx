@@ -114,7 +114,7 @@ export default function DoctorPage() {
     <div className="site-shell">
       <StorefrontHeader navItems={storefrontNavigation} />
 
-      <main className={styles.main}>
+      <main className={styles.main} id="main-content">
         <section className={styles.hero} aria-labelledby="doctor-title">
           <div className={styles.heroCopy}>
             <h1 id="doctor-title">Bác sĩ Nguyễn Anh Thi</h1>

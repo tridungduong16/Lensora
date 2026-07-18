@@ -10,7 +10,7 @@ export function StoreLocationsPage() {
     <div className="site-shell">
       <StorefrontHeader navItems={storefrontNavigation} />
 
-      <main>
+      <main id="main-content">
         <section className="section location-section" aria-labelledby="locations-title">
           <div className="section-heading">
             <h1 id="locations-title">Cửa hàng</h1>

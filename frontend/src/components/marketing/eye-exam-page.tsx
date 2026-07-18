@@ -9,7 +9,7 @@ export function EyeExamPage() {
     <div className="site-shell">
       <StorefrontHeader navItems={storefrontNavigation} />
 
-      <main>
+      <main id="main-content">
         <section className="section service-section" aria-labelledby="eye-exam-title">
           <div className="section-heading">
             <h1 id="eye-exam-title">Đo mắt</h1>
