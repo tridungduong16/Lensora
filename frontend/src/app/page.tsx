@@ -87,7 +87,7 @@ export default async function Home({ searchParams }: HomeProps) {
     <div className="site-shell">
       <StorefrontHeader navItems={storefrontNavigation} overlay />
 
-      <main>
+      <main id="main-content">
         <EditorialHero />
 
         <section className="trust-strip" aria-label="Chứng thực thương hiệu">
