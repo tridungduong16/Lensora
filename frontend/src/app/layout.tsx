@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Be_Vietnam_Pro, Lora } from "next/font/google";
 import "./globals.css";
+
+const uiFont = Be_Vietnam_Pro({
+  display: "swap",
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-be-vietnam",
+  weight: ["400", "500", "600", "700"],
+});
+
+const editorialFont = Lora({
+  display: "swap",
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-lora",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Kính thuốc Anh Thi | Kính thuốc, kính mát và gọng kính",
@@ -13,8 +28,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" data-scroll-behavior="smooth">
-      <body>{children}</body>
+    <html
+      className={`${uiFont.variable} ${editorialFont.variable}`}
+      data-scroll-behavior="smooth"
+      lang="vi"
+    >
+      <body>
+        <a className="skip-link" href="#main-content">
+          Bỏ qua đến nội dung chính
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

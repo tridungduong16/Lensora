@@ -13,3 +13,8 @@ vi.mock("next/image", () => ({
       "data-priority": priority ? "true" : undefined,
     }),
 }));
+
+vi.mock("next/font/google", () => ({
+  Be_Vietnam_Pro: () => ({ variable: "font-ui-variable" }),
+  Lora: () => ({ variable: "font-editorial-variable" }),
+}));

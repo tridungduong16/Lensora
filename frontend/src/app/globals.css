@@ -9,9 +9,8 @@
   --color-muted: #68645d;
   --color-border: #d9d1c5;
   --color-on-navy: #fffdf8;
-  --font-storefront: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  --font-editorial: Georgia, "Times New Roman", serif;
+  --font-storefront: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: var(--font-lora), Georgia, serif;
   --page-gutter: clamp(20px, 4vw, 64px);
   --section-space: clamp(80px, 10vw, 144px);
   --spacing-8: 8px;
@@ -109,6 +108,23 @@ h3 {
 :focus-visible {
   outline: 2px solid var(--color-navy);
   outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 60;
+  padding: 12px 16px;
+  color: var(--color-on-navy);
+  background: var(--color-navy);
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  outline-color: var(--color-on-navy);
+  transform: translateY(0);
 }
 
 .site-shell {
