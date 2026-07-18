@@ -1,21 +1,23 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { StorefrontHeader } from "./storefront-header";
+import { storefrontNavigation } from "./storefront-navigation";
 
 test("opens and closes the mobile navigation", async () => {
   const user = userEvent.setup();
 
-  render(
-    <StorefrontHeader
-      navItems={[{ label: "Đo mắt", href: "#eye-exam" }]}
-    />,
-  );
+  render(<StorefrontHeader navItems={storefrontNavigation} />);
 
   await user.click(screen.getByRole("button", { name: "Mở menu" }));
 
-  expect(
-    screen.getByRole("navigation", { name: "Điều hướng trên di động" }),
-  ).toBeVisible();
+  const mobileNavigation = screen.getByRole("navigation", {
+    name: "Điều hướng trên di động",
+  });
+  expect(mobileNavigation).toBeVisible();
+  expect(within(mobileNavigation).getByRole("link", { name: "Bác sĩ" })).toHaveAttribute(
+    "href",
+    "/bac-si",
+  );
 
   await user.click(screen.getByRole("button", { name: "Đóng menu" }));
 

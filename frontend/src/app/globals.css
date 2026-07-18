@@ -738,6 +738,8 @@ h3 {
 
 .site-footer a {
   display: inline-flex;
+  min-width: 44px;
+  justify-content: center;
 }
 
 .site-footer {

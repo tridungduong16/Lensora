@@ -4,8 +4,12 @@ import { vi } from "vitest";
 
 vi.mock("next/image", () => ({
   default: ({
-    priority: _priority,
+    priority,
     placeholder: _placeholder,
     ...props
-  }: Record<string, unknown>) => createElement("img", props),
+  }: Record<string, unknown>) =>
+    createElement("img", {
+      ...props,
+      "data-priority": priority ? "true" : undefined,
+    }),
 }));

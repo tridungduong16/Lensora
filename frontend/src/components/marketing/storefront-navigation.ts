@@ -1,10 +1,10 @@
 import type { NavigationItem } from "./storefront-header";
 
 export const storefrontNavigation = [
-  { label: "Kính mắt", href: "/?category=Kính%20mắt#bestsellers" },
-  { label: "Kính mát", href: "/?category=Kính%20mát#bestsellers" },
-  { label: "Gọng kính", href: "/?category=Gọng%20kính#bestsellers" },
+  { label: "Kính mắt", href: "/kinh-mat" },
+  { label: "Kính mát", href: "/kinh-ram" },
+  { label: "Gọng kính", href: "/gong-kinh" },
   { label: "Bác sĩ", href: "/bac-si" },
-  { label: "Đo mắt", href: "/#eye-exam" },
-  { label: "Cửa hàng", href: "/#locations" },
+  { label: "Đo mắt", href: "/do-mat" },
+  { label: "Cửa hàng", href: "/cua-hang" },
 ] satisfies NavigationItem[];
