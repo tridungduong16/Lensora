@@ -24,3 +24,7 @@ test("defines tactile and active interaction states", () => {
     /\.primary-button:active[\s\S]*?transform:\s*translateY\(1px\)/,
   );
 });
+
+test("keeps the mobile brand link large enough to tap", () => {
+  expect(css).toMatch(/\.brand\s*\{[^}]*min-height:\s*44px/);
+});

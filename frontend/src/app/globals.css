@@ -183,8 +183,10 @@ p {
 .brand {
   display: grid;
   grid-column: 2;
+  align-content: center;
   justify-items: center;
   width: fit-content;
+  min-height: 44px;
   color: var(--color-navy);
   line-height: 1;
 }
