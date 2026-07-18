@@ -1,9 +1,11 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import brandLogo from "../../../logo.jpg";
 
 export type NavigationItem = {
   label: string;
@@ -96,8 +98,15 @@ export function StorefrontHeader({
         </nav>
 
         <Link className="brand" href="/" aria-label="Trang chủ Kính thuốc Anh Thi">
-          <span className="brand-name">ANH THI</span>
-          <span className="brand-descriptor">EYEGLASSES</span>
+          <Image
+            alt=""
+            className="brand-logo"
+            height={58}
+            priority
+            sizes="(max-width: 1100px) 48px, 58px"
+            src={brandLogo}
+            width={58}
+          />
         </Link>
 
         <nav className="desktop-nav desktop-nav--right" aria-label="Điều hướng chính bên phải">

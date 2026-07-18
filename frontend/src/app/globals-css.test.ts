@@ -39,3 +39,13 @@ test("keeps keyboard focus visible on navy surfaces", () => {
   expect(css).toContain(".appointment-panel :focus-visible");
   expect(css).toContain(".site-footer a:focus-visible");
 });
+
+test("sizes the centered logo without changing the header height", () => {
+  expect(css).toMatch(/\.brand-logo\s*\{[^}]*width:\s*58px[^}]*height:\s*58px/);
+  expect(css).toMatch(
+    /@media \(max-width: 1100px\)[\s\S]*?\.brand-logo\s*\{[^}]*width:\s*48px[^}]*height:\s*48px/,
+  );
+  expect(css).toMatch(
+    /@media \(max-width: 1100px\)[\s\S]*?\.desktop-navigation\s*\{[^}]*position:\s*absolute[^}]*top:\s*50%[^}]*left:\s*50%[^}]*display:\s*block[^}]*width:\s*auto[^}]*transform:\s*translate\(-50%,\s*-50%\)/,
+  );
+});

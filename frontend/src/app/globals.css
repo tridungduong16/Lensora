@@ -191,18 +191,10 @@ p {
   line-height: 1;
 }
 
-.brand-name {
-  font-family: var(--font-editorial);
-  font-size: 21px;
-  letter-spacing: 0.08em;
-}
-
-.brand-descriptor {
-  margin-top: 5px;
-  font-family: var(--font-editorial);
-  font-size: 8px;
-  font-style: italic;
-  letter-spacing: 0.34em;
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
 }
 
 .desktop-nav {
@@ -1377,14 +1369,21 @@ section[id] {
   }
 
   .desktop-navigation {
-    position: static;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
     width: auto;
-    transform: none;
+    transform: translate(-50%, -50%);
   }
 
   .brand {
     display: grid;
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: 48px;
   }
 
   .mobile-menu {

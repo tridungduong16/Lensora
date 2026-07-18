@@ -143,3 +143,14 @@ test("locks page scrolling and closes the mobile menu with Escape", async () => 
   ).not.toBeInTheDocument();
   expect(document.body.style.overflow).toBe("");
 });
+
+test("renders the supplied logo image instead of the header text wordmark", () => {
+  render(<StorefrontHeader navItems={storefrontNavigation} />);
+
+  const brandLink = screen.getByRole("link", {
+    name: "Trang chủ Kính thuốc Anh Thi",
+  });
+  expect(brandLink.querySelector("img.brand-logo")).toBeInTheDocument();
+  expect(brandLink).not.toHaveTextContent("ANH THI");
+  expect(brandLink).not.toHaveTextContent("EYEGLASSES");
+});
