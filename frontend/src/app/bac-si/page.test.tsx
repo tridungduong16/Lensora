@@ -33,7 +33,7 @@ const milestones = [
       "Tham dự hội nghị nhãn khoa tại Hong Kong vào tháng 02/2018 để cập nhật xu hướng chuyên môn, mở rộng kết nối học thuật và trao đổi kinh nghiệm quốc tế.",
   },
   {
-    title: "Nhận bằng Bác sĩ chuyên khoa 2 — Đại học Y Dược TP.HCM",
+    title: "Nhận bằng Bác sĩ chuyên khoa 2: Đại học Y Dược TP.HCM",
     description:
       "Ngày 01/06/2014, hoàn thành chương trình đào tạo chuyên sâu và nhận bằng Bác sĩ chuyên khoa 2 tại Đại học Y Dược TP.HCM.",
   },
@@ -43,9 +43,9 @@ const milestones = [
       "Tham dự hội nghị chuyên ngành nhãn khoa toàn quốc để cập nhật kiến thức, trao đổi kinh nghiệm và kết nối chuyên môn với đồng nghiệp trong cả nước.",
   },
   {
-    title: "Tốt nghiệp Bác sĩ đa khoa YK15 — Đại học Y Dược Cần Thơ",
+    title: "Tốt nghiệp Bác sĩ đa khoa YK15: Đại học Y Dược Cần Thơ",
     description:
-      "Niên khóa 1989 – 1995, lớp YK15. Nền tảng y khoa tổng quát, xây dựng tư duy lâm sàng toàn diện.",
+      "Niên khóa 1989 - 1995, lớp YK15. Nền tảng y khoa tổng quát, xây dựng tư duy lâm sàng toàn diện.",
   },
 ];
 

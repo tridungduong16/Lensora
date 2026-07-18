@@ -45,7 +45,7 @@ export function StoreLocationsPage() {
             </p>
             <p>
               <Clock aria-hidden="true" size={18} strokeWidth={1.75} />
-              Mở cửa mỗi ngày từ 09:00 – 20:30
+              Mở cửa mỗi ngày từ 09:00 - 20:30
             </p>
             <a href="tel:0908123456">
               <Phone aria-hidden="true" size={18} strokeWidth={1.75} />

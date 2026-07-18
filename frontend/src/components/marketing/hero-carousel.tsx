@@ -10,15 +10,15 @@ import model3 from "../../../model3.jpg";
 const heroSlides = [
   {
     src: model1,
-    alt: "Người mẫu đeo kính thuốc Anh Thi — phong cách tối giản",
+    alt: "Người mẫu đeo kính thuốc Anh Thi, phong cách tối giản",
   },
   {
     src: model2,
-    alt: "Người mẫu đeo kính thuốc Anh Thi — bộ sưu tập hiện đại",
+    alt: "Người mẫu đeo kính thuốc Anh Thi, bộ sưu tập hiện đại",
   },
   {
     src: model3,
-    alt: "Người mẫu đeo kính thuốc Anh Thi — thiết kế cao cấp",
+    alt: "Người mẫu đeo kính thuốc Anh Thi, thiết kế cao cấp",
   },
 ] as const;
 

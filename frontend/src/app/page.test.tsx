@@ -78,3 +78,24 @@ test("keeps useful navigation and contact details in the footer", async () => {
     within(footer).getByRole("link", { name: "0908 123 456" }),
   ).toHaveAttribute("href", "tel:0908123456");
 });
+
+test("makes every product consultation destination visible", async () => {
+  render(await Home({ searchParams: Promise.resolve({}) }));
+
+  const consultationLinks = screen.getAllByRole("link", {
+    name: "Tư vấn tại cửa hàng",
+  });
+  expect(consultationLinks).toHaveLength(4);
+  consultationLinks.forEach((link) => {
+    expect(link).toHaveAttribute("href", "/#locations");
+  });
+});
+
+test("uses one review rating treatment and no long dash characters", async () => {
+  const { container } = render(
+    await Home({ searchParams: Promise.resolve({}) }),
+  );
+
+  expect(screen.getAllByLabelText("5 trên 5 sao")).toHaveLength(1);
+  expect(container.textContent).not.toMatch(/[\u2014\u2013]/);
+});

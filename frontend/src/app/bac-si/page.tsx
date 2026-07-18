@@ -87,7 +87,7 @@ const timelineItems: TimelineItem[] = [
   {
     date: "01/06/2014",
     dateTime: "2014-06-01",
-    title: "Nhận bằng Bác sĩ chuyên khoa 2 — Đại học Y Dược TP.HCM",
+    title: "Nhận bằng Bác sĩ chuyên khoa 2: Đại học Y Dược TP.HCM",
     description:
       "Ngày 01/06/2014, hoàn thành chương trình đào tạo chuyên sâu và nhận bằng Bác sĩ chuyên khoa 2 tại Đại học Y Dược TP.HCM.",
     image: doctorGraduation,
@@ -101,10 +101,10 @@ const timelineItems: TimelineItem[] = [
     image: doctorNationalConference,
   },
   {
-    date: "1989–1995",
-    title: "Tốt nghiệp Bác sĩ đa khoa YK15 — Đại học Y Dược Cần Thơ",
+    date: "1989-1995",
+    title: "Tốt nghiệp Bác sĩ đa khoa YK15: Đại học Y Dược Cần Thơ",
     description:
-      "Niên khóa 1989 – 1995, lớp YK15. Nền tảng y khoa tổng quát, xây dựng tư duy lâm sàng toàn diện.",
+      "Niên khóa 1989 - 1995, lớp YK15. Nền tảng y khoa tổng quát, xây dựng tư duy lâm sàng toàn diện.",
     image: doctorUniversity,
   },
 ];

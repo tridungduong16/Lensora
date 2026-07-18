@@ -23,17 +23,17 @@ type HeroSlide = {
 const heroSlides: readonly HeroSlide[] = [
   {
     src: model1,
-    alt: "Người mẫu đeo kính Anh Thi — phong cách tối giản",
+    alt: "Người mẫu đeo kính Anh Thi, phong cách tối giản",
     imageClassName: "editorial-hero__image editorial-hero__image--one",
   },
   {
     src: model2,
-    alt: "Người mẫu đeo kính Anh Thi — bộ sưu tập hiện đại",
+    alt: "Người mẫu đeo kính Anh Thi, bộ sưu tập hiện đại",
     imageClassName: "editorial-hero__image editorial-hero__image--two",
   },
   {
     src: model3,
-    alt: "Người mẫu đeo kính Anh Thi — thiết kế cao cấp",
+    alt: "Người mẫu đeo kính Anh Thi, thiết kế cao cấp",
     imageClassName: "editorial-hero__image editorial-hero__image--three",
   },
 ];

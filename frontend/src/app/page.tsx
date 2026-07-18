@@ -186,6 +186,14 @@ export default async function Home({ searchParams }: HomeProps) {
                     </div>
                     <span className="product-tag">{product.tag}</span>
                     <strong>{product.price}</strong>
+                    <Link className="product-consultation" href="/#locations">
+                      Tư vấn tại cửa hàng
+                      <ArrowRight
+                        aria-hidden="true"
+                        size={16}
+                        strokeWidth={1.5}
+                      />
+                    </Link>
                   </div>
                 </article>
               ))}
@@ -275,7 +283,8 @@ export default async function Home({ searchParams }: HomeProps) {
                   ★★★★★
                 </span>
                 <p className="review-meta">
-                  {reviews[0].name} — {reviews[0].city}
+                  <strong>{reviews[0].name}</strong>
+                  <span>{reviews[0].city}</span>
                 </p>
               </div>
             </article>
@@ -288,11 +297,9 @@ export default async function Home({ searchParams }: HomeProps) {
                   </span>
                   <p>“{review.quote}”</p>
                   <div className="review-card__footer">
-                    <span className="review-stars" aria-label="5 trên 5 sao">
-                      ★★★★★
-                    </span>
                     <p className="review-meta">
-                      {review.name} — {review.city}
+                      <strong>{review.name}</strong>
+                      <span>{review.city}</span>
                     </p>
                   </div>
                 </article>

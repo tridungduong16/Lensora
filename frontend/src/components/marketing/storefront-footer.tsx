@@ -25,7 +25,7 @@ export function StorefrontFooter() {
           <p>Liên hệ</p>
           <a href="tel:0908123456">0908 123 456</a>
           <span>85 Phạm Thái Bường, Phường 4, Vĩnh Long</span>
-          <span>Mở cửa mỗi ngày: 09:00 – 20:30</span>
+          <span>Mở cửa mỗi ngày: 09:00 - 20:30</span>
         </div>
       </div>
 
