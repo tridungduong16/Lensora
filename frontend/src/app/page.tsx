@@ -1,36 +1,25 @@
-import {
-  ArrowRight,
-  CalendarDays,
-  Clock,
-  MapPin,
-  Phone,
-  ShieldCheck,
-  Sparkles,
-  Star,
-} from "lucide-react";
+import { ArrowRight, Clock, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import doctorAward from "../../images/doctor-award.jpg";
 import { AppointmentForm } from "@/components/marketing/appointment-form";
-import { HeroCarousel } from "@/components/marketing/hero-carousel";
-import { eyeServices, products, stores } from "@/components/marketing/storefront-data";
+import { EditorialHero } from "@/components/marketing/editorial-hero";
+import {
+  eyeServices,
+  products,
+  stores,
+} from "@/components/marketing/storefront-data";
 import { StorefrontFooter } from "@/components/marketing/storefront-footer";
 import { StorefrontHeader } from "@/components/marketing/storefront-header";
 import { storefrontNavigation } from "@/components/marketing/storefront-navigation";
 import { filterProducts } from "@/lib/product-filter";
 
 const trustSignals = [
-  {
-    title: "4.9/5",
-    copy: "Đánh giá trung bình từ khách hàng",
-    icon: Star,
-  },
-  { title: "10.000+", copy: "Khách hàng đã tin tưởng", icon: Sparkles },
-  { title: "20 năm", copy: "Kinh nghiệm phục vụ", icon: Clock },
-  {
-    title: "Chuẩn quốc tế",
-    copy: "Quy trình đo mắt theo tiêu chuẩn khúc xạ – nhãn khoa",
-    icon: ShieldCheck,
-  },
-];
+  "★★★★★ 4.9",
+  "10.000+ khách hàng",
+  "20 năm kinh nghiệm",
+  "100+ thương hiệu",
+] as const;
 
 const featuredCollections = [
   {
@@ -39,7 +28,7 @@ const featuredCollections = [
     filterCategory: "Kính mắt",
     description: "Gọng cân đối, tối giản cho môi trường làm việc và đi học.",
     image:
-      "https://images.unsplash.com/photo-1755719402885-b7baa634c755?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1755719402885-b7baa634c755?auto=format&fit=crop&w=1400&q=85",
   },
   {
     title: "Titanium Series",
@@ -47,7 +36,7 @@ const featuredCollections = [
     filterCategory: "Gọng kính",
     description: "Titanium nhẹ và bền cho nhu cầu nhìn rõ trong cả ngày dài.",
     image:
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1000&q=85",
   },
   {
     title: "Summer Sunglasses",
@@ -55,9 +44,9 @@ const featuredCollections = [
     filterCategory: "Kính mát",
     description: "Kính mát đa nhiệm, giúp bảo vệ mắt trước cường độ nắng cao.",
     image:
-      "https://images.unsplash.com/photo-1625591339971-4c9a87a66871?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1625591339971-4c9a87a66871?auto=format&fit=crop&w=1000&q=85",
   },
-];
+] as const;
 
 const reviews = [
   {
@@ -78,7 +67,7 @@ const reviews = [
     quote:
       "Đặt lịch trước giúp mọi thứ nhanh gọn. Mình đã có thời gian thử kính và nhận tư vấn đúng nhu cầu.",
   },
-];
+] as const;
 
 type HomeSearchParams = Promise<{
   category?: string;
@@ -96,78 +85,73 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div className="site-shell">
-      <StorefrontHeader navItems={storefrontNavigation} />
+      <StorefrontHeader navItems={storefrontNavigation} overlay />
 
       <main>
-        <section className="hero-section" aria-labelledby="page-title">
-          <div className="hero-copy">
-            <h1 id="page-title">
-              Kính thuốc Anh Thi - niềm tin và hi vọng cho đôi mắt của bạn
-            </h1>
+        <EditorialHero />
 
-            <div className="hero-actions" aria-label="Lối tắt mua sắm">
-              <Link className="primary-button" href="/#eye-exam">
-                Đặt lịch đo mắt miễn phí
-                <CalendarDays aria-hidden="true" size={18} strokeWidth={1.75} />
-              </Link>
-              <Link className="outline-button" href="/#bestsellers">
-                Xem sản phẩm
-                <ArrowRight aria-hidden="true" size={18} strokeWidth={1.75} />
-              </Link>
-            </div>
-          </div>
-
-          <div className="hero-media">
-            <HeroCarousel />
+        <section className="trust-strip" aria-label="Chứng thực thương hiệu">
+          <div className="trust-strip__track">
+            {trustSignals.map((signal) => (
+              <div className="trust-signal" key={signal}>
+                <strong>{signal}</strong>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section className="section trust-bar" aria-label="Chứng thực thương hiệu">
-          <div className="trust-grid">
-            {trustSignals.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article className="trust-item" key={item.title}>
-                  <Icon aria-hidden="true" size={20} strokeWidth={1.75} />
-                  <div>
-                    <strong>{item.title}</strong>
-                    <p>{item.copy}</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="section" id="collections" aria-labelledby="collections-title">
-          <div className="section-heading">
+        <section
+          className="page-section collections-section"
+          id="collections"
+          aria-labelledby="collections-title"
+        >
+          <div className="section-heading section-heading--ruled">
             <h2 id="collections-title">Bộ sưu tập nổi bật</h2>
-            <p>Chọn nhanh theo phong cách, chất liệu và nhu cầu sử dụng của bạn.</p>
+            <span aria-hidden="true" />
           </div>
+
           <div className="collection-grid">
-            {featuredCollections.map((collection) => (
+            {featuredCollections.map((collection, index) => (
               <Link
-                className="collection-card"
+                className={
+                  index === 0
+                    ? "collection-card collection-card--featured"
+                    : "collection-card"
+                }
                 href={`/?category=${encodeURIComponent(collection.filterCategory)}#bestsellers`}
                 key={collection.title}
               >
-                <img alt={collection.title} decoding="async" loading="lazy" src={collection.image} />
-                <div className="collection-meta">
+                <div className="collection-card__media">
+                  <img
+                    alt={collection.title}
+                    decoding="async"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    src={collection.image}
+                  />
+                </div>
+                <div className="collection-card__content">
                   <p>{collection.subtitle}</p>
                   <h3>{collection.title}</h3>
                   <span>{collection.description}</span>
+                  <span className="collection-card__action">
+                    Khám phá ngay
+                    <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="section" id="bestsellers" aria-labelledby="products-title">
+        <section
+          className="page-section products-section"
+          id="bestsellers"
+          aria-labelledby="products-title"
+        >
           <div className="product-heading-row">
-            <div className="section-heading">
+            <div className="section-heading section-heading--ruled">
               <h2 id="products-title">Sản phẩm được yêu thích</h2>
-              <p>Khám phá các mẫu được khách hàng lựa chọn nhiều nhất.</p>
+              <span aria-hidden="true" />
             </div>
             {hasFilters ? (
               <div className="product-result" role="status">
@@ -188,7 +172,12 @@ export default async function Home({ searchParams }: HomeProps) {
               {activeProducts.map((product) => (
                 <article className="product-card" key={product.name}>
                   <Link href="/#locations" aria-label={`Tư vấn ${product.name}`}>
-                    <img alt={product.name} decoding="async" loading="lazy" src={product.image} />
+                    <img
+                      alt={product.name}
+                      decoding="async"
+                      loading="lazy"
+                      src={product.image}
+                    />
                   </Link>
                   <div className="product-info">
                     <div>
@@ -213,90 +202,154 @@ export default async function Home({ searchParams }: HomeProps) {
           )}
         </section>
 
-        <section className="section service-section" id="eye-exam" aria-labelledby="services-title">
-          <div className="section-heading">
-            <h2 id="services-title">Dịch vụ đo mắt tại Anh Thi</h2>
-            <p>Đặt lịch trước để có đủ thời gian đo mắt, thử gọng và nhận tư vấn riêng.</p>
+        <section
+          className="page-section eye-exam-section"
+          id="eye-exam"
+          aria-labelledby="eye-exam-title"
+        >
+          <div className="clinical-story">
+            <div className="clinical-story__media">
+              <Image
+                alt="Bác sĩ Anh Thi nhận bằng khen tại Bệnh viện Mắt Vĩnh Long"
+                className="clinical-story__image"
+                placeholder="blur"
+                sizes="(min-width: 861px) 45vw, 100vw"
+                src={doctorAward}
+              />
+            </div>
+
+            <div className="clinical-story__content">
+              <h2 id="eye-exam-title">Đo mắt kỹ. Chọn kính đúng.</h2>
+              <p className="clinical-story__intro">
+                Mỗi đôi kính bắt đầu từ một quy trình đo mắt cẩn thận, để chỉ số,
+                gọng và tròng kính phù hợp hơn với nhu cầu hằng ngày.
+              </p>
+
+              <ol className="service-process">
+                {eyeServices.map((service, index) => (
+                  <li key={service.title}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h3>{service.title}</h3>
+                      <p>{service.copy}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <Link className="text-link clinical-story__link" href="/bac-si">
+                Gặp gỡ bác sĩ Anh Thi
+                <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
+              </Link>
+            </div>
           </div>
 
-          <div className="service-grid">
-            {eyeServices.map((service) => {
-              const Icon = service.icon;
-
-              return (
-                <article className="service-item" key={service.title}>
-                  <Icon aria-hidden="true" size={24} strokeWidth={1.6} />
-                  <h3>{service.title}</h3>
-                  <p>{service.copy}</p>
-                </article>
-              );
-            })}
+          <div className="appointment-panel" aria-labelledby="appointment-title">
+            <div className="appointment-panel__heading">
+              <h2 id="appointment-title">Đặt lịch đo mắt</h2>
+              <p>
+                Chọn nhu cầu của bạn. Anh Thi sẽ liên hệ để thống nhất thời gian
+                phù hợp.
+              </p>
+            </div>
+            <AppointmentForm />
           </div>
-
-          <AppointmentForm />
         </section>
 
-        <section className="section review-section" aria-labelledby="reviews-title">
-          <div className="section-heading">
+        <section
+          className="page-section review-section"
+          aria-labelledby="reviews-title"
+        >
+          <div className="section-heading section-heading--centered">
             <h2 id="reviews-title">Khách hàng nói gì</h2>
           </div>
-          <div className="review-grid">
-            {reviews.map((review) => (
-              <article className="review-card" key={review.name}>
-                <div className="review-stars" aria-label="5 trên 5 sao">
-                  {Array.from({ length: 5 }, (_, index) => (
-                    <Star aria-hidden="true" fill="currentColor" key={index} size={16} strokeWidth={1.5} />
-                  ))}
-                </div>
-                <p>“{review.quote}”</p>
+
+          <div className="review-layout">
+            <article className="review-card review-card--featured">
+              <span className="review-quote-mark" aria-hidden="true">
+                “
+              </span>
+              <p>“{reviews[0].quote}”</p>
+              <div className="review-card__footer">
+                <span className="review-stars" aria-label="5 trên 5 sao">
+                  ★★★★★
+                </span>
                 <p className="review-meta">
-                  {review.name} — {review.city}
+                  {reviews[0].name} — {reviews[0].city}
                 </p>
-              </article>
-            ))}
+              </div>
+            </article>
+
+            <div className="review-stack">
+              {reviews.slice(1).map((review) => (
+                <article className="review-card" key={review.name}>
+                  <span className="review-quote-mark" aria-hidden="true">
+                    “
+                  </span>
+                  <p>“{review.quote}”</p>
+                  <div className="review-card__footer">
+                    <span className="review-stars" aria-label="5 trên 5 sao">
+                      ★★★★★
+                    </span>
+                    <p className="review-meta">
+                      {review.name} — {review.city}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="section location-section" id="locations" aria-labelledby="locations-title">
-          <div className="section-heading">
-            <h2 id="locations-title">Cửa hàng</h2>
-            <p>Ghé cửa hàng để được thử kính và căn chỉnh trực tiếp.</p>
+        <section
+          className="page-section location-section"
+          id="locations"
+          aria-labelledby="locations-title"
+        >
+          <div className="section-heading section-heading--centered">
+            <h2 id="locations-title">Ghé Anh Thi</h2>
+            <p>Thử kính và căn chỉnh trực tiếp tại cửa hàng ở Vĩnh Long.</p>
           </div>
 
           <div className="store-grid">
             {stores.map((store) => (
               <article className="store-card" key={store.name}>
-                <h3>{store.name}</h3>
-                <a
-                  className="store-address"
-                  href={store.mapUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {store.address}
-                </a>
-                <p>{store.hours}</p>
-                <Link className="text-link" href="/#eye-exam">
-                  Đặt lịch tại cửa hàng
-                  <ArrowRight aria-hidden="true" size={16} />
-                </Link>
+                <div className="store-card__identity">
+                  <MapPin aria-hidden="true" size={22} strokeWidth={1.5} />
+                  <div>
+                    <h3>{store.name}</h3>
+                    <a
+                      className="store-address"
+                      href={store.mapUrl}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {store.address}
+                    </a>
+                  </div>
+                </div>
+
+                <p className="store-hours">
+                  <Clock aria-hidden="true" size={20} strokeWidth={1.5} />
+                  Mở cửa mỗi ngày: {store.hours}
+                </p>
+
+                <div className="store-actions">
+                  <a href={store.mapUrl} rel="noreferrer" target="_blank">
+                    Chỉ đường
+                    <ArrowRight aria-hidden="true" size={17} strokeWidth={1.5} />
+                  </a>
+                  <Link href="/#eye-exam">
+                    Đặt lịch tại cửa hàng
+                    <ArrowRight aria-hidden="true" size={17} strokeWidth={1.5} />
+                  </Link>
+                  <a href="tel:0908123456">
+                    <Phone aria-hidden="true" size={17} strokeWidth={1.5} />
+                    0908 123 456
+                  </a>
+                </div>
               </article>
             ))}
-          </div>
-
-          <div className="store-contact">
-            <p>
-              <MapPin aria-hidden="true" size={18} strokeWidth={1.75} />
-              Tư vấn trực tiếp tại cửa hàng ở Vĩnh Long
-            </p>
-            <p>
-              <Clock aria-hidden="true" size={18} strokeWidth={1.75} />
-              Mở cửa mỗi ngày từ 09:00 – 20:30
-            </p>
-            <a href="tel:0908123456">
-              <Phone aria-hidden="true" size={18} strokeWidth={1.75} />
-              0908 123 456
-            </a>
           </div>
         </section>
       </main>
