@@ -931,7 +931,6 @@ section[id] {
   border-radius: 0;
   color: var(--color-on-navy);
   background: transparent;
-  outline: 0;
 }
 
 .appointment-form select option {
@@ -944,9 +943,16 @@ section[id] {
   opacity: 1;
 }
 
-.appointment-form input:focus,
-.appointment-form select:focus {
+.appointment-form input:focus-visible,
+.appointment-form select:focus-visible {
   border-color: var(--color-on-navy);
+  outline: 2px solid var(--color-on-navy);
+  outline-offset: 3px;
+}
+
+.appointment-panel :focus-visible,
+.site-footer a:focus-visible {
+  outline-color: var(--color-on-navy);
 }
 
 .field-error {

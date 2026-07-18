@@ -59,6 +59,12 @@ test("connects the editorial sections to existing customer journeys", async () =
     screen.getByRole("heading", { level: 2, name: "Đặt lịch đo mắt" }),
   ).toBeInTheDocument();
   expect(
+    screen.getByText(
+      "Điền thông tin để kiểm tra. Sau đó gọi Anh Thi để xác nhận thời gian phù hợp.",
+    ),
+  ).toBeInTheDocument();
+  expect(screen.queryByText(/Anh Thi sẽ liên hệ/i)).not.toBeInTheDocument();
+  expect(
     screen.getByRole("heading", { level: 2, name: "Khách hàng nói gì" }),
   ).toBeInTheDocument();
   expect(

@@ -28,3 +28,14 @@ test("defines tactile and active interaction states", () => {
 test("keeps the mobile brand link large enough to tap", () => {
   expect(css).toMatch(/\.brand\s*\{[^}]*min-height:\s*44px/);
 });
+
+test("keeps keyboard focus visible on navy surfaces", () => {
+  expect(css).not.toMatch(
+    /\.appointment-form input,[\s\S]*?\.appointment-form select\s*\{[^}]*outline:\s*0/,
+  );
+  expect(css).toMatch(
+    /\.appointment-form input:focus-visible,[\s\S]*?\.appointment-form select:focus-visible\s*\{[^}]*outline:\s*2px solid var\(--color-on-navy\)/,
+  );
+  expect(css).toContain(".appointment-panel :focus-visible");
+  expect(css).toContain(".site-footer a:focus-visible");
+});

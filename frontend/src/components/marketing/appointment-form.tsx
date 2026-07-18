@@ -1,7 +1,7 @@
 "use client";
 
 import { Check } from "lucide-react";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 
 type AppointmentErrors = {
   name?: string;
@@ -29,6 +29,16 @@ function validateAppointment(form: FormData): AppointmentErrors {
 export function AppointmentForm() {
   const [errors, setErrors] = useState<AppointmentErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (errors.name) {
+      nameInputRef.current?.focus();
+    } else if (errors.phone) {
+      phoneInputRef.current?.focus();
+    }
+  }, [errors]);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -57,6 +67,7 @@ export function AppointmentForm() {
             id="appointment-name"
             name="name"
             placeholder="Nguyễn Anh"
+            ref={nameInputRef}
             required
             type="text"
           />
@@ -77,6 +88,7 @@ export function AppointmentForm() {
             id="appointment-phone"
             name="phone"
             placeholder="0900 000 000"
+            ref={phoneInputRef}
             required
             type="tel"
           />

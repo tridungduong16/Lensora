@@ -256,8 +256,8 @@ export default async function Home({ searchParams }: HomeProps) {
             <div className="appointment-panel__heading">
               <h2 id="appointment-title">Đặt lịch đo mắt</h2>
               <p>
-                Chọn nhu cầu của bạn. Anh Thi sẽ liên hệ để thống nhất thời gian
-                phù hợp.
+                Điền thông tin để kiểm tra. Sau đó gọi Anh Thi để xác nhận thời
+                gian phù hợp.
               </p>
             </div>
             <AppointmentForm />

@@ -22,6 +22,20 @@ test("shows field-level errors for incomplete appointment details", async () => 
     "aria-invalid",
     "true",
   );
+  expect(screen.getByLabelText("Họ và tên")).toHaveFocus();
+});
+
+test("focuses the first invalid field after submission", async () => {
+  const user = userEvent.setup();
+  render(<AppointmentForm />);
+
+  await user.type(screen.getByLabelText("Họ và tên"), "Nguyễn Anh");
+  await user.click(
+    screen.getByRole("button", { name: "Gửi yêu cầu đặt lịch" }),
+  );
+
+  expect(screen.getByLabelText("Số điện thoại")).toHaveFocus();
+  expect(screen.getByText("Nhập số điện thoại Việt Nam hợp lệ.")).toBeInTheDocument();
 });
 
 test("keeps entered values when validation fails", async () => {
