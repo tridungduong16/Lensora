@@ -16,7 +16,7 @@ test("renders the editorial home hero and trust proof", async () => {
 
   const heroHeading = screen.getByRole("heading", {
     level: 1,
-    name: "Nhìn rõ hơn.",
+    name: "niềm tin và hi vọng cho đôi mắt của bạn",
   });
   const hero = heroHeading.closest("section");
 

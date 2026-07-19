@@ -110,7 +110,9 @@ export function EditorialHero() {
   return (
     <section className="editorial-hero" aria-labelledby="page-title">
       <div className="editorial-hero__copy">
-        <h1 id="page-title">Nhìn rõ hơn.</h1>
+        <h1 id="page-title">
+          niềm tin và hi vọng cho đôi mắt của bạn
+        </h1>
         <p>Đo mắt chuẩn y khoa với hơn 20 năm kinh nghiệm.</p>
 
         <div className="editorial-hero__actions">
@@ -129,7 +131,7 @@ export function EditorialHero() {
           <motion.div
             animate={{
               opacity: index === activeIndex ? 1 : 0,
-              scale: index === activeIndex && !reduceMotion ? 1.02 : 1,
+              scale: 1,
             }}
             aria-hidden={index !== activeIndex}
             className="editorial-hero__slide"

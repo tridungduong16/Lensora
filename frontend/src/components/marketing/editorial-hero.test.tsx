@@ -28,6 +28,16 @@ test("lets the visitor pause and resume automatic changes", async () => {
   ).toBeInTheDocument();
 });
 
+test("shows the active hero image without extra zoom", () => {
+  render(<EditorialHero />);
+
+  expect(
+    screen
+      .getByRole("img", { name: /phong cách tối giản/i })
+      .closest("[aria-hidden]"),
+  ).not.toHaveStyle({ transform: "scale(1.02)" });
+});
+
 test("skips an image that fails to load", () => {
   render(<EditorialHero />);
 
