@@ -365,6 +365,74 @@
   letter-spacing: 0.06em;
 }
 
+.comparisonScroll {
+  overflow-x: auto;
+}
+
+.comparisonTable {
+  width: 100%;
+  min-width: 1080px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparisonProductColumn {
+  width: 17%;
+}
+
+.comparisonFeaturesColumn {
+  width: 27%;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  border-right: 1px solid var(--pricing-line);
+  border-bottom: 1px solid var(--pricing-line);
+  vertical-align: middle;
+}
+
+.comparisonTable th:last-child,
+.comparisonTable td:last-child {
+  border-right: 0;
+}
+
+.comparisonTable tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.comparisonTable thead th {
+  padding: 12px 8px;
+  color: #081b40;
+  background: #cbd9e2;
+  font-weight: 700;
+}
+
+.comparisonTable thead th:nth-child(-n + 2) {
+  padding-inline: 16px;
+  text-align: left;
+}
+
+.comparisonTable .productInfo {
+  font-weight: 400;
+  text-align: left;
+}
+
+.comparisonTable .features {
+  border: 0;
+}
+
+.comparisonSpecification,
+.comparisonTable .priceCell {
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.comparisonTable .priceCell strong {
+  font-size: 22px;
+}
+
 .productDetails {
   align-self: stretch;
   min-width: 0;
@@ -544,17 +612,14 @@
   text-align: center;
 }
 
-.footer p {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.035em;
-}
-
-.footer > span {
+.footerLogo {
   display: block;
-  margin-top: 6px;
-  font-size: 19px;
-  font-style: italic;
+  width: 144px;
+  height: 144px;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: white;
+  object-fit: contain;
 }
 
 .footer > div {
@@ -658,6 +723,8 @@
 .pngExport .singlePrice strong { font-size: 27px; }
 .pngExport .singlePrice { margin: 12px; }
 .pngExport .specificationTable { font-size: 17px; }
+.pngExport .comparisonScroll { overflow: visible; }
+.pngExport .comparisonTable .priceCell strong { font-size: 22px; }
 .pngExport .notes { grid-template-columns: 80px 1fr; gap: 12px; padding: 18px 20px; }
 .pngExport .glossary { display: flex; gap: 12px 32px; }
 
@@ -684,6 +751,11 @@
   .offerTable, .singlePrice { grid-column: auto; }
   .productDetails { grid-column: auto; }
   .specificationTable { font-size: 10pt; }
+  .comparisonScroll { overflow: visible; }
+  .comparisonTable { min-width: 0; font-size: 10pt; }
+  .comparisonTable tbody tr { break-inside: avoid; }
+  .comparisonTable .comparisonSpecification, .comparisonTable .priceCell { padding: 12px 4px; }
+  .comparisonTable .priceCell strong { font-size: 12pt; }
   .priceCell strong, .singlePrice strong { font-size: 14pt; }
   .footer { margin-top: 24px; padding: 20px; }
   .page * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }

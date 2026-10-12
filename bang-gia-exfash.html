@@ -104,9 +104,8 @@
     .notes-copy ul { margin: 0; padding-left: 2.4cqw; font-size: 1.76cqw; line-height: 1.13; width: 111.111%; transform: scaleX(.9); transform-origin: left center; }
     .notes-copy li { padding-left: .2cqw; margin: .05cqw 0; }
     .signature { display: block; width: 19.2cqw; height: 11.2cqw; }
-    .brand-footer { position: absolute; left: 3cqw; right: 3cqw; bottom: 1.4cqw; color: white; text-align: center; font-family: Arial, Helvetica, sans-serif; }
-    .brand-footer p { margin: 0; font-size: 1.02cqw; line-height: 1.65; letter-spacing: .55cqw; }
-    .brand-footer .footer-tagline { font-size: 1.1cqw; letter-spacing: .22cqw; }
+    .brand-footer { padding: 2cqw 3cqw; text-align: center; }
+    .footer-logo { display: block; width: 8cqw; height: 8cqw; margin: 0 auto; border-radius: 50%; background: white; }
     @media print {
       @page { size: 200mm 300mm; margin: 0; }
       body { background: white; }
@@ -277,7 +276,12 @@
           <svg class="signature" viewBox="785 1327 199 116" role="img" aria-labelledby="signature-title"><title id="signature-title">Nhìn rõ hơn — Cuộc sống đẹp hơn</title><use href="#reference-artwork"/></svg>
         </aside>
       </div>
-      <footer class="brand-footer"><p>ANH THI EYEGLASSES</p><p class="footer-tagline">CHĂM SÓC THỊ LỰC - ĐỒNG HÀNH CÙNG BẠN</p></footer>
+      <footer class="brand-footer">
+        <svg class="footer-logo" viewBox="430 18 164 164" role="img" aria-labelledby="footer-logo-title">
+          <title id="footer-logo-title">Kính thuốc Anh Thi</title>
+          <use href="#reference-artwork" clip-path="url(#brand-crop)"/>
+        </svg>
+      </footer>
     </article>
   </main>
 </body>

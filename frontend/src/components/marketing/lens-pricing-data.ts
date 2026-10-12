@@ -27,6 +27,7 @@ export type LensPriceCategory = {
     id: string;
     title: string;
     description: string;
+    specificationColumns?: string[];
     products: LensPriceProduct[];
   }[];
   notes: string[];
@@ -634,6 +635,7 @@ export const lensPriceCategories: LensPriceCategory[] = [
         id: "kinh-hai-trong",
         title: "Các dòng kính hai tròng",
         description: "",
+        specificationColumns: ["Chiết suất", "SPH", "CYL", "ADD"],
         products: [
           {
             id: "kinh-hai-trong-156-basic",

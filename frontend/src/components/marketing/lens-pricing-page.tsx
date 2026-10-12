@@ -12,6 +12,63 @@ import styles from "@/app/bang-gia/pricing.module.css";
 
 const formatPrice = (amount: number) => `${new Intl.NumberFormat("vi-VN").format(amount)}đ`;
 
+function ProductComparisonTable({
+  products,
+  columns,
+  titleId,
+}: {
+  products: LensPriceProduct[];
+  columns: string[];
+  titleId: string;
+}) {
+  return (
+    <div className={styles.comparisonScroll} role="region" aria-labelledby={titleId} tabIndex={0}>
+      <table className={styles.comparisonTable} aria-labelledby={titleId}>
+        <colgroup>
+          <col className={styles.comparisonProductColumn} />
+          <col className={styles.comparisonFeaturesColumn} />
+          {columns.map((label) => <col key={label} />)}
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">Sản phẩm</th>
+            <th scope="col">Tính năng</th>
+            {columns.map((label) => <th scope="col" key={label}>{label}</th>)}
+            <th scope="col">Giá lẻ / cặp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <th scope="row" className={styles.productInfo}>
+                {product.badge ? <span className={styles.productBadge}>{product.badge}</span> : null}
+                <h4 id={product.id}>{product.name}</h4>
+                {product.specifications?.filter(({ label }) => !columns.includes(label)).map(({ label, value }) => (
+                  <p key={label}><span>{label}</span>{value}</p>
+                ))}
+              </th>
+              <td>
+                <ul className={styles.features}>
+                  {product.features.map((feature) => <li key={feature}>{feature}</li>)}
+                </ul>
+              </td>
+              {columns.map((label) => (
+                <td key={label} className={styles.comparisonSpecification}>
+                  {product.specifications?.find((specification) => specification.label === label)?.value ?? "Chưa có thông tin"}
+                </td>
+              ))}
+              <td className={styles.priceCell}>
+                <strong>{product.price !== undefined ? formatPrice(product.price) : "Chưa có thông tin"}</strong>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function ProductPrice({ product }: { product: LensPriceProduct }) {
   if (product.price !== undefined) {
     const price = (
@@ -152,24 +209,34 @@ export function LensPricingPage({ category: selectedCategory }: { category?: Len
                 <section className={styles.priceSection} aria-labelledby={`${section.id}-title`} key={section.id}>
                   <h3 id={`${section.id}-title`} className={styles.sectionHeading}>{section.title}</h3>
                   {section.description ? <p className={styles.sectionDescription}>{section.description}</p> : null}
-                  <div className={styles.columnHeadings} aria-hidden="true">
-                    <span>Sản phẩm</span><span>Tính năng</span><span>Thông số & giá lẻ / cặp</span>
-                  </div>
-                  {section.products.map((product) => (
-                    <article className={styles.product} aria-labelledby={product.id} key={product.id}>
-                      <div className={styles.productInfo}>
-                        {product.badge ? <span className={styles.productBadge}>{product.badge}</span> : null}
-                        <h4 id={product.id}>{product.name}</h4>
-                        {product.coating ? (
-                          <p><span>Lớp phủ</span>{product.coating.join(" / ").replace(" / / ", " / ")}</p>
-                        ) : null}
+                  {section.specificationColumns ? (
+                    <ProductComparisonTable
+                      products={section.products}
+                      columns={section.specificationColumns}
+                      titleId={`${section.id}-title`}
+                    />
+                  ) : (
+                    <>
+                      <div className={styles.columnHeadings} aria-hidden="true">
+                        <span>Sản phẩm</span><span>Tính năng</span><span>Thông số & giá lẻ / cặp</span>
                       </div>
-                      <ul className={styles.features}>
-                        {product.features.map((feature, index) => <li key={index}>{feature}</li>)}
-                      </ul>
-                      <ProductPrice product={product} />
-                    </article>
-                  ))}
+                      {section.products.map((product) => (
+                        <article className={styles.product} aria-labelledby={product.id} key={product.id}>
+                          <div className={styles.productInfo}>
+                            {product.badge ? <span className={styles.productBadge}>{product.badge}</span> : null}
+                            <h4 id={product.id}>{product.name}</h4>
+                            {product.coating ? (
+                              <p><span>Lớp phủ</span>{product.coating.join(" / ").replace(" / / ", " / ")}</p>
+                            ) : null}
+                          </div>
+                          <ul className={styles.features}>
+                            {product.features.map((feature, index) => <li key={index}>{feature}</li>)}
+                          </ul>
+                          <ProductPrice product={product} />
+                        </article>
+                      ))}
+                    </>
+                  )}
                 </section>
               ))}
 
@@ -189,8 +256,7 @@ export function LensPricingPage({ category: selectedCategory }: { category?: Len
         </main>
 
         <footer className={styles.footer}>
-          <p>ANH THI EYEGLASSES</p>
-          <span>Chăm sóc thị lực. Đồng hành cùng bạn.</span>
+          <Image className={styles.footerLogo} alt="Kính thuốc Anh Thi" src={brandLogo} width={144} height={144} />
           <div data-png-exclude>
             <Link href="/do-mat">Đặt lịch đo mắt</Link>
             <Link href="/cua-hang">Tư vấn tại cửa hàng</Link>
