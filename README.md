@@ -243,6 +243,23 @@ Run scripts from the `frontend/` directory.
 
 ---
 
+## Production Deployment
+
+The Kính thuốc Anh Thi production website is [kinhthuocanhthi.com](https://kinhthuocanhthi.com). Deploy production updates to the SSH host `xeleb-prod-kmax`, using the checkout at `/root/Lensora` and `scripts/deploy-frontend-docker.sh`.
+
+The existing Docker container is `lensora-frontend`, with host port `8086` mapped to container port `3000`. Nginx forwards `kinhthuocanhthi.com` and `www.kinhthuocanhthi.com` to `127.0.0.1:8086`. Preserve this setup when updating the application.
+
+After committing, pushing, and checking the changes, deploy from the server:
+
+```bash
+ssh xeleb-prod-kmax
+cd /root/Lensora
+git pull --ff-only origin main
+bash scripts/deploy-frontend-docker.sh
+```
+
+Verify the container is healthy and check the production website, including `/bang-gia` and PNG downloads. The local Vercel project link is a separate deployment target; it does not update this production server.
+
 ## Verification
 
 Run these checks before shipping frontend changes:
