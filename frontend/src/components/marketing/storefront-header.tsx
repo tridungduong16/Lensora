@@ -24,7 +24,7 @@ export function StorefrontHeader({
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const middleIndex = Math.ceil(navItems.length / 2);
+  const middleIndex = Math.floor(navItems.length / 2);
   const leftNavItems = navItems.slice(0, middleIndex);
   const rightNavItems = navItems.slice(middleIndex);
 

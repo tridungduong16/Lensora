@@ -16,6 +16,7 @@ export function StorefrontFooter() {
           <p>Khám phá</p>
           <Link href="/#collections">Bộ sưu tập</Link>
           <Link href="/#bestsellers">Sản phẩm</Link>
+          <Link href="/bang-gia">Bảng giá tròng kính</Link>
           <Link href="/bac-si">Bác sĩ</Link>
           <Link href="/#eye-exam">Đo mắt</Link>
           <Link href="/#locations">Cửa hàng</Link>

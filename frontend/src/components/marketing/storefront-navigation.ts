@@ -7,4 +7,5 @@ export const storefrontNavigation = [
   { label: "Bác sĩ", href: "/bac-si" },
   { label: "Đo mắt", href: "/do-mat" },
   { label: "Cửa hàng", href: "/cua-hang" },
+  { label: "Bảng giá", href: "/bang-gia" },
 ] satisfies NavigationItem[];

@@ -8,12 +8,14 @@ test.each([
   ["Bác sĩ", "bac-si"],
   ["Đo mắt", "do-mat"],
   ["Cửa hàng", "cua-hang"],
+  ["Bảng giá", "bang-gia"],
 ])("provides the %s header subpage route", (_label, routePath) => {
   expect(existsSync(path.resolve(__dirname, routePath, "page.tsx"))).toBe(true);
 });
 
 test.each([
   ["doctor", path.resolve(__dirname, "bac-si", "page.tsx")],
+  ["lens pricing", path.resolve(__dirname, "..", "components", "marketing", "lens-pricing-page.tsx")],
   [
     "product category",
     path.resolve(__dirname, "..", "components", "marketing", "product-category-page.tsx"),
