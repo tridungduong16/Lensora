@@ -4,16 +4,21 @@ import { EditorialHero } from "./editorial-hero";
 
 let preferenceChanged: (() => void) | undefined;
 let reduceMotion = false;
+let mobile = false;
+let viewportChanged: (() => void) | undefined;
 
 beforeEach(() => {
   reduceMotion = false;
   preferenceChanged = undefined;
+  mobile = false;
+  viewportChanged = undefined;
   vi.spyOn(HTMLMediaElement.prototype, "play").mockResolvedValue(undefined);
   vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(() => {});
-  vi.stubGlobal("matchMedia", () => ({
-    get matches() { return reduceMotion; },
+  vi.stubGlobal("matchMedia", (query: string) => ({
+    get matches() { return query === "(max-width: 860px)" ? mobile : reduceMotion; },
     addEventListener: vi.fn((_event: string, callback: () => void) => {
-      preferenceChanged = callback;
+      if (query === "(max-width: 860px)") viewportChanged = callback;
+      else preferenceChanged = callback;
     }),
     removeEventListener: vi.fn(),
   }));
@@ -68,6 +73,40 @@ test("respects reduced motion and updates when the preference changes", () => {
   });
   expect(video).not.toHaveAttribute("autoplay");
   expect(HTMLMediaElement.prototype.pause).toHaveBeenCalled();
+});
+
+test("uses the portrait advertisement and poster on mobile", () => {
+  mobile = true;
+  render(<EditorialHero />);
+  const video = screen.getByLabelText("Video giới thiệu Kính thuốc Anh Thi");
+
+  expect(video).toHaveAttribute("src", "/videos/anh-thi-advertisement-portrait.mp4");
+  expect(video).toHaveAttribute("poster", "/videos/anh-thi-advertisement-portrait-poster.jpg");
+  expect(video).toHaveAttribute("width", "1080");
+  expect(video).toHaveAttribute("height", "1920");
+  expect(video).toHaveAttribute("controls");
+});
+
+test("switches the video with the viewport and offers the matching recovery link", () => {
+  render(<EditorialHero />);
+  const video = screen.getByLabelText("Video giới thiệu Kính thuốc Anh Thi");
+  act(() => {
+    mobile = true;
+    viewportChanged?.();
+  });
+  expect(video).toHaveAttribute("src", "/videos/anh-thi-advertisement-portrait.mp4");
+  fireEvent.error(video);
+  expect(screen.getByRole("link", { name: "Mở video trực tiếp" })).toHaveAttribute(
+    "href", "/videos/anh-thi-advertisement-portrait.mp4",
+  );
+
+  act(() => {
+    mobile = false;
+    viewportChanged?.();
+  });
+  expect(screen.queryByRole("alert")).toBeNull();
+  expect(video).toHaveAttribute("src", "/videos/gioi_thieu_kinh_thuoc_anh_thi_ngang_1920x1080.mp4");
+  expect(video).toHaveAttribute("poster", "/videos/anh-thi-introduction-poster.jpg");
 });
 
 test("keeps native controls available when autoplay is blocked", async () => {

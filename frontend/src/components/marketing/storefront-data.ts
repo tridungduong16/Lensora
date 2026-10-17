@@ -24,7 +24,10 @@ export const stores = [
   {
     name: "Cửa hàng Kính thuốc Anh Thi",
     address: "85 Phạm Thái Bường Phường 4, Vinh Long, Vietnam, 85000",
-    hours: "09:00 - 20:30",
+    hours: [
+      "T2 - T6: 11h-12h, 17h-19h",
+      "T7, CN: 8h - 11h, 17h-19h",
+    ],
     mapUrl:
       "https://www.bing.com/maps/default.aspx?v=2&pc=FACEBK&mid=8100&where1=10.241584976617%2C%20105.98022663598&FORM=FBKPL1&name=85%20Ph%E1%BA%A1m%20Th%C3%A1i%20B%C6%B0%E1%BB%9Dng%20Ph%C6%B0%E1%BB%9Dng%204%2C%20Vinh%20Long%2C%20Vietnam%2C%2085000&mkt=en-GB",
   },

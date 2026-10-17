@@ -6,12 +6,29 @@ import { useEffect, useRef, useState } from "react";
 
 const VIDEO_SRC =
   "/videos/gioi_thieu_kinh_thuoc_anh_thi_ngang_1920x1080.mp4";
+const PORTRAIT_VIDEO_SRC = "/videos/anh-thi-advertisement-portrait.mp4";
 
 export function EditorialHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reduceMotion, setReduceMotion] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const videoSrc = isMobile ? PORTRAIT_VIDEO_SRC : VIDEO_SRC;
+  const videoPoster = isMobile
+    ? "/videos/anh-thi-advertisement-portrait-poster.jpg"
+    : "/videos/anh-thi-introduction-poster.jpg";
   const handleVideoError = () => setHasError(true);
+
+  useEffect(() => {
+    const media = window.matchMedia?.("(max-width: 860px)");
+    const update = () => {
+      setIsMobile(media?.matches ?? false);
+      setHasError(false);
+    };
+    update();
+    media?.addEventListener("change", update);
+    return () => media?.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia?.("(prefers-reduced-motion: reduce)");
@@ -25,7 +42,7 @@ export function EditorialHero() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || isMobile === null) return;
 
     if (reduceMotion) {
       if (!video.paused) video.pause();
@@ -34,7 +51,7 @@ export function EditorialHero() {
 
     // Browser settings may block autoplay; native controls still allow playback.
     video.play()?.catch(() => undefined);
-  }, [reduceMotion]);
+  }, [reduceMotion, isMobile]);
 
   return (
     <section
@@ -72,19 +89,19 @@ export function EditorialHero() {
           autoPlay={!reduceMotion}
           className="advert-hero__video"
           controls
-          height={1080}
+          height={isMobile ? 1920 : 1080}
           loop
           muted
           onError={handleVideoError}
           playsInline
-          poster="/videos/anh-thi-introduction-poster.jpg"
+          poster={isMobile === null ? undefined : videoPoster}
           preload="metadata"
           ref={videoRef}
-          src={VIDEO_SRC}
-          width={1920}
+          src={isMobile === null ? undefined : videoSrc}
+          width={isMobile ? 1080 : 1920}
         >
           Trình duyệt của bạn chưa hỗ trợ video.{" "}
-          <a href={VIDEO_SRC}>Mở video giới thiệu Anh Thi</a>.
+          <a href={videoSrc}>Mở video giới thiệu Anh Thi</a>.
         </video>
         <figcaption className="advert-hero__caption">
           <span>Gặp gỡ Kính thuốc Anh Thi</span>
@@ -92,7 +109,7 @@ export function EditorialHero() {
         </figcaption>
         {hasError ? (
           <p className="advert-hero__error" role="alert">
-            Video chưa tải được. <a href={VIDEO_SRC}>Mở video trực tiếp</a> hoặc
+            Video chưa tải được. <a href={videoSrc}>Mở video trực tiếp</a> hoặc
             khám phá các mẫu kính bên dưới.
           </p>
         ) : null}

@@ -4,6 +4,7 @@ import { StorefrontFooter } from "./storefront-footer";
 import { StorefrontHeader } from "./storefront-header";
 import { storefrontNavigation } from "./storefront-navigation";
 import { stores } from "./storefront-data";
+import { OpeningHours } from "./opening-hours";
 import { StructuredData } from "./structured-data";
 import { breadcrumbSchema } from "@/lib/local-business-schema";
 
@@ -63,7 +64,7 @@ export function StoreLocationsPage() {
               </a>
               <p>
                 <Clock size={20} aria-hidden="true" />
-                Mỗi ngày: {store.hours}
+                <OpeningHours hours={store.hours} />
               </p>
               <a href="tel:+84858060789">
                 <Phone size={20} aria-hidden="true" />

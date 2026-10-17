@@ -6,6 +6,7 @@ import { AppointmentForm } from "@/components/marketing/appointment-form";
 import { BrandStoryRail } from "@/components/marketing/brand-story-rail";
 import { EditorialHero } from "@/components/marketing/editorial-hero";
 import { ProductCatalog } from "@/components/marketing/product-catalog";
+import { OpeningHours } from "@/components/marketing/opening-hours";
 import { eyeServices, stores } from "@/components/marketing/storefront-data";
 import { StorefrontFooter } from "@/components/marketing/storefront-footer";
 import { StorefrontHeader } from "@/components/marketing/storefront-header";
@@ -94,7 +95,10 @@ export default async function Home({ searchParams }: HomeProps) {
           <p>
             <Clock size={23} strokeWidth={1.3} aria-hidden="true" />
             <span>
-              Mở cửa mỗi ngày<strong>09:00 - 20:30</strong>
+              Giờ mở cửa
+              <strong>
+                <OpeningHours hours={store.hours} />
+              </strong>
             </span>
           </p>
         </div>
@@ -290,7 +294,7 @@ export default async function Home({ searchParams }: HomeProps) {
               </a>
               <p>
                 <Clock size={20} aria-hidden="true" />
-                Mỗi ngày: {store.hours}
+                <OpeningHours hours={store.hours} />
               </p>
               <a href="tel:+84858060789">
                 <Phone size={20} aria-hidden="true" />

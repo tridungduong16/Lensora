@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { stores } from "@/components/marketing/storefront-data";
+import { OpeningHours } from "./opening-hours";
 
 type StorefrontFooterProps = {
   showPriceList?: boolean;
@@ -42,7 +43,7 @@ export function StorefrontFooter({
           <a href={store.mapUrl} rel="noreferrer" target="_blank">
             {store.address}
           </a>
-          <span>Mở cửa mỗi ngày: 09:00 - 20:30</span>
+          <OpeningHours hours={store.hours} />
         </div>
       </div>
 
