@@ -36,6 +36,8 @@ The catalogue supports brand/category/budget filters, accent-insensitive search 
 
 Appointment details are checked locally and retained for the customer. Confirmation is through `tel:+84858060789`; the form does not claim to submit a booking to a server.
 
+The home page opens with the supplied 33-second Anh Thi advertisement, served from `frontend/public/videos/gioi_thieu_kinh_thuoc_anh_thi_ngang_1920x1080.mp4`. It preserves the full 16:9 frame on desktop and mobile, starts muted, and offers native playback, sound and fullscreen controls. Visitors who prefer reduced motion start with the poster and can play manually. The poster is extracted from the same video; appointment and catalogue links remain below the player.
+
 ---
 
 ## Features

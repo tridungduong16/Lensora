@@ -7,7 +7,7 @@ async function renderHome(
   return render(await Home({ searchParams: Promise.resolve(search) }));
 }
 
-test("preserves the hero and real service information", async () => {
+test("uses the advertising video and preserves service links and information", async () => {
   const { container } = await renderHome();
   const hero = screen
     .getByRole("heading", {
@@ -25,7 +25,10 @@ test("preserves the hero and real service information", async () => {
     "85 Phạm Thái Bường",
   );
   expect(screen.queryByText("★★★★★ 4.9")).not.toBeInTheDocument();
-  expect(container.querySelector("video")).not.toBeInTheDocument();
+  expect(container.querySelector("video")).toHaveAttribute(
+    "src",
+    "/videos/gioi_thieu_kinh_thuoc_anh_thi_ngang_1920x1080.mp4",
+  );
 });
 
 test("provides real product details for all three requested brands", async () => {

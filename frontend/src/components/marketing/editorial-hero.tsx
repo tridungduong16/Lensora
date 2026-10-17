@@ -1,192 +1,84 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
-import Image, { type StaticImageData } from "next/image";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { type SyntheticEvent, useCallback, useEffect, useState } from "react";
-import model1 from "../../../model1.jpg";
-import model2 from "../../../model2.png";
-import model3 from "../../../model3.jpg";
+import { useEffect, useRef, useState } from "react";
 
-type HeroSlide = {
-  src: StaticImageData;
-  alt: string;
-  imageClassName: string;
-};
-
-const heroSlides: readonly HeroSlide[] = [
-  {
-    src: model1,
-    alt: "Người mẫu đeo kính Anh Thi, phong cách tối giản",
-    imageClassName: "editorial-hero__image editorial-hero__image--one",
-  },
-  {
-    src: model2,
-    alt: "Người mẫu đeo kính Anh Thi, bộ sưu tập hiện đại",
-    imageClassName: "editorial-hero__image editorial-hero__image--two",
-  },
-  {
-    src: model3,
-    alt: "Người mẫu đeo kính Anh Thi, thiết kế cao cấp",
-    imageClassName: "editorial-hero__image editorial-hero__image--three",
-  },
-];
-
-const AUTOPLAY_MS = 5500;
-
-function findAvailableSlide(
-  start: number,
-  direction: 1 | -1,
-  failedIndexes: readonly number[],
-) {
-  for (let offset = 1; offset <= heroSlides.length; offset += 1) {
-    const candidate =
-      (start + direction * offset + heroSlides.length) % heroSlides.length;
-
-    if (!failedIndexes.includes(candidate)) {
-      return candidate;
-    }
-  }
-
-  return start;
-}
+const VIDEO_SRC =
+  "/videos/gioi_thieu_kinh_thuoc_anh_thi_ngang_1920x1080.mp4";
 
 export function EditorialHero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [reduceMotion, setReduceMotion] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [imagesReady, setImagesReady] = useState(false);
-  const [failedIndexes, setFailedIndexes] = useState<readonly number[]>([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia?.("(prefers-reduced-motion: reduce)");
     if (!media) return;
+
     const update = () => setReduceMotion(media.matches);
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
 
-  const showPrevious = useCallback(() => {
-    setActiveIndex((current) => findAvailableSlide(current, -1, failedIndexes));
-  }, [failedIndexes]);
-
-  const showNext = useCallback(() => {
-    setActiveIndex((current) => findAvailableSlide(current, 1, failedIndexes));
-  }, [failedIndexes]);
-
-  const togglePlayback = useCallback(() => {
-    setIsPlaying((current) => !current);
-  }, []);
-
-  const handleImageError = useCallback(
-    (event: SyntheticEvent<HTMLImageElement>) => {
-      const failedIndex = Number(event.currentTarget.dataset.slideIndex);
-      const nextFailedIndexes = failedIndexes.includes(failedIndex)
-        ? failedIndexes
-        : [...failedIndexes, failedIndex];
-
-      setFailedIndexes(nextFailedIndexes);
-      setActiveIndex((current) =>
-        current === failedIndex
-          ? findAvailableSlide(current, 1, nextFailedIndexes)
-          : current,
-      );
-    },
-    [failedIndexes],
-  );
-
   useEffect(() => {
-    if (reduceMotion || !isPlaying || !imagesReady) {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (reduceMotion) {
+      if (!video.paused) video.pause();
       return;
     }
 
-    const timer = window.setInterval(showNext, AUTOPLAY_MS);
-    return () => window.clearInterval(timer);
-  }, [isPlaying, reduceMotion, showNext, imagesReady]);
-
-  const activeSlide = heroSlides[activeIndex];
+    // Browser settings may block autoplay; native controls still allow playback.
+    video.play()?.catch(() => undefined);
+  }, [reduceMotion]);
 
   return (
-    <section className="editorial-hero" aria-labelledby="page-title">
-      <div className="editorial-hero__copy">
-        <h1 id="page-title">Kính thuốc Anh Thi tại Vĩnh Long</h1>
-        <p>
-          Niềm tin và hi vọng cho đôi mắt của bạn. Đo mắt, tư vấn kính thuốc và
-          thử gọng trực tiếp tại 85 Phạm Thái Bường.
+    <section
+      className="editorial-hero editorial-hero--video"
+      aria-labelledby="page-title"
+    >
+      <h1 className="sr-only" id="page-title">
+        Kính thuốc Anh Thi tại Vĩnh Long
+      </h1>
+
+      <video
+        aria-label="Video giới thiệu Kính thuốc Anh Thi"
+        autoPlay={!reduceMotion}
+        className="advert-hero__video"
+        controls
+        height={1080}
+        loop
+        muted
+        onError={() => setHasError(true)}
+        playsInline
+        poster="/videos/anh-thi-introduction-poster.jpg"
+        preload="metadata"
+        ref={videoRef}
+        src={VIDEO_SRC}
+        width={1920}
+      >
+        Trình duyệt của bạn chưa hỗ trợ video.{" "}
+        <a href={VIDEO_SRC}>Mở video giới thiệu Anh Thi</a>.
+      </video>
+
+      {hasError ? (
+        <p className="advert-hero__error" role="alert">
+          Video chưa tải được. <a href={VIDEO_SRC}>Mở video trực tiếp</a> hoặc khám
+          phá các mẫu kính bên dưới.
         </p>
+      ) : null}
 
-        <div className="editorial-hero__actions">
-          <Link className="primary-button" href="/#eye-exam">
-            Đặt lịch đo mắt
-          </Link>
-          <Link className="text-button" href="/#bestsellers">
-            Xem mẫu kính
-            <ArrowRight aria-hidden="true" size={18} strokeWidth={1.6} />
-          </Link>
-        </div>
-      </div>
-
-      <div className="editorial-hero__media">
-        {heroSlides.map((slide, index) => (
-          <div
-            aria-hidden={index !== activeIndex}
-            className="editorial-hero__slide"
-            hidden={index !== activeIndex}
-            key={slide.alt}
-          >
-            <Image
-              alt={slide.alt}
-              className={slide.imageClassName}
-              data-slide-index={index}
-              height={slide.src.height}
-              onError={handleImageError}
-              onLoad={() => setImagesReady(true)}
-              loading={index === 0 || imagesReady ? "eager" : "lazy"}
-              priority={index === 0}
-              fetchPriority={index === 0 ? "high" : "low"}
-              sizes={
-                index === 1
-                  ? "(min-width: 861px) 340px, calc((100vw - 80px) * 0.65)"
-                  : "(min-width: 1400px) 600px, (min-width: 861px) 45vw, calc(100vw - 80px)"
-              }
-              src={slide.src}
-              width={slide.src.width}
-            />
-          </div>
-        ))}
-
-        <div
-          className="editorial-hero__controls"
-          aria-label="Điều khiển ảnh người mẫu"
-        >
-          <button aria-label="Ảnh trước" onClick={showPrevious} type="button">
-            <ArrowLeft aria-hidden="true" size={20} strokeWidth={1.5} />
-          </button>
-          <span aria-live="polite">
-            {String(activeIndex + 1).padStart(2, "0")} / 03
-          </span>
-          <button
-            aria-label={
-              isPlaying ? "Tạm dừng chuyển ảnh" : "Tiếp tục chuyển ảnh"
-            }
-            onClick={togglePlayback}
-            type="button"
-          >
-            {isPlaying ? (
-              <Pause aria-hidden="true" size={18} strokeWidth={1.5} />
-            ) : (
-              <Play aria-hidden="true" size={18} strokeWidth={1.5} />
-            )}
-          </button>
-          <button aria-label="Ảnh tiếp theo" onClick={showNext} type="button">
-            <ArrowRight aria-hidden="true" size={20} strokeWidth={1.5} />
-          </button>
-        </div>
-
-        <span className="sr-only" aria-live="polite">
-          {activeSlide.alt}
-        </span>
+      <div className="advert-hero__actions">
+        <Link className="primary-button" href="/#eye-exam">
+          Đặt lịch đo mắt
+        </Link>
+        <Link className="text-button" href="/#bestsellers">
+          Xem mẫu kính
+          <ArrowRight aria-hidden="true" size={18} strokeWidth={1.6} />
+        </Link>
       </div>
     </section>
   );
