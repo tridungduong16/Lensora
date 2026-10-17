@@ -28,8 +28,18 @@ Chưa có dữ liệu Search Console hoặc bằng chứng thứ hạng hiện t
 
 Liên kết “Đo mắt” và “Cửa hàng” ở chân trang được trỏ trực tiếp đến trang dịch vụ `/do-mat` và trang địa điểm `/cua-hang`, giúp khách và crawler đi tới đúng nội dung chi tiết.
 
+## Mốc tìm kiếm Google và tên miền
+
+- Kiểm tra trực tiếp truy vấn “đo mắt ở vĩnh long” trên Google, giao diện tiếng Việt và quốc gia Việt Nam (`hl=vi&gl=vn`). Trang kết quả hiển thị khu vực Vĩnh Long nhưng phiên tìm kiếm vẫn có cá nhân hóa và vị trí thiết bị ở Úc. Không dùng quan sát này để khẳng định thứ hạng của mọi khách hàng ở Vĩnh Long.
+- Trang kết quả đầu tiên quan sát được có ba kết quả Maps và chín kết quả web; chưa thấy `kinhthuocanhthi.com` trong các kết quả đó. Kết quả web gồm website Bệnh viện Chuyên khoa Mắt Vĩnh Long, eMed, Docosan, Doctogo, Bệnh viện Xuyên Á và các trang khác. Điều này chưa chứng minh website chưa được lập chỉ mục.
+- Cần cải thiện thông tin doanh nghiệp và nội dung dịch vụ thật, gồm chi phí, người thực hiện và lịch tiếp nhận đã được cửa hàng xác nhận. Không bổ sung tên bác sĩ vào vai trò tác giả hoặc người duyệt nếu chưa thực sự được bác sĩ duyệt nội dung.
+- Kiểm tra URL phát hiện HTTPS `www.kinhthuocanhthi.com/do-mat` đang trả nội dung HTTP 200 trên chính host `www`, trong khi canonical là host không `www`. HTTP đã chuyển lên HTTPS và đường dẫn có dấu `/` cuối đã được chuẩn hóa.
+- Thêm chuyển hướng vĩnh viễn 308 trong Next.js, chỉ khớp host `www.kinhthuocanhthi.com`, về `https://kinhthuocanhthi.com`. Đường dẫn và query được giữ lại. Host chính và localhost không khớp quy tắc này. Kết quả kiểm tra trên tên miền thật được lưu riêng trong thư mục `outputs/deployment-2026-10-17/`.
+
 ## Tài liệu Google
 
 - [Cải thiện thứ hạng địa phương](https://support.google.com/business/answer/7091?hl=en)
 - [Yêu cầu Google thu thập lại URL](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)
 - [Câu hỏi về thu thập và lập chỉ mục](https://developers.google.com/search/help/crawling-index-faq)
+- [Chuyển hướng và Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects)
+- [Nội dung hữu ích, đáng tin cậy và thông tin tác giả chính xác](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
