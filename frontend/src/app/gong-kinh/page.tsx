@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-seo";
 import { ProductCategoryPage } from "@/components/marketing/product-category-page";
 
-export const metadata: Metadata = {
-  title: "Gọng kính | Kính thuốc Anh Thi",
-  description: "Các mẫu gọng kính nhẹ, bền và dễ sử dụng hằng ngày.",
-};
+export const metadata = pageMetadata({
+  title: "Gọng kính Vĩnh Long: PARIM, EXFASH, New Balance | Anh Thi",
+  description:
+    "Xem gọng kính PARIM, EXFASH, New Balance với ảnh, chất liệu và giá tham khảo. Gọi Anh Thi tại Vĩnh Long để xác nhận mẫu, màu và lịch thử kính.",
+  path: "/gong-kinh",
+});
 
 export default function GongKinhPage() {
   return (
     <ProductCategoryPage
       category="Gọng kính"
-      description="Gọng kính nhẹ, bền và dễ phối với nhu cầu nhìn rõ trong cả ngày dài."
-      title="Gọng kính"
+      description="Khám phá gọng PARIM, EXFASH và New Balance cùng ảnh, chất liệu và giá tham khảo. Liên hệ Anh Thi tại 85 Phạm Thái Bường, Vĩnh Long để hỏi mẫu và thử gọng trực tiếp."
+      title="Gọng kính tại Vĩnh Long"
     />
   );
 }

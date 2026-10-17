@@ -1,0 +1,188 @@
+{
+  "date": "2026-10-17",
+  "productCount": 12,
+  "photos": 24,
+  "retailerSources": [
+    "Mắt Kính Shady",
+    "Mắt Kính Tâm Đức"
+  ],
+  "testsPassed": 74,
+  "productionBuild": "passed",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/kinh-mat",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/gong-kinh",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/kinh-ram",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/do-mat",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/cua-hang",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/bac-si",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/bang-gia",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/bang-gia/doi-mau",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/bang-gia/exfash",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/bang-gia/chuyen-biet",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/bang-gia/hai-trong",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/parim-85006",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/exfash-ef69473",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/new-balance-nb09332",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/parim-83444",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/exfash-ef75287t",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/new-balance-nbz07074x",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/parim-85007",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/exfash-ef84472",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/new-balance-nbo06245z",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/parim-84043",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/exfash-ef292011",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/new-balance-nb08139x",
+      "status": 200,
+      "main": true,
+      "phone": true
+    },
+    {
+      "route": "/san-pham/missing-model",
+      "status": 404
+    }
+  ],
+  "lighthouseMobile": {
+    "performance": 93,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "lcpMobileThrottled": "3.1 s",
+  "cls": "0",
+  "mobileResponsive": {
+    "report": "mobile-responsive-review.md",
+    "viewportWidths": [
+      320,
+      375,
+      414,
+      667,
+      768,
+      1024,
+      1280,
+      1920
+    ],
+    "fullScrollCaptures": 118,
+    "horizontalOverflow": false,
+    "mobileTouchTargetsBelow44px": 0,
+    "deepLinks": "passed",
+    "productContactFooterClearance": "passed",
+    "physicalDevicesTested": false
+  }
+}

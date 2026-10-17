@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-seo";
 import { ProductCategoryPage } from "@/components/marketing/product-category-page";
 
-export const metadata: Metadata = {
-  title: "Kính mát | Kính thuốc Anh Thi",
-  description: "Các mẫu kính mát bảo vệ mắt trước cường độ nắng cao.",
-};
+export const metadata = pageMetadata({
+  title: "Kính mát Vĩnh Long | PARIM, EXFASH, New Balance - Anh Thi",
+  description:
+    "Khám phá mẫu kính mát PARIM, EXFASH, New Balance cùng ảnh và giá tham khảo. Liên hệ Kính thuốc Anh Thi tại Vĩnh Long để hỏi mẫu và màu hiện có.",
+  path: "/kinh-ram",
+});
 
 export default function KinhRamPage() {
   return (
     <ProductCategoryPage
       category="Kính mát"
-      description="Kính mát đa nhiệm, giúp bảo vệ mắt trước cường độ nắng cao."
-      title="Kính mát"
+      description="Xem kính mát PARIM, EXFASH và New Balance cùng ảnh, kiểu dáng và giá tham khảo. Liên hệ Kính thuốc Anh Thi tại Vĩnh Long để xác nhận mẫu và màu hiện có."
+      title="Kính mát tại Vĩnh Long"
     />
   );
 }

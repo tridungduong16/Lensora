@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import brandLogo from "../../../logo.jpg";
+import { ThemeToggle } from "./theme-toggle";
 
 export type NavigationItem = {
   label: string;
@@ -123,6 +124,7 @@ export function StorefrontHeader({
       </div>
 
       <div className="header-actions">
+        <ThemeToggle />
         <Link className="header-appointment" href="/#eye-exam">
           Đặt lịch đo mắt
         </Link>

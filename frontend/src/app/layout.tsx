@@ -1,6 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro, Lora } from "next/font/google";
 import "./globals.css";
+import "./storefront-refresh.css";
+import { RouteScroll } from "@/components/marketing/route-scroll";
+import { SocialContactRail } from "@/components/marketing/social-contact-rail";
+import { StructuredData } from "@/components/marketing/structured-data";
+import { localBusinessSchema } from "@/lib/local-business-schema";
+import {
+  HOME_DESCRIPTION,
+  HOME_TITLE,
+  pageMetadata,
+  SITE_URL,
+} from "@/lib/site-seo";
 
 const uiFont = Be_Vietnam_Pro({
   display: "swap",
@@ -11,15 +22,37 @@ const uiFont = Be_Vietnam_Pro({
 
 const editorialFont = Lora({
   display: "swap",
+  preload: false,
   subsets: ["latin", "vietnamese"],
   variable: "--font-lora",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
-  title: "Kính thuốc Anh Thi | Kính thuốc, kính mát và gọng kính",
-  description:
-    "Kính thuốc Anh Thi cung cấp gọng kính, kính thuốc, kính mát và dịch vụ đo mắt với phong cách mua sắm tối giản, rõ ràng.",
+  metadataBase: new URL(SITE_URL),
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  openGraph: pageMetadata({
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    path: "/",
+  }).openGraph,
+  twitter: pageMetadata({
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    path: "/",
+  }).twitter,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -34,10 +67,13 @@ export default function RootLayout({
       lang="vi"
     >
       <body>
+        <RouteScroll />
+        <StructuredData data={localBusinessSchema} />
         <a className="skip-link" href="#main-content">
           Bỏ qua đến nội dung chính
         </a>
         {children}
+        <SocialContactRail />
       </body>
     </html>
   );

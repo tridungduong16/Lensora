@@ -1,0 +1,241 @@
+{
+  "date": "2026-10-17",
+  "canonicalSitemapUrls": 23,
+  "productImagesInSitemap": 24,
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Kính thuốc Vĩnh Long | Đo mắt tại Kính thuốc Anh Thi",
+      "description": "Kính thuốc Anh Thi tại Vĩnh Long: đo mắt, tư vấn kính thuốc, thử gọng PARIM, EXFASH, New Balance. Ghé 85 Phạm Thái Bường, Phường 4. Gọi 085 806 0789.",
+      "canonical": "https://kinhthuocanhthi.com",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/do-mat",
+      "status": 200,
+      "title": "Đo mắt Vĩnh Long | Tư vấn kính thuốc Anh Thi",
+      "description": "Đo mắt và tư vấn kính thuốc tại 85 Phạm Thái Bường, Vĩnh Long. Tìm hiểu quy trình, chuẩn bị lịch hẹn và thông tin khi cần khám mắt chuyên khoa.",
+      "canonical": "https://kinhthuocanhthi.com/do-mat",
+      "h1": 1,
+      "jsonLdCount": 3
+    },
+    {
+      "path": "/cua-hang",
+      "status": 200,
+      "title": "Cửa hàng kính thuốc Vĩnh Long | Kính thuốc Anh Thi",
+      "description": "Địa chỉ Kính thuốc Anh Thi: 85 Phạm Thái Bường, Phường 4, Vĩnh Long. Mở cửa 09:00 - 20:30 mỗi ngày. Gọi 085 806 0789 để hỏi mẫu kính và lịch đo mắt.",
+      "canonical": "https://kinhthuocanhthi.com/cua-hang",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/bac-si",
+      "status": 200,
+      "title": "Bác sĩ Nguyễn Anh Thi tại Vĩnh Long | Hồ sơ chuyên môn",
+      "description": "Tìm hiểu hồ sơ chuyên môn Bác sĩ chuyên khoa II Nguyễn Anh Thi và hành trình chăm sóc thị lực tại Vĩnh Long. Liên hệ Anh Thi để hỏi lịch hẹn.",
+      "canonical": "https://kinhthuocanhthi.com/bac-si",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/gong-kinh",
+      "status": 200,
+      "title": "Gọng kính Vĩnh Long: PARIM, EXFASH, New Balance | Anh Thi",
+      "description": "Xem gọng kính PARIM, EXFASH, New Balance với ảnh, chất liệu và giá tham khảo. Gọi Anh Thi tại Vĩnh Long để xác nhận mẫu, màu và lịch thử kính.",
+      "canonical": "https://kinhthuocanhthi.com/gong-kinh",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/kinh-ram",
+      "status": 200,
+      "title": "Kính mát Vĩnh Long | PARIM, EXFASH, New Balance - Anh Thi",
+      "description": "Khám phá mẫu kính mát PARIM, EXFASH, New Balance cùng ảnh và giá tham khảo. Liên hệ Kính thuốc Anh Thi tại Vĩnh Long để hỏi mẫu và màu hiện có.",
+      "canonical": "https://kinhthuocanhthi.com/kinh-ram",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/bang-gia",
+      "status": 200,
+      "title": "Bảng giá tròng kính Vĩnh Long | Kính thuốc Anh Thi",
+      "description": "Tham khảo bảng giá tròng kính theo cặp: tròng đổi màu, EXFASH, hai tròng, đa tròng và loạn đơn tại Kính thuốc Anh Thi, Vĩnh Long.",
+      "canonical": "https://kinhthuocanhthi.com/bang-gia",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/bang-gia/doi-mau",
+      "status": 200,
+      "title": "Bảng giá tròng đổi màu | Anh Thi Vĩnh Long",
+      "description": "Trendy, Edition và Smart. So sánh lớp phủ, dải độ và giá theo từng dòng tròng. Tham khảo giá theo cặp tại Kính thuốc Anh Thi, Vĩnh Long.",
+      "canonical": "https://kinhthuocanhthi.com/bang-gia/doi-mau",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/bang-gia/exfash",
+      "status": 200,
+      "title": "Bảng giá tròng exfash | Anh Thi Vĩnh Long",
+      "description": "Các dòng Digital và Infinity đến từ Hàn Quốc, với giá theo chiết suất và dải độ. Tham khảo giá theo cặp tại Kính thuốc Anh Thi, Vĩnh Long.",
+      "canonical": "https://kinhthuocanhthi.com/bang-gia/exfash",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/bang-gia/chuyen-biet",
+      "status": 200,
+      "title": "Bảng giá hai tròng, đa tròng & loạn đơn | Anh Thi Vĩnh Long",
+      "description": "Các lựa chọn cho nhiều khoảng nhìn và tròng cần gia công theo đơn kính. Tham khảo giá theo cặp tại Kính thuốc Anh Thi, Vĩnh Long.",
+      "canonical": "https://kinhthuocanhthi.com/bang-gia/chuyen-biet",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/bang-gia/hai-trong",
+      "status": 200,
+      "title": "Bảng giá kính hai tròng | Anh Thi Vĩnh Long",
+      "description": "Hai tròng 1.56 và Hai tròng Invisible SHMC 1.56. So sánh thông số, tính năng và giá theo cặp. Tham khảo giá theo cặp tại Kính thuốc Anh Thi, Vĩnh Long.",
+      "canonical": "https://kinhthuocanhthi.com/bang-gia/hai-trong",
+      "h1": 1,
+      "jsonLdCount": 1
+    },
+    {
+      "path": "/san-pham/parim-85006",
+      "status": 200,
+      "title": "PARIM 85006 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Gọng chữ nhật thanh mảnh, có đệm mũi rời; một lựa chọn gọn gàng cho việc học và làm việc. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/parim-85006",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/exfash-ef69473",
+      "status": 200,
+      "title": "EXFASH EF69473 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Dáng vuông màu đen nhám, đệm mũi liền gọng và cấu trúc Ultem cho phong cách đơn giản mỗi ngày. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/exfash-ef69473",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/new-balance-nb09332",
+      "status": 200,
+      "title": "New Balance NB09332 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Gọng chữ nhật mang tinh thần thể thao, có hai lựa chọn đen nhám và xám, dễ kết hợp với trang phục thường ngày. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/new-balance-nb09332",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/parim-83444",
+      "status": 200,
+      "title": "PARIM 83444 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Đường viền đa giác tạo điểm nhấn vừa phải, kết hợp đệm mũi rời có thể căn chỉnh khi thử kính. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/parim-83444",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/exfash-ef75287t",
+      "status": 200,
+      "title": "EXFASH EF75287T | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Gọng titanium dáng cánh bướm với đường viền mảnh và ve mũi rời, phù hợp khi bạn muốn thử một dáng kính mềm mại. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/exfash-ef75287t",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/new-balance-nbz07074x",
+      "status": 200,
+      "title": "New Balance NBZ07074X | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Khung titanium dáng chữ nhật, có phiên bản đen và bạc; thiết kế mảnh dành cho phong cách gọn gàng. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/new-balance-nbz07074x",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/parim-85007",
+      "status": 200,
+      "title": "PARIM 85007 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Thiết kế nguyên khung dáng chữ nhật với chất liệu Ultem và ve mũi rời, cân bằng nét rõ ràng với đường viền thanh. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/parim-85007",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/exfash-ef84472",
+      "status": 200,
+      "title": "EXFASH EF84472 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Gọng nhựa TR90 dáng chữ nhật, đệm mũi liền khung; thiết kế dễ phối cho nhu cầu sử dụng hằng ngày. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/exfash-ef84472",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/new-balance-nbo06245z",
+      "status": 200,
+      "title": "New Balance NBO06245Z | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Mặt gọng acetate màu đen kết hợp càng kim loại, dáng chữ nhật mang nét thể thao và chỉn chu. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/new-balance-nbo06245z",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/parim-84043",
+      "status": 200,
+      "title": "PARIM 84043 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Kính mát mắt mèo với khung acetate và đệm mũi liền, tạo đường nét nổi bật cho trang phục ngoài trời. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/parim-84043",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/exfash-ef292011",
+      "status": 200,
+      "title": "EXFASH EF292011 | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Kính mát dáng cánh bướm có các phiên bản xám và đen, phù hợp để thử cùng phong cách dạo phố. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/exfash-ef292011",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/san-pham/new-balance-nb08139x",
+      "status": 200,
+      "title": "New Balance NB08139X | Kính thuốc Anh Thi Vĩnh Long",
+      "description": "Kính mát màu đen dáng chữ nhật thể thao, mắt kính cỡ 63 mm; nên thử trực tiếp để kiểm tra độ ôm. Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.",
+      "canonical": "https://kinhthuocanhthi.com/san-pham/new-balance-nb08139x",
+      "h1": 1,
+      "jsonLdCount": 2
+    },
+    {
+      "path": "/kinh-mat",
+      "status": 200,
+      "title": "Kính thuốc Vĩnh Long: chọn gọng và tròng kính | Anh Thi",
+      "description": "Khám phá gọng kính thuốc, tìm hiểu tròng kính và đặt lịch đo mắt tại Anh Thi, Vĩnh Long. Tư vấn trực tiếp tại 85 Phạm Thái Bường, Phường 4.",
+      "canonical": "https://kinhthuocanhthi.com/gong-kinh",
+      "h1": 1,
+      "jsonLdCount": 2
+    }
+  ],
+  "missingRoutesReturn404": true,
+  "robotsSitemap": true,
+  "shareImage": true,
+  "testsPassed": 78,
+  "productionBuild": "passed",
+  "deployed": false,
+  "lighthouseMobile": {
+    "performance": 91,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metadataInInitialHead": true,
+  "viewportsNoOverflow": [
+    375,
+    768,
+    1280
+  ]
+}

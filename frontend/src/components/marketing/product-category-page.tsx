@@ -1,8 +1,11 @@
-import { StorefrontFooter } from "@/components/marketing/storefront-footer";
-import { StorefrontHeader } from "@/components/marketing/storefront-header";
-import { storefrontNavigation } from "@/components/marketing/storefront-navigation";
-import { products } from "@/components/marketing/storefront-data";
-import { filterProducts } from "@/lib/product-filter";
+import Link from "next/link";
+import { StorefrontFooter } from "./storefront-footer";
+import { StorefrontHeader } from "./storefront-header";
+import { storefrontNavigation } from "./storefront-navigation";
+import { ProductCatalog } from "./product-catalog";
+import { eyewearProducts } from "@/lib/eyewear-catalog";
+import { StructuredData } from "./structured-data";
+import { breadcrumbSchema } from "@/lib/local-business-schema";
 
 type ProductCategoryPageProps = {
   category: string;
@@ -15,40 +18,38 @@ export function ProductCategoryPage({
   title,
   description,
 }: ProductCategoryPageProps) {
-  const categoryProducts = filterProducts(products, { category });
-
   return (
     <div className="site-shell">
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "Trang chủ", path: "/" },
+          {
+            name: title,
+            path: category === "Kính mát" ? "/kinh-ram" : "/gong-kinh",
+          },
+        ])}
+      />
       <StorefrontHeader navItems={storefrontNavigation} />
-
       <main id="main-content">
-        <section className="section" aria-labelledby="category-title">
-          <div className="product-heading-row">
-            <div className="section-heading">
-              <h1 id="category-title">{title}</h1>
-              <p>{description}</p>
-            </div>
-            <p className="product-count">{categoryProducts.length} mẫu đang hiển thị</p>
+        <section
+          className="page-section category-page"
+          aria-labelledby="category-title"
+        >
+          <nav className="breadcrumbs" aria-label="Đường dẫn">
+            <Link href="/">Trang chủ</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{title}</span>
+          </nav>
+          <div className="refresh-heading">
+            <h1 id="category-title">
+              {title}
+              <span className="heading-period">.</span>
+            </h1>
+            <p>{description}</p>
           </div>
-
-          <div className="product-grid">
-            {categoryProducts.map((product) => (
-              <article className="product-card" key={product.name}>
-                <img alt={product.name} decoding="async" loading="lazy" src={product.image} />
-                <div className="product-info">
-                  <div>
-                    <h3>{product.name}</h3>
-                    <p>{product.category}</p>
-                  </div>
-                  <span className="product-tag">{product.tag}</span>
-                  <strong>{product.price}</strong>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ProductCatalog products={eyewearProducts} fixedCategory={category} />
         </section>
       </main>
-
       <StorefrontFooter />
     </div>
   );

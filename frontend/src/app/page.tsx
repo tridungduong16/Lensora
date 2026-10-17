@@ -1,215 +1,180 @@
-import { ArrowRight, Clock, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Clock, Glasses, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import doctorAward from "../../images/doctor-award.jpg";
 import { AppointmentForm } from "@/components/marketing/appointment-form";
 import { EditorialHero } from "@/components/marketing/editorial-hero";
-import {
-  eyeServices,
-  products,
-  stores,
-} from "@/components/marketing/storefront-data";
+import { ProductCatalog } from "@/components/marketing/product-catalog";
+import { eyeServices, stores } from "@/components/marketing/storefront-data";
 import { StorefrontFooter } from "@/components/marketing/storefront-footer";
 import { StorefrontHeader } from "@/components/marketing/storefront-header";
 import { storefrontNavigation } from "@/components/marketing/storefront-navigation";
-import { filterProducts } from "@/lib/product-filter";
+import { eyewearProducts } from "@/lib/eyewear-catalog";
+import { HOME_DESCRIPTION, HOME_TITLE, pageMetadata } from "@/lib/site-seo";
 
-const trustSignals = [
-  "★★★★★ 4.9",
-  "10.000+ khách hàng",
-  "20 năm kinh nghiệm",
-  "100+ thương hiệu",
-] as const;
+export const metadata = pageMetadata({
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  path: "/",
+});
 
-const featuredCollections = [
+const homeNavigation = storefrontNavigation.filter(
+  (item) => item.href !== "/bang-gia",
+);
+const brandStories = [
   {
-    title: "Classic Collection",
-    subtitle: "Kính mắt",
-    filterCategory: "Kính mắt",
-    description: "Gọng cân đối, tối giản cho môi trường làm việc và đi học.",
-    image:
-      "https://images.unsplash.com/photo-1755719402885-b7baa634c755?auto=format&fit=crop&w=1400&q=85",
+    name: "PARIM",
+    title: "Một chút khác biệt, mỗi ngày.",
+    copy: "Từ gọng đa giác đến kính mát mắt mèo. Khám phá đường nét và chất liệu qua từng mẫu PARIM.",
+    product: "parim-83444",
+    className: "brand-feature--parim",
   },
   {
-    title: "Titanium Series",
-    subtitle: "Gọng siêu nhẹ",
-    filterCategory: "Gọng kính",
-    description: "Titanium nhẹ và bền cho nhu cầu nhìn rõ trong cả ngày dài.",
-    image:
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1000&q=85",
+    name: "EXFASH",
+    title: "Dễ chọn. Dễ phối.",
+    copy: "Ultem, TR90 hay titanium. Tìm thiết kế hợp với nhịp sống và ngân sách của bạn.",
+    product: "exfash-ef69473",
+    className: "brand-feature--exfash",
   },
   {
-    title: "Summer Sunglasses",
-    subtitle: "Bảo vệ UV400",
-    filterCategory: "Kính mát",
-    description: "Kính mát đa nhiệm, giúp bảo vệ mắt trước cường độ nắng cao.",
-    image:
-      "https://images.unsplash.com/photo-1625591339971-4c9a87a66871?auto=format&fit=crop&w=1000&q=85",
+    name: "New Balance",
+    title: "Theo nhịp chuyển động.",
+    copy: "Khám phá phong cách thể thao qua gọng chữ nhật, khung titanium và kính mát.",
+    product: "new-balance-nb09332",
+    className: "brand-feature--nb",
   },
-] as const;
-
-const reviews = [
+];
+const questions = [
   {
-    name: "Nguyễn Anh Khoa",
-    city: "Quận 1",
-    quote:
-      "Đo mắt rất kỹ, mình chọn được đúng mẫu phù hợp ngay lần đầu. Trải nghiệm khác hẳn những cửa hàng trước đây.",
+    title: "Nên bắt đầu từ dáng kính hay chất liệu?",
+    copy: "Bắt đầu từ nhu cầu đeo: học tập, làm việc hay đi ngoài trời. Sau đó thử vài dáng gọng và chất liệu để so sánh độ vừa, trọng lượng và phong cách trực tiếp.",
   },
   {
-    name: "Lê Minh Thư",
-    city: "Quận 7",
-    quote:
-      "Gọng nhẹ, màu trang nhã và phần tư vấn rất rõ ràng. Mình không mất nhiều thời gian để quyết định.",
+    title: "Giá trên website đã gồm tròng kính chưa?",
+    copy: "Giá trong danh mục là giá tham khảo của gọng kính hoặc kính mát từ nhà bán lẻ được dẫn nguồn. Tròng kính thuốc được tư vấn riêng theo thông số và lựa chọn của bạn. Gọi Anh Thi để xác nhận tổng chi phí.",
   },
   {
-    name: "Phạm Tường Vy",
-    city: "Bình Thạnh",
-    quote:
-      "Đặt lịch trước giúp mọi thứ nhanh gọn. Mình đã có thời gian thử kính và nhận tư vấn đúng nhu cầu.",
+    title: "Làm sao biết kính có vừa khuôn mặt?",
+    copy: "Kiểm tra gọng có trượt mũi, ép thái dương hoặc cấn sau tai không. Mã và kích thước giúp thu hẹp lựa chọn, nhưng thử trực tiếp và căn chỉnh tại cửa hàng sẽ dễ đánh giá hơn.",
   },
-] as const;
-
-type HomeSearchParams = Promise<{
-  category?: string;
-  query?: string;
-}>;
+  {
+    title: "Có cần đặt lịch trước khi đến?",
+    copy: "Bạn có thể ghé trong giờ mở cửa. Nếu muốn đo mắt hoặc dành thời gian thử nhiều mẫu, hãy gọi trước để cửa hàng xác nhận thời gian phù hợp.",
+  },
+];
 
 type HomeProps = {
-  searchParams: HomeSearchParams;
+  searchParams: Promise<{ category?: string; query?: string; brand?: string }>;
 };
 
 export default async function Home({ searchParams }: HomeProps) {
-  const { category, query } = await searchParams;
-  const activeProducts = filterProducts(products, { category, query });
-  const hasFilters = Boolean(category || query);
-
+  const { category, query, brand } = await searchParams;
+  const store = stores[0];
   return (
     <div className="site-shell">
-      <StorefrontHeader navItems={storefrontNavigation} overlay />
-
+      <StorefrontHeader navItems={homeNavigation} overlay />
       <main id="main-content">
         <EditorialHero />
-
-        <section className="trust-strip" aria-label="Chứng thực thương hiệu">
-          <div className="trust-strip__track">
-            {trustSignals.map((signal) => (
-              <div className="trust-signal" key={signal}>
-                <strong>{signal}</strong>
-              </div>
-            ))}
-          </div>
-        </section>
-
+        <div className="care-ribbon" aria-label="Dịch vụ tại Anh Thi">
+          <p>
+            <Glasses size={23} strokeWidth={1.3} aria-hidden="true" />
+            <span>
+              Thử gọng trực tiếp
+              <strong>Tìm độ vừa, chọn đúng phong cách</strong>
+            </span>
+          </p>
+          <p>
+            <MapPin size={23} strokeWidth={1.3} aria-hidden="true" />
+            <span>
+              Gặp Anh Thi tại Vĩnh Long
+              <strong>85 Phạm Thái Bường, Phường 4</strong>
+            </span>
+          </p>
+          <p>
+            <Clock size={23} strokeWidth={1.3} aria-hidden="true" />
+            <span>
+              Mở cửa mỗi ngày<strong>09:00 - 20:30</strong>
+            </span>
+          </p>
+        </div>
         <section
-          className="page-section collections-section"
+          className="page-section brand-section"
           id="collections"
           aria-labelledby="collections-title"
         >
-          <div className="section-heading section-heading--ruled">
-            <h2 id="collections-title">Bộ sưu tập nổi bật</h2>
-            <span aria-hidden="true" />
+          <div className="refresh-heading">
+            <h2 id="collections-title">
+              Ba thương hiệu.
+              <br />
+              Nhiều cách là chính bạn.
+            </h2>
+            <p>
+              Khám phá PARIM, EXFASH và New Balance qua những thiết kế có mã
+              mẫu, ảnh và thông tin cụ thể.
+            </p>
           </div>
-
-          <div className="collection-grid">
-            {featuredCollections.map((collection, index) => (
-              <Link
-                className={
-                  index === 0
-                    ? "collection-card collection-card--featured"
-                    : "collection-card"
-                }
-                href={`/?category=${encodeURIComponent(collection.filterCategory)}#bestsellers`}
-                key={collection.title}
-              >
-                <div className="collection-card__media">
-                  <img
-                    alt={collection.title}
-                    decoding="async"
-                    loading={index === 0 ? "eager" : "lazy"}
-                    src={collection.image}
-                  />
-                </div>
-                <div className="collection-card__content">
-                  <p>{collection.subtitle}</p>
-                  <h3>{collection.title}</h3>
-                  <span>{collection.description}</span>
-                  <span className="collection-card__action">
-                    Khám phá ngay
-                    <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
+          <p className="brand-section__hint">
+            Vuốt để khám phá 3 thương hiệu{" "}
+            <ArrowRight size={16} aria-hidden="true" />
+          </p>
+          <div className="brand-stories">
+            {brandStories.map((story) => {
+              const product = eyewearProducts.find(
+                (item) => item.slug === story.product,
+              )!;
+              return (
+                <Link
+                  className={`brand-feature ${story.className}`}
+                  href={`/?brand=${encodeURIComponent(story.name)}#bestsellers`}
+                  key={story.name}
+                >
+                  <div className="brand-feature__copy">
+                    <span>{story.name}</span>
+                    <h3>{story.title}</h3>
+                    <p>{story.copy}</p>
+                  </div>
+                  <div className="brand-feature__image">
+                    <Image
+                      src={product.images[0].src}
+                      alt={product.images[0].alt}
+                      width={800}
+                      height={600}
+                      sizes="(max-width: 760px) 100vw, 50vw"
+                    />
+                  </div>
+                  <span className="brand-feature__action">
+                    Khám phá {story.name}
+                    <ArrowRight
+                      size={18}
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
                   </span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </section>
-
         <section
-          className="page-section products-section"
+          className="page-section catalog-section"
           id="bestsellers"
           aria-labelledby="products-title"
         >
-          <div className="product-heading-row">
-            <div className="section-heading section-heading--ruled">
-              <h2 id="products-title">Sản phẩm được yêu thích</h2>
-              <span aria-hidden="true" />
-            </div>
-            {hasFilters ? (
-              <div className="product-result" role="status">
-                <span>
-                  {activeProducts.length} mẫu phù hợp
-                  {query ? ` với “${query}”` : ""}
-                  {category ? ` trong ${category}` : ""}.
-                </span>
-                <Link href="/#bestsellers">Xem tất cả</Link>
-              </div>
-            ) : (
-              <p className="product-count">{products.length} mẫu đang hiển thị</p>
-            )}
+          <div className="refresh-heading">
+            <h2 id="products-title">Tìm mẫu kính của bạn.</h2>
+            <p>
+              Từ gọng thanh mảnh đến kính mát cá tính. Lọc theo gu của bạn và
+              xem kỹ từng thiết kế.
+            </p>
           </div>
-
-          {activeProducts.length ? (
-            <div className="product-grid">
-              {activeProducts.map((product) => (
-                <article className="product-card" key={product.name}>
-                  <Link href="/#locations" aria-label={`Tư vấn ${product.name}`}>
-                    <img
-                      alt={product.name}
-                      decoding="async"
-                      loading="lazy"
-                      src={product.image}
-                    />
-                  </Link>
-                  <div className="product-info">
-                    <div>
-                      <h3>{product.name}</h3>
-                      <p>{product.category}</p>
-                    </div>
-                    <span className="product-tag">{product.tag}</span>
-                    <strong>{product.price}</strong>
-                    <Link className="product-consultation" href="/#locations">
-                      Tư vấn tại cửa hàng
-                      <ArrowRight
-                        aria-hidden="true"
-                        size={16}
-                        strokeWidth={1.5}
-                      />
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="empty-product-state">
-              <h3>Chưa có mẫu kính phù hợp</h3>
-              <p>Thử một từ khoá khác hoặc xem toàn bộ catalogue hiện có.</p>
-              <Link className="outline-button" href="/#bestsellers">
-                Xem toàn bộ sản phẩm
-                <ArrowRight aria-hidden="true" size={18} strokeWidth={1.75} />
-              </Link>
-            </div>
-          )}
+          <ProductCatalog
+            key={`${brand ?? ""}-${query ?? ""}-${category ?? ""}`}
+            products={eyewearProducts}
+            initialBrand={brand}
+            initialQuery={query}
+            initialCategory={category}
+          />
         </section>
-
         <section
           className="page-section eye-exam-section"
           id="eye-exam"
@@ -221,18 +186,22 @@ export default async function Home({ searchParams }: HomeProps) {
                 alt="Bác sĩ Anh Thi nhận bằng khen tại Bệnh viện Mắt Vĩnh Long"
                 className="clinical-story__image"
                 placeholder="blur"
-                sizes="(min-width: 861px) 45vw, 100vw"
+                sizes="(min-width: 861px) 50vw, 100vw"
                 src={doctorAward}
               />
+              <p>Chăm sóc thị lực bắt đầu từ sự lắng nghe.</p>
             </div>
-
             <div className="clinical-story__content">
-              <h2 id="eye-exam-title">Đo mắt kỹ. Chọn kính đúng.</h2>
+              <h2 id="eye-exam-title">
+                Đo mắt tại Vĩnh Long.
+                <br />
+                Chọn kính phù hợp.
+              </h2>
               <p className="clinical-story__intro">
-                Mỗi đôi kính bắt đầu từ một quy trình đo mắt cẩn thận, để chỉ số,
-                gọng và tròng kính phù hợp hơn với nhu cầu hằng ngày.
+                Ghé Kính thuốc Anh Thi tại 85 Phạm Thái Bường, Phường 4, Vĩnh
+                Long để trao đổi nhu cầu đo mắt, tư vấn kính thuốc và thử gọng
+                trực tiếp.
               </p>
-
               <ol className="service-process">
                 {eyeServices.map((service, index) => (
                   <li key={service.title}>
@@ -244,15 +213,20 @@ export default async function Home({ searchParams }: HomeProps) {
                   </li>
                 ))}
               </ol>
-
               <Link className="text-link clinical-story__link" href="/bac-si">
                 Gặp gỡ bác sĩ Anh Thi
                 <ArrowRight aria-hidden="true" size={18} strokeWidth={1.5} />
               </Link>
+              <Link className="text-link" href="/do-mat">
+                Tìm hiểu đo mắt và lịch khám mắt tại Vĩnh Long{" "}
+                <ArrowRight aria-hidden="true" size={18} />
+              </Link>
             </div>
           </div>
-
-          <div className="appointment-panel" aria-labelledby="appointment-title">
+          <div
+            className="appointment-panel"
+            aria-labelledby="appointment-title"
+          >
             <div className="appointment-panel__heading">
               <h2 id="appointment-title">Đặt lịch đo mắt</h2>
               <p>
@@ -263,105 +237,78 @@ export default async function Home({ searchParams }: HomeProps) {
             <AppointmentForm />
           </div>
         </section>
-
         <section
-          className="page-section review-section"
-          aria-labelledby="reviews-title"
+          className="page-section fitting-guide"
+          aria-labelledby="guide-title"
         >
-          <div className="section-heading section-heading--centered">
-            <h2 id="reviews-title">Khách hàng nói gì</h2>
+          <div>
+            <Glasses size={36} strokeWidth={1.2} aria-hidden="true" />
+            <h2 id="guide-title">
+              Chọn kính,
+              <br />
+              cứ thong thả.
+            </h2>
+            <p>Một vài điều giúp bạn chuẩn bị trước khi thử kính.</p>
+            <Link className="text-link" href="/do-mat">
+              Tìm hiểu dịch vụ đo mắt
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
           </div>
-
-          <div className="review-layout">
-            <article className="review-card review-card--featured">
-              <span className="review-quote-mark" aria-hidden="true">
-                “
-              </span>
-              <p>“{reviews[0].quote}”</p>
-              <div className="review-card__footer">
-                <span className="review-stars" aria-label="5 trên 5 sao">
-                  ★★★★★
-                </span>
-                <p className="review-meta">
-                  <strong>{reviews[0].name}</strong>
-                  <span>{reviews[0].city}</span>
-                </p>
-              </div>
-            </article>
-
-            <div className="review-stack">
-              {reviews.slice(1).map((review) => (
-                <article className="review-card" key={review.name}>
-                  <span className="review-quote-mark" aria-hidden="true">
-                    “
-                  </span>
-                  <p>“{review.quote}”</p>
-                  <div className="review-card__footer">
-                    <p className="review-meta">
-                      <strong>{review.name}</strong>
-                      <span>{review.city}</span>
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
+          <div className="fitting-guide__questions">
+            {questions.map((question) => (
+              <details key={question.title}>
+                <summary>
+                  {question.title}
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <p>{question.copy}</p>
+              </details>
+            ))}
           </div>
         </section>
-
         <section
           className="page-section location-section"
           id="locations"
           aria-labelledby="locations-title"
         >
-          <div className="section-heading section-heading--centered">
-            <h2 id="locations-title">Ghé Anh Thi</h2>
-            <p>Thử kính và căn chỉnh trực tiếp tại cửa hàng ở Vĩnh Long.</p>
-          </div>
-
-          <div className="store-grid">
-            {stores.map((store) => (
-              <article className="store-card" key={store.name}>
-                <div className="store-card__identity">
-                  <MapPin aria-hidden="true" size={22} strokeWidth={1.5} />
-                  <div>
-                    <h3>{store.name}</h3>
-                    <a
-                      className="store-address"
-                      href={store.mapUrl}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      {store.address}
-                    </a>
-                  </div>
-                </div>
-
-                <p className="store-hours">
-                  <Clock aria-hidden="true" size={20} strokeWidth={1.5} />
-                  Mở cửa mỗi ngày: {store.hours}
-                </p>
-
-                <div className="store-actions">
-                  <a href={store.mapUrl} rel="noreferrer" target="_blank">
-                    Chỉ đường
-                    <ArrowRight aria-hidden="true" size={17} strokeWidth={1.5} />
-                  </a>
-                  <Link href="/#eye-exam">
-                    Đặt lịch tại cửa hàng
-                    <ArrowRight aria-hidden="true" size={17} strokeWidth={1.5} />
-                  </Link>
-                  <a href="tel:0908123456">
-                    <Phone aria-hidden="true" size={17} strokeWidth={1.5} />
-                    0908 123 456
-                  </a>
-                </div>
-              </article>
-            ))}
+          <div className="location-invitation">
+            <div>
+              <span className="eyebrow">Kính thuốc Anh Thi</span>
+              <h2 id="locations-title">
+                Ghé Anh Thi.
+                <br />
+                Thử chiếc kính bạn thích.
+              </h2>
+              <p>Cầm trên tay, thử trước gương và cảm nhận độ vừa.</p>
+            </div>
+            <div className="location-invitation__details">
+              <h3>{store.name}</h3>
+              <a href={store.mapUrl} target="_blank" rel="noreferrer">
+                <MapPin size={20} aria-hidden="true" />
+                {store.address}
+              </a>
+              <p>
+                <Clock size={20} aria-hidden="true" />
+                Mỗi ngày: {store.hours}
+              </p>
+              <a href="tel:+84858060789">
+                <Phone size={20} aria-hidden="true" />
+                +84 85 806 0789
+              </a>
+              <a
+                className="primary-button"
+                href={store.mapUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Chỉ đường
+                <ArrowRight size={18} aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </section>
       </main>
-
-      <StorefrontFooter />
+      <StorefrontFooter showPriceList={false} />
     </div>
   );
 }

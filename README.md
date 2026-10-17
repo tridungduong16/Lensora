@@ -22,9 +22,19 @@
 
 Lensora is a modern e-commerce storefront foundation for an optical retailer. The project pairs a Next.js 15 frontend shell with a documented architecture for product catalog pages, cart and checkout flows, customer accounts, search, filters, analytics, and future eyewear-specific features like virtual try-on and prescription upload.
 
-The current brand metadata targets **Kính thuốc Anh Thi** as a Vietnamese optical store. The visual direction follows a sharp, high-contrast luxury catalog style: white space, black typography, square edges, no shadows, and product imagery as the main signal.
+The storefront serves **Kính thuốc Anh Thi** in Vĩnh Long. Its shared interface uses navy, light neutral surfaces, Vietnamese typography, restrained rounded controls, and a persistent light/dark preference.
 
-> Current status: this repository contains the frontend scaffold, architecture notes, and design system reference. Storefront pages, shared UI components, services, stores, and backend APIs are planned but not yet implemented.
+> Current status: home, searchable product categories, 12 product detail pages, doctor profile, eye-exam information, store contact and lens price sheets are implemented. Checkout, inventory integration and server-side appointment delivery remain outside the current frontend.
+
+## Researched eyewear catalogue
+
+The catalogue contains four models each from PARIM, EXFASH and New Balance, with 24 local product photographs. Prices, image URLs, retailer attribution and the observation date (17 October 2026) are recorded in `frontend/src/data/eyewear-catalog.json`. The original photographs are in `frontend/public/images/products/`.
+
+Prices are retailer reference prices from Mắt Kính Tâm Đức and Mắt Kính Shady. They do not represent Anh Thi's confirmed selling price or inventory. Product pages link to their source; optical-frame prices exclude prescription lenses. Recheck the source and update `checkedAt`, price and source assets together when refreshing a record.
+
+The catalogue supports brand/category/budget filters, accent-insensitive search and numerical price sorting. `/san-pham/[slug]` provides a two-photo gallery and related models. Existing category URLs remain available; the lens-price link stays hidden on the home page.
+
+Appointment details are checked locally and retained for the customer. Confirmation is through `tel:+84858060789`; the form does not claim to submit a booking to a server.
 
 ---
 
@@ -84,7 +94,7 @@ Open:
 
 - Storefront dev server: `http://localhost:3000`
 
-The current scaffold is intended for implementation work. Before treating the app as a complete storefront, add the first route page and the global stylesheet imported by `frontend/src/app/layout.tsx`.
+The development server includes all current storefront routes and the researched catalogue. No external catalogue API or environment variables are needed to browse the site.
 
 ---
 
@@ -201,15 +211,15 @@ The design reference in `DESIGN_SYSTEM.md` is built around a high-end gallery re
 
 | Token group | Direction |
 | --- | --- |
-| Color | White background, black primary text, restrained grays for hierarchy |
+| Color | Navy accent and semantic neutral surfaces in light and dark modes |
 | Typography | Clean sans-serif scale for captions, body, subheadings, and headings |
-| Shape | `0px` radius across cards, inputs, and buttons |
+| Shape | 8px surfaces, 6px controls, circular brand marks |
 | Elevation | No shadows; hierarchy comes from spacing, contrast, and imagery |
 | Imagery | Product and model photography should dominate the layout |
 
 Implementation rules to preserve:
 
-- Keep controls square and minimal.
+- Keep controls clear, consistent and large enough to tap.
 - Avoid gradients, shadows, and decorative color accents.
 - Use product imagery as the primary visual content.
 - Keep navigation and product metadata concise.
@@ -240,6 +250,7 @@ Run scripts from the `frontend/` directory.
 | `npm run build` | Build the frontend for production. |
 | `npm run start` | Start the production Next.js server after a build. |
 | `npm run typecheck` | Run TypeScript without emitting files. |
+| `npm test -- --run` | Check catalogue filtering, product routes, galleries, appointments and existing storefront behavior. |
 
 ---
 
@@ -270,7 +281,23 @@ npm run typecheck
 npm run build
 ```
 
-If the app shell is still incomplete, add the missing route and stylesheet files before expecting a production build to pass.
+Also run `npm test -- --run` and inspect the affected routes on desktop and mobile. Verify product sources and imagery whenever catalogue records change.
+
+Mobile catalogue controls keep search and brand selection visible, with category, budget and sorting behind “Bộ lọc và sắp xếp” below 861px. Inputs use 16px text to avoid iOS focus zoom. Brand stories scroll horizontally below 761px; product details reserve space for a bottom contact bar and device safe areas. Check portrait and landscape layouts at 375, 414, 667, 768, 1024, 1280 and 1920px, including full-page scrolling, menu access and footer links.
+
+The fixed social contact buttons are configured in `frontend/src/components/marketing/social-contact-rail.tsx`. Zalo uses the store phone number. Facebook and TikTok require the store's official profile URLs; empty entries stay hidden. The rail hides for printing and while the mobile menu is open, and sits above the product contact bar on small screens.
+
+## Local search
+
+`frontend/src/lib/site-seo.ts` owns the production origin, page metadata helper and default share image. Every page declares its own canonical, description and Open Graph/Twitter metadata. The home page targets kính thuốc Vĩnh Long; `/do-mat` covers đo mắt Vĩnh Long and practical questions when searching for khám mắt ở Vĩnh Long; `/cua-hang` provides address, opening hours and directions. Product and category pages have their own metadata.
+
+Metadata streaming is disabled through `htmlLimitedBots` in `next.config.ts` so metadata remains in the initial `<head>` even on the dynamic home page. Recheck both browser and crawler HTML responses if that setting changes.
+
+`/robots.txt` points crawlers to `/sitemap.xml`, which lists 23 preferred page URLs and 24 product photos. `/kinh-mat` remains accessible as a catalogue alias but canonicalizes to `/gong-kinh` and is excluded from the sitemap. Filter/query variants canonicalize to the unfiltered page. Do not add new keyword-only copies of these pages.
+
+The root JSON-LD graph identifies the business as `Optician` with the confirmed address, coordinates, phone and hours. Service and breadcrumb data describe the relevant visible pages. Do not mark retailer reference prices as offers sold by Anh Thi or invent ratings, medical services or social profiles. The eye-exam page explicitly asks visitors to confirm the service and doctor schedule by phone; store opening hours are not a doctor schedule.
+
+After deploying, check the canonical production pages, validate the structured data with Google's Rich Results Test, and submit `https://kinhthuocanhthi.com/sitemap.xml` in the owner's verified Google Search Console property. Keep the website contact details consistent with the store's Google Business Profile. Code validation and Lighthouse scores do not establish Google rankings or indexing status. See `outputs/seo-review-2026-10-17/validation.json` for the local production-build audit.
 
 <p align="center">
   <strong>Make premium eyewear browsing clear, sharp, and easy to buy from.</strong>

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-seo";
 import { LensPricingPage } from "@/components/marketing/lens-pricing-page";
 
-export const metadata: Metadata = {
-  title: "Bảng giá tròng kính | Kính thuốc Anh Thi",
+export const metadata = pageMetadata({
+  title: "Bảng giá tròng kính Vĩnh Long | Kính thuốc Anh Thi",
   description:
-    "Chọn bảng giá tròng đổi màu, EXFASH, kính hai tròng, đa tròng và loạn đơn tại Kính thuốc Anh Thi. Giá tính theo cặp.",
-};
+    "Tham khảo bảng giá tròng kính theo cặp: tròng đổi màu, EXFASH, hai tròng, đa tròng và loạn đơn tại Kính thuốc Anh Thi, Vĩnh Long.",
+  path: "/bang-gia",
+});
 
 export default function PricingIndexPage() {
   return <LensPricingPage />;

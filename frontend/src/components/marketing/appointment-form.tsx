@@ -50,12 +50,20 @@ export function AppointmentForm() {
       return;
     }
 
-    event.currentTarget.reset();
     setSubmitted(true);
   }
 
   return (
-    <form className="appointment-form" noValidate onSubmit={handleSubmit}>
+    <form
+      className="appointment-form"
+      aria-describedby="appointment-help"
+      noValidate
+      onSubmit={handleSubmit}
+    >
+      <p className="appointment-help" id="appointment-help">
+        Thông tin chưa được gửi đến cửa hàng. Hãy gọi Anh Thi để xác nhận lịch
+        hẹn.
+      </p>
       <div className="appointment-fields">
         <div className="appointment-field">
           <label htmlFor="appointment-name">Họ và tên</label>
@@ -65,6 +73,7 @@ export function AppointmentForm() {
             }
             aria-invalid={errors.name ? "true" : undefined}
             id="appointment-name"
+            autoComplete="name"
             name="name"
             placeholder="Nguyễn Anh"
             ref={nameInputRef}
@@ -86,6 +95,7 @@ export function AppointmentForm() {
             }
             aria-invalid={errors.phone ? "true" : undefined}
             id="appointment-phone"
+            autoComplete="tel"
             name="phone"
             placeholder="0900 000 000"
             ref={phoneInputRef}
@@ -103,34 +113,28 @@ export function AppointmentForm() {
           <label htmlFor="appointment-need">Nhu cầu</label>
           <select defaultValue="eye-test" id="appointment-need" name="need">
             <option value="eye-test">Đo mắt và tư vấn kính thuốc</option>
-            <option value="sunglasses">
-              Tư vấn kính mát theo khuôn mặt
-            </option>
-            <option value="frames">
-              Tìm gọng kính theo nhu cầu công việc
-            </option>
+            <option value="sunglasses">Tư vấn kính mát theo khuôn mặt</option>
+            <option value="frames">Tìm gọng kính theo nhu cầu công việc</option>
           </select>
         </div>
       </div>
 
       <div className="appointment-actions">
         <button className="primary-button form-submit" type="submit">
-          Gửi yêu cầu đặt lịch
+          Kiểm tra thông tin
           <Check aria-hidden="true" size={18} strokeWidth={1.75} />
         </button>
         {submitted ? (
           <p className="appointment-status" role="status">
-            Thông tin đã được kiểm tra trên thiết bị này. Gọi Anh Thi để xác
-            nhận lịch hẹn.
+            Thông tin hợp lệ. Lịch hẹn chỉ được xác nhận qua điện thoại.
           </p>
         ) : (
           <p className="appointment-note">
-            Chúng tôi chưa gửi dữ liệu lên máy chủ. Vui lòng gọi cửa hàng để
-            xác nhận.
+            Giữ thông tin này để trao đổi khi gọi cửa hàng.
           </p>
         )}
-        <a className="appointment-phone" href="tel:0908123456">
-          Gọi 0908 123 456
+        <a className="appointment-phone" href="tel:+84858060789">
+          Gọi +84 85 806 0789
         </a>
       </div>
     </form>

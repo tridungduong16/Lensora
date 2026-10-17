@@ -786,17 +786,15 @@ section[id] {
 }
 
 .clinical-story__media {
-  align-self: stretch;
-  min-height: 620px;
+  align-self: center;
   overflow: hidden;
   background: var(--color-surface);
 }
 
 .clinical-story__image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  object-fit: contain;
 }
 
 .clinical-story__content h2 {
@@ -1551,10 +1549,6 @@ section[id] {
   .clinical-story {
     grid-template-columns: 1fr;
     gap: var(--spacing-48);
-  }
-
-  .clinical-story__media {
-    min-height: 520px;
   }
 
   .clinical-story__content h2 {

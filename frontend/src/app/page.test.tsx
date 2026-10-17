@@ -1,107 +1,97 @@
 import { render, screen, within } from "@testing-library/react";
 import Home from "./page";
 
-test("links the storefront navigation to the doctor page", async () => {
-  render(await Home({ searchParams: Promise.resolve({}) }));
+async function renderHome(
+  search: { category?: string; query?: string; brand?: string } = {},
+) {
+  return render(await Home({ searchParams: Promise.resolve(search) }));
+}
 
-  expect(screen.getAllByRole("link", { name: "Bác sĩ" })).not.toHaveLength(0);
+test("preserves the hero and real service information", async () => {
+  const { container } = await renderHome();
+  const hero = screen
+    .getByRole("heading", {
+      level: 1,
+      name: "Kính thuốc Anh Thi tại Vĩnh Long",
+    })
+    .closest("section")!;
+  expect(
+    within(hero).getByRole("link", { name: "Đặt lịch đo mắt" }),
+  ).toHaveAttribute("href", "/#eye-exam");
+  expect(
+    within(hero).getByRole("link", { name: /Xem mẫu kính/ }),
+  ).toHaveAttribute("href", "/#bestsellers");
+  expect(screen.getByLabelText("Dịch vụ tại Anh Thi")).toHaveTextContent(
+    "85 Phạm Thái Bường",
+  );
+  expect(screen.queryByText("★★★★★ 4.9")).not.toBeInTheDocument();
+  expect(container.querySelector("video")).not.toBeInTheDocument();
+});
+
+test("provides real product details for all three requested brands", async () => {
+  await renderHome();
+  expect(screen.getByRole("status")).toHaveTextContent("12 mẫu kính");
+  expect(screen.getByRole("link", { name: "Xem PARIM 85006" })).toHaveAttribute(
+    "href",
+    "/san-pham/parim-85006",
+  );
+  expect(
+    screen.getByRole("link", { name: "Xem EXFASH EF69473" }),
+  ).toHaveAttribute("href", "/san-pham/exfash-ef69473");
+  expect(
+    screen.getByRole("link", { name: "Xem New Balance NB09332" }),
+  ).toHaveAttribute("href", "/san-pham/new-balance-nb09332");
+  expect(
+    screen.getByText(/Giá và ảnh tham khảo từ các nhà bán lẻ/),
+  ).toBeInTheDocument();
+});
+
+test("opens the intended brand and search from an incoming link", async () => {
+  await renderHome({ brand: "EXFASH", query: "ultem" });
+  expect(screen.getByRole("status")).toHaveTextContent("1 mẫu kính EXFASH");
+  expect(
+    screen.getByRole("link", { name: "Xem EXFASH EF69473" }),
+  ).toBeInTheDocument();
+  expect(
+    screen.queryByRole("link", { name: "Xem PARIM 85006" }),
+  ).not.toBeInTheDocument();
+});
+
+test("keeps price-list links hidden on the homepage", async () => {
+  const { container } = await renderHome();
+  expect(
+    container.querySelector('a[href="/bang-gia"]'),
+  ).not.toBeInTheDocument();
   expect(screen.getAllByRole("link", { name: "Bác sĩ" })[0]).toHaveAttribute(
     "href",
     "/bac-si",
   );
 });
 
-test("renders the editorial home hero and trust proof", async () => {
-  const { container } = render(await Home({ searchParams: Promise.resolve({}) }));
-
-  const heroHeading = screen.getByRole("heading", {
-    level: 1,
-    name: "niềm tin và hi vọng cho đôi mắt của bạn",
-  });
-  const hero = heroHeading.closest("section");
-
-  expect(hero).not.toBeNull();
-  expect(
-    screen.getByText("Đo mắt chuẩn y khoa với hơn 20 năm kinh nghiệm."),
-  ).toBeInTheDocument();
-  expect(within(hero!).getByRole("link", { name: "Đặt lịch đo mắt" })).toHaveAttribute(
-    "href",
-    "/#eye-exam",
-  );
-  expect(within(hero!).getByRole("link", { name: /Xem bộ sưu tập/i })).toHaveAttribute(
-    "href",
-    "/#collections",
-  );
-  expect(screen.getByText("★★★★★ 4.9")).toBeInTheDocument();
-  expect(screen.getByText("10.000+ khách hàng")).toBeInTheDocument();
-  expect(screen.getByText("20 năm kinh nghiệm")).toBeInTheDocument();
-  expect(screen.getByText("100+ thương hiệu")).toBeInTheDocument();
-  expect(container.querySelector("video")).not.toBeInTheDocument();
-});
-
-test("connects the editorial sections to existing customer journeys", async () => {
-  render(await Home({ searchParams: Promise.resolve({}) }));
-
-  expect(
-    screen.getByRole("heading", { level: 2, name: "Bộ sưu tập nổi bật" }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole("heading", { level: 2, name: "Sản phẩm được yêu thích" }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole("heading", { level: 2, name: "Đo mắt kỹ. Chọn kính đúng." }),
-  ).toBeInTheDocument();
-  expect(screen.getByRole("link", { name: "Gặp gỡ bác sĩ Anh Thi" })).toHaveAttribute(
-    "href",
-    "/bac-si",
-  );
-  expect(
-    screen.getByRole("heading", { level: 2, name: "Đặt lịch đo mắt" }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByText(
-      "Điền thông tin để kiểm tra. Sau đó gọi Anh Thi để xác nhận thời gian phù hợp.",
-    ),
-  ).toBeInTheDocument();
-  expect(screen.queryByText(/Anh Thi sẽ liên hệ/i)).not.toBeInTheDocument();
-  expect(
-    screen.getByRole("heading", { level: 2, name: "Khách hàng nói gì" }),
-  ).toBeInTheDocument();
-  expect(
-    screen.getByRole("heading", { level: 2, name: "Ghé Anh Thi" }),
-  ).toBeInTheDocument();
-});
-
-test("keeps useful navigation and contact details in the footer", async () => {
-  render(await Home({ searchParams: Promise.resolve({}) }));
-
+test("preserves the confirmed contact details and appointment fallback", async () => {
+  await renderHome();
   const footer = screen.getByRole("contentinfo");
-  expect(within(footer).getByRole("link", { name: "Bác sĩ" })).toHaveAttribute(
-    "href",
-    "/bac-si",
-  );
   expect(
-    within(footer).getByRole("link", { name: "0908 123 456" }),
-  ).toHaveAttribute("href", "tel:0908123456");
+    within(footer).getByRole("link", { name: "+84 85 806 0789" }),
+  ).toHaveAttribute("href", "tel:+84858060789");
+  expect(
+    within(footer).getByRole("link", {
+      name: "85 Phạm Thái Bường Phường 4, Vinh Long, Vietnam, 85000",
+    }),
+  ).toHaveAttribute("href", expect.stringContaining("10.241584976617"));
+  expect(
+    screen.getByRole("link", { name: "Gọi +84 85 806 0789" }),
+  ).toBeInTheDocument();
 });
 
-test("makes every product consultation destination visible", async () => {
-  render(await Home({ searchParams: Promise.resolve({}) }));
-
-  const consultationLinks = screen.getAllByRole("link", {
-    name: "Tư vấn tại cửa hàng",
-  });
-  expect(consultationLinks).toHaveLength(4);
-  consultationLinks.forEach((link) => {
-    expect(link).toHaveAttribute("href", "/#locations");
-  });
-});
-
-test("uses one review rating treatment and no long dash characters", async () => {
-  const { container } = render(
-    await Home({ searchParams: Promise.resolve({}) }),
-  );
-
-  expect(screen.getAllByLabelText("5 trên 5 sao")).toHaveLength(1);
+test("offers practical fitting guidance without invented reviews", async () => {
+  const { container } = await renderHome();
+  expect(
+    screen.getByText("Giá trên website đã gồm tròng kính chưa?"),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Gặp gỡ bác sĩ Anh Thi" }),
+  ).toHaveAttribute("href", "/bac-si");
+  expect(screen.queryByLabelText("5 trên 5 sao")).not.toBeInTheDocument();
   expect(container.textContent).not.toMatch(/[\u2014\u2013]/);
 });

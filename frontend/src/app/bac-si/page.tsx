@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-seo";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,11 +16,12 @@ import doctorNationalConference from "../../../images/doctor-national-conference
 import doctorUniversity from "../../../images/doctor-university.jpg";
 import styles from "./doctor-page.module.css";
 
-export const metadata: Metadata = {
-  title: "Bác sĩ Nguyễn Anh Thi | Kính thuốc Anh Thi",
+export const metadata = pageMetadata({
+  title: "Bác sĩ Nguyễn Anh Thi tại Vĩnh Long | Hồ sơ chuyên môn",
   description:
-    "Hồ sơ chuyên môn và hành trình hơn 30 năm chăm sóc thị lực của Bác sĩ chuyên khoa II Nguyễn Anh Thi.",
-};
+    "Tìm hiểu hồ sơ chuyên môn Bác sĩ chuyên khoa II Nguyễn Anh Thi và hành trình chăm sóc thị lực tại Vĩnh Long. Liên hệ Anh Thi để hỏi lịch hẹn.",
+  path: "/bac-si",
+});
 
 type TimelineItem = {
   date: string;
@@ -32,8 +33,14 @@ type TimelineItem = {
 
 const profileFacts = [
   { value: "30+", label: "năm kinh nghiệm thăm khám và chăm sóc thị lực" },
-  { value: "CKII", label: "bác sĩ chuyên khoa 2 với nền tảng đào tạo chuyên sâu" },
-  { value: "Ưu tú", label: "ghi nhận nghề nghiệp qua danh hiệu Thầy thuốc ưu tú" },
+  {
+    value: "CKII",
+    label: "bác sĩ chuyên khoa 2 với nền tảng đào tạo chuyên sâu",
+  },
+  {
+    value: "Ưu tú",
+    label: "ghi nhận nghề nghiệp qua danh hiệu Thầy thuốc ưu tú",
+  },
 ];
 
 const timelineItems: TimelineItem[] = [
@@ -122,7 +129,10 @@ export default function DoctorPage() {
               Bác sĩ chuyên khoa 2, Trưởng khoa Bệnh viện Mắt Vĩnh Long với hơn
               30 năm kinh nghiệm thăm khám, tư vấn và chăm sóc sức khỏe mắt.
             </p>
-            <div className={styles.heroActions} aria-label="Liên kết hồ sơ bác sĩ">
+            <div
+              className={styles.heroActions}
+              aria-label="Liên kết hồ sơ bác sĩ"
+            >
               <Link className={styles.primaryAction} href="/#eye-exam">
                 Đặt lịch khám
               </Link>
@@ -140,7 +150,10 @@ export default function DoctorPage() {
             src={doctorCurrentWork}
           />
 
-          <div className={styles.proofStrip} aria-label="Thông tin chuyên môn nổi bật">
+          <div
+            className={styles.proofStrip}
+            aria-label="Thông tin chuyên môn nổi bật"
+          >
             {profileFacts.map((fact) => (
               <div className={styles.proofItem} key={fact.label}>
                 <strong>{fact.value}</strong>
@@ -161,13 +174,17 @@ export default function DoctorPage() {
             </h2>
             <p>
               Từ nền tảng y khoa tổng quát đến chuyên khoa nhãn khoa, mỗi giai
-              đoạn đều góp phần xây dựng năng lực thăm khám và tư vấn cho bệnh nhân.
+              đoạn đều góp phần xây dựng năng lực thăm khám và tư vấn cho bệnh
+              nhân.
             </p>
           </div>
 
           <ol className={styles.timelineList}>
             {timelineItems.map((item) => (
-              <li className={styles.timelineItem} key={`${item.date}-${item.title}`}>
+              <li
+                className={styles.timelineItem}
+                key={`${item.date}-${item.title}`}
+              >
                 <article className={styles.timelineArticle}>
                   <Image
                     alt={item.title}
@@ -177,7 +194,10 @@ export default function DoctorPage() {
                   />
                   <div className={styles.timelineContent}>
                     {item.dateTime ? (
-                      <time className={styles.timelineDate} dateTime={item.dateTime}>
+                      <time
+                        className={styles.timelineDate}
+                        dateTime={item.dateTime}
+                      >
                         {item.date}
                       </time>
                     ) : (

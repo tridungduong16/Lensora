@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-seo";
 import { ProductCategoryPage } from "@/components/marketing/product-category-page";
 
-export const metadata: Metadata = {
-  title: "Kính mắt | Kính thuốc Anh Thi",
-  description: "Các mẫu kính mắt được khách hàng lựa chọn tại Kính thuốc Anh Thi.",
-};
+export const metadata = pageMetadata({
+  title: "Kính thuốc Vĩnh Long: chọn gọng và tròng kính | Anh Thi",
+  description:
+    "Khám phá gọng kính thuốc, tìm hiểu tròng kính và đặt lịch đo mắt tại Anh Thi, Vĩnh Long. Tư vấn trực tiếp tại 85 Phạm Thái Bường, Phường 4.",
+  path: "/gong-kinh",
+});
 
 export default function KinhMatPage() {
   return (
     <ProductCategoryPage
       category="Kính mắt"
-      description="Các mẫu kính mắt cân đối, tối giản cho môi trường làm việc và đi học."
-      title="Kính mắt"
+      description="Chọn gọng cho nhu cầu học tập và làm việc tại Anh Thi, Vĩnh Long. Tròng kính thuốc được tư vấn riêng; giá gọng tham khảo chưa bao gồm tròng kính."
+      title="Kính thuốc tại Vĩnh Long"
     />
   );
 }
