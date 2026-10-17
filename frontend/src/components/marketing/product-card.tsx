@@ -24,17 +24,18 @@ export function ProductCard({ product }: { product: EyewearProduct }) {
       </Link>
       <div className="eyewear-card__body">
         <p className="eyewear-card__brand">{product.brand}</p>
-        <h3>
-          <Link href={`/san-pham/${product.slug}`}>{product.model}</Link>
-        </h3>
+        <div className="eyewear-card__title-row">
+          <h3>
+            <Link href={`/san-pham/${product.slug}`}>{product.model}</Link>
+          </h3>
+          <div className="eyewear-card__price">
+            <strong>{formatVnd(product.priceValue)}</strong>
+            <span>Giá tham khảo</span>
+          </div>
+        </div>
         <p className="eyewear-card__spec">
           {product.shape} · {product.material}
         </p>
-        <p className="eyewear-card__description">{product.description}</p>
-        <div className="eyewear-card__price">
-          <strong>{formatVnd(product.priceValue)}</strong>
-          <span>Giá tham khảo</span>
-        </div>
       </div>
     </article>
   );

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import doctorAward from "../../images/doctor-award.jpg";
 import { AppointmentForm } from "@/components/marketing/appointment-form";
+import { BrandStoryRail } from "@/components/marketing/brand-story-rail";
 import { EditorialHero } from "@/components/marketing/editorial-hero";
 import { ProductCatalog } from "@/components/marketing/product-catalog";
 import { eyeServices, stores } from "@/components/marketing/storefront-data";
@@ -117,7 +118,7 @@ export default async function Home({ searchParams }: HomeProps) {
             Vuốt để khám phá 3 thương hiệu{" "}
             <ArrowRight size={16} aria-hidden="true" />
           </p>
-          <div className="brand-stories">
+          <BrandStoryRail>
             {brandStories.map((story) => {
               const product = eyewearProducts.find(
                 (item) => item.slug === story.product,
@@ -128,19 +129,19 @@ export default async function Home({ searchParams }: HomeProps) {
                   href={`/?brand=${encodeURIComponent(story.name)}#bestsellers`}
                   key={story.name}
                 >
-                  <div className="brand-feature__copy">
-                    <span>{story.name}</span>
-                    <h3>{story.title}</h3>
-                    <p>{story.copy}</p>
-                  </div>
                   <div className="brand-feature__image">
+                    <span className="brand-feature__name">{story.name}</span>
                     <Image
                       src={product.images[0].src}
                       alt={product.images[0].alt}
                       width={800}
                       height={600}
-                      sizes="(max-width: 760px) 100vw, 50vw"
+                      sizes="(max-width: 760px) 80vw, 33vw"
                     />
+                  </div>
+                  <div className="brand-feature__copy">
+                    <h3>{story.title}</h3>
+                    <p>{story.copy}</p>
                   </div>
                   <span className="brand-feature__action">
                     Khám phá {story.name}
@@ -153,7 +154,7 @@ export default async function Home({ searchParams }: HomeProps) {
                 </Link>
               );
             })}
-          </div>
+          </BrandStoryRail>
         </section>
         <section
           className="page-section catalog-section"

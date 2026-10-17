@@ -38,6 +38,10 @@ test("plays the supplied advertisement muted with native playback controls", () 
   expect(video).toHaveAttribute("autoplay");
   expect(video.muted).toBe(true);
   expect(HTMLMediaElement.prototype.play).toHaveBeenCalled();
+  expect(screen.getByRole("heading", {
+    level: 1,
+    name: "Chọn kính phù hợp. An tâm cho đôi mắt.",
+  })).toBeVisible();
   expect(screen.queryByRole("button", { name: "Ảnh tiếp theo" })).toBeNull();
 });
 

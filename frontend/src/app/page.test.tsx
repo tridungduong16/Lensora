@@ -12,7 +12,7 @@ test("uses the advertising video and preserves service links and information", a
   const hero = screen
     .getByRole("heading", {
       level: 1,
-      name: "Kính thuốc Anh Thi tại Vĩnh Long",
+      name: "Chọn kính phù hợp. An tâm cho đôi mắt.",
     })
     .closest("section")!;
   expect(

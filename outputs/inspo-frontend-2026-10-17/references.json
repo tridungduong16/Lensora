@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-17",
+  "provider": "Inspo MCP",
+  "endpoint": "https://inspomcp.dev/api/mcp",
+  "transportUsed": "Streamable HTTP JSON-RPC",
+  "methodsUsed": ["recommend", "search_screens", "get_screen", "get_design_system"],
+  "references": [
+    {
+      "slug": "warbyparker-com",
+      "source": "https://warbyparker.com",
+      "capturedAt": "2026-05-18",
+      "designSystem": "https://inspomcp.dev/d/warbyparker-com/DESIGN.md",
+      "applied": ["Eyewear imagery leads", "Warm neutral surfaces with navy contrast", "Editorial headings and generous spacing"]
+    },
+    {
+      "slug": "duabyab-com--collections-skincare",
+      "source": "https://duabyab.com/collections/skincare",
+      "capturedAt": "2026-09-10",
+      "designSystem": "https://inspomcp.dev/d/duabyab-com--collections-skincare/DESIGN.md",
+      "applied": ["Underlined collection navigation", "Quiet product grid", "Compact metadata around model and price"]
+    }
+  ],
+  "adaptation": {
+    "typefaces": "Existing Vietnamese-safe Lora for selected headings and Be Vietnam Pro for body and controls",
+    "assets": "Existing Anh Thi video, eyewear photographs and doctor photograph",
+    "behaviorsPreserved": ["Brand/category/budget filtering", "Search and price sorting", "Individual filter removal", "Native video controls", "Reduced-motion video behavior", "Appointment telephone confirmation"]
+  }
+}

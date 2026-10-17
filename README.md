@@ -226,6 +226,8 @@ Implementation rules to preserve:
 - Use product imagery as the primary visual content.
 - Keep navigation and product metadata concise.
 
+The catalogue layout uses references retrieved through [Inspo MCP](https://inspomcp.dev/mcp): [Warby Parker](https://inspomcp.dev/d/warbyparker-com/DESIGN.md) for eyewear imagery and spacing, and [DUA's collection page](https://inspomcp.dev/d/duabyab-com--collections-skincare/DESIGN.md) for restrained catalogue navigation. Anh Thi keeps its own photography, navy identity, Vietnamese fonts and product information. Brand stories use equal image-led columns, model and reference price form one group, and full product descriptions remain on the detail pages. Provenance is recorded in `outputs/inspo-frontend-2026-10-17/references.json`.
+
 ---
 
 ## Backend Status

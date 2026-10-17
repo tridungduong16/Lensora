@@ -3,18 +3,18 @@
    Native CSS, Be Vietnam Pro, navy accent. Radii: 8px surfaces, 6px controls. */
 :root {
   color-scheme: light;
-  --color-page: #f6f7f9;
+  --color-page: #f8f7f4;
   --color-surface: #fdfdfd;
   --color-text: #202e3b;
   --color-navy: #173953;
   --color-navy-soft: #244e6d;
   --color-muted: #586575;
-  --color-border: #d7dfe5;
+  --color-border: #dadeda;
   --color-on-navy: #fdfdfd;
   --color-error: #a32929;
   --section-space: clamp(64px, 7vw, 104px);
   --page-gutter: clamp(20px, 4vw, 56px);
-  --refresh-tint: #e9eef2;
+  --refresh-tint: #eeefec;
   --refresh-hover: #e1e8ee;
   --refresh-focus: #245c91;
   --refresh-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -114,6 +114,39 @@ svg {
   margin-top: 18px;
   color: var(--color-muted);
   font-size: 16px;
+}
+.brand-section > .refresh-heading,
+.catalog-section > .refresh-heading {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.brand-section > .refresh-heading p,
+.catalog-section > .refresh-heading p {
+  max-width: 42ch;
+  margin-top: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.brand-section h2,
+.catalog-section h2,
+.category-page .refresh-heading h1,
+.clinical-story__content h2,
+.fitting-guide h2,
+.location-invitation h2 {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.brand-section h2,
+.catalog-section h2 {
+  font-size: clamp(32px, 3.6vw, 50px);
+}
+.category-page .refresh-heading h1 {
+  font-size: clamp(36px, 4.6vw, 64px);
 }
 .eyebrow {
   display: block;
@@ -381,9 +414,54 @@ svg {
   font-variant-numeric: tabular-nums;
 }
 .editorial-hero.editorial-hero--video {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  grid-template-rows: none;
+  align-items: center;
+  gap: clamp(32px, 4vw, 56px);
   min-height: 0;
-  padding: 24px var(--page-gutter) 32px;
+  padding: clamp(40px, 5vw, 64px) var(--page-gutter);
+}
+.advert-hero__copy,
+.advert-hero__media {
+  min-width: 0;
+}
+.advert-hero__copy h1 {
+  max-width: none;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.advert-hero__intro {
+  max-width: 42ch;
+  margin-top: 24px;
+  color: var(--color-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.advert-hero__doctor {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 32px;
+  color: var(--color-navy);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.advert-hero__doctor span + span {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+.advert-hero__doctor:hover > span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.advert-hero__media {
+  margin: 0;
 }
 .advert-hero__video {
   display: block;
@@ -397,10 +475,19 @@ svg {
 .advert-hero__actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 12px 24px;
-  margin-top: 16px;
+  margin-top: 28px;
+}
+.advert-hero__caption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-size: 11px;
+  line-height: 1.6;
 }
 .advert-hero__error {
   margin-top: 16px;
@@ -414,17 +501,21 @@ svg {
 }
 @media (max-width: 860px) {
   .editorial-hero.editorial-hero--video {
-    padding: 0 0 24px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 32px var(--page-gutter) 40px;
   }
-  .advert-hero__video {
-    border-radius: 0;
+  .advert-hero__copy h1 {
+    font-size: clamp(30px, 5.2vw, 42px);
   }
-  .advert-hero__actions {
-    justify-content: center;
-    padding-inline: var(--page-gutter);
+  .advert-hero__intro {
+    max-width: 52ch;
+    margin-top: 20px;
+    font-size: 15px;
   }
-  .advert-hero__error {
-    padding-inline: var(--page-gutter);
+  .advert-hero__actions,
+  .advert-hero__doctor {
+    margin-top: 24px;
   }
 }
 .care-ribbon {
@@ -453,35 +544,40 @@ svg {
   color: var(--color-muted);
   font-weight: 400;
 }
+.brand-section {
+  padding-bottom: 48px;
+}
 .brand-stories {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
 }
 .brand-feature {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  padding: 26px;
-  border-radius: 8px;
-  background: var(--refresh-tint);
+  min-width: 0;
+  padding: 0;
+  background: transparent;
 }
-.brand-feature--exfash {
-  background: var(--color-surface);
-}
-.brand-feature--nb {
-  background: var(--refresh-tint);
-}
-.brand-feature__copy > span {
-  display: block;
-  font-size: 23px;
+.brand-feature__name {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  left: 20px;
+  color: #173953;
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
+}
+.brand-feature__copy {
+  flex: 1;
 }
 .brand-feature__copy h3 {
-  margin-top: 20px;
-  font-size: 19px;
-  letter-spacing: -0.03em;
+  font-family: var(--font-editorial);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
 }
 .brand-feature__copy p {
   max-width: 37ch;
@@ -491,7 +587,10 @@ svg {
   line-height: 1.7;
 }
 .brand-feature__image {
-  margin: 24px -26px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border-radius: 8px;
   background: #fdfdfd;
 }
 .brand-feature__image img {
@@ -507,46 +606,50 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto;
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
   font-size: 12px;
   font-weight: 600;
-  min-height: 30px;
+  min-height: 44px;
 }
 .catalog-section {
+  padding-top: 48px;
   border-top: 1px solid var(--color-border);
 }
 .catalog__brands {
   display: flex;
-  gap: 8px;
+  gap: 28px;
   flex-wrap: wrap;
   margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
 }
 .catalog__brands button {
   min-height: 44px;
-  padding: 10px 20px;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  font-size: 13px;
-  color: var(--color-navy);
+  padding: 12px 0;
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font-size: 14px;
+  color: var(--color-muted);
   background: transparent;
   transition: background 180ms var(--refresh-ease);
 }
 .catalog__brands button:hover {
-  background: var(--refresh-hover);
+  color: var(--color-navy);
 }
 .catalog__brands button[aria-pressed="true"] {
-  background: var(--color-navy);
-  border-color: var(--color-navy);
-  color: var(--color-on-navy);
+  border-bottom-color: var(--color-navy);
+  color: var(--color-navy);
+  font-weight: 600;
 }
 .catalog__filters {
   display: flex;
   gap: 16px;
   align-items: center;
-  padding: 16px 20px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  border-radius: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
 }
 .catalog__search {
   display: flex;
@@ -650,7 +753,7 @@ svg {
 .eyewear-card__image img {
   width: 100%;
   height: 100%;
-  padding: 6%;
+  padding: 2%;
   object-fit: contain;
   transition: transform 300ms var(--refresh-ease);
 }
@@ -671,17 +774,25 @@ svg {
   color: #173953;
 }
 .eyewear-card__body {
-  padding: 18px 2px 0;
+  padding: 20px 0 0;
 }
 .eyewear-card__brand {
   color: var(--color-muted);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
 }
 .eyewear-card h3 {
-  margin-top: 4px;
-  font-size: 21px;
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: -0.02em;
+}
+.eyewear-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 8px;
 }
 .eyewear-card h3 a:hover {
   text-decoration: underline;
@@ -690,23 +801,13 @@ svg {
 .eyewear-card__spec {
   font-size: 12px;
   color: var(--color-muted);
-  margin-top: 7px;
-}
-.eyewear-card__description {
-  font-size: 12px;
-  line-height: 1.75;
   margin-top: 12px;
-  color: var(--color-muted);
-  max-width: 50ch;
 }
 .eyewear-card__price {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 10px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--color-border);
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
 }
 .eyewear-card__price strong {
   font-size: 15px;
@@ -714,7 +815,7 @@ svg {
   font-variant-numeric: tabular-nums;
 }
 .eyewear-card__price span {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--color-muted);
 }
 .catalog__note {
@@ -1281,26 +1382,6 @@ svg {
   .editorial-hero__actions {
     gap: 14px;
   }
-  .brand-stories {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .brand-feature:first-child {
-    grid-column: 1/-1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: center;
-  }
-  .brand-feature:first-child .brand-feature__image {
-    grid-column: 2;
-    grid-row: 1/3;
-    margin: -26px;
-    margin-left: 0;
-  }
-  .brand-feature:first-child .brand-feature__action {
-    align-self: end;
-    max-width: 240px;
-  }
   .catalog__filters {
     flex-wrap: wrap;
   }
@@ -1459,26 +1540,6 @@ svg {
   .editorial-hero__actions .primary-button {
     padding-inline: 16px;
   }
-  .brand-stories {
-    grid-template-columns: 1fr;
-  }
-  .brand-feature,
-  .brand-feature:first-child {
-    display: flex;
-    grid-column: auto;
-    padding: 24px;
-  }
-  .brand-feature:first-child .brand-feature__image,
-  .brand-feature__image {
-    margin: 20px -24px;
-  }
-  .brand-feature:first-child .brand-feature__action {
-    max-width: none;
-    align-self: stretch;
-  }
-  .brand-feature__image img {
-    max-height: 240px;
-  }
   .refresh-heading {
     margin-bottom: 28px;
   }
@@ -1487,17 +1548,6 @@ svg {
   }
   .refresh-heading p {
     font-size: 14px;
-  }
-  .catalog__brands {
-    gap: 7px;
-  }
-  .catalog__brands button {
-    padding: 10px 12px;
-    font-size: 11px;
-  }
-  .catalog__filters {
-    gap: 12px;
-    padding: 12px;
   }
   .catalog__search input {
     font-size: 12px;
@@ -1520,9 +1570,6 @@ svg {
   .eyewear-card__image {
     aspect-ratio: 1.25;
   }
-  .eyewear-card__image img {
-    padding: 4%;
-  }
   .eyewear-card__arrow {
     width: 26px;
     height: 26px;
@@ -1542,20 +1589,16 @@ svg {
   .eyewear-card__spec {
     font-size: 10px;
   }
-  .eyewear-card__description {
-    display: none;
+  .eyewear-card__title-row {
+    display: grid;
+    gap: 0;
+    margin-top: 4px;
   }
   .eyewear-card__price {
-    display: grid;
-    gap: 4px;
-    margin-top: 12px;
-    padding-top: 10px;
+    align-items: flex-start;
   }
   .eyewear-card__price strong {
     font-size: 14px;
-  }
-  .eyewear-card__price span {
-    font-size: 9px;
   }
   .catalog__note {
     font-size: 11px;
@@ -1619,9 +1662,6 @@ svg {
   }
   .eyewear-grid {
     grid-template-columns: 1fr;
-  }
-  .eyewear-card__description {
-    display: block;
   }
   .product-related .eyewear-grid {
     grid-template-columns: 1fr;
@@ -1913,8 +1953,9 @@ svg {
 @media (max-width: 860px) {
   .catalog__filters {
     display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
-    padding: 16px;
+    padding: 12px 0;
   }
   .catalog__search input,
   .catalog__select select,
@@ -1927,6 +1968,7 @@ svg {
     width: 18px;
   }
   .catalog__filter-toggle {
+    padding-inline: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1951,6 +1993,7 @@ svg {
   }
   .catalog__selects {
     display: none;
+    grid-column: 1 / -1;
     padding-top: 8px;
   }
   .catalog__selects.is-open {
@@ -2054,6 +2097,16 @@ svg {
   }
 }
 @media (max-width: 760px) {
+  .brand-section > .refresh-heading,
+  .catalog-section > .refresh-heading {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .brand-section > .refresh-heading p,
+  .catalog-section > .refresh-heading p {
+    font-size: 14px;
+  }
   .brand-section__hint {
     display: flex;
     align-items: center;
@@ -2075,47 +2128,30 @@ svg {
     padding: 4px 4px 16px;
     margin-inline: -4px;
   }
-  .brand-feature,
-  .brand-feature:first-child {
-    display: flex;
-    grid-column: auto;
-    gap: 0;
-    padding: 20px;
+  .brand-feature {
     scroll-snap-align: start;
   }
   .brand-feature__copy h3 {
-    margin-top: 12px;
-    font-size: 17px;
+    font-size: 20px;
   }
   .brand-feature__copy p {
-    font-size: 12px;
-  }
-  .brand-feature__image,
-  .brand-feature:first-child .brand-feature__image {
-    margin: 20px -20px 12px;
+    font-size: 13px;
   }
   .brand-feature__image img {
-    height: 172px;
-    max-height: none;
-  }
-  .brand-feature__action,
-  .brand-feature:first-child .brand-feature__action {
-    min-height: 44px;
-    max-width: none;
-    align-self: stretch;
+    height: 180px;
   }
   .catalog__brands {
     flex-wrap: nowrap;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    gap: 8px;
-    padding: 4px 4px 12px;
-    margin: -4px -4px 12px;
+    gap: 24px;
+    padding: 4px 4px 0;
+    margin: -4px -4px 20px;
   }
   .catalog__brands button {
     flex-shrink: 0;
-    padding-inline: 12px;
-    font-size: 12px;
+    padding-inline: 0;
+    font-size: 13px;
   }
   .eyewear-card__brand,
   .eyewear-card__spec,
@@ -2152,7 +2188,7 @@ svg {
     display: none;
   }
   .catalog__filters {
-    padding: 12px;
+    padding: 12px 0;
   }
 }
 @media print {

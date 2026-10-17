@@ -102,19 +102,20 @@ export function ProductCatalog({
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Tìm mã kính, chất liệu, kiểu dáng…"
+            placeholder="Tìm mẫu kính…"
           />
         </div>
         <button
           ref={filterToggle}
           className="catalog__filter-toggle"
+          aria-label="Bộ lọc và sắp xếp"
           type="button"
           aria-expanded={filtersOpen}
           aria-controls={`${id}-options`}
           onClick={() => setFiltersOpen(!filtersOpen)}
         >
           <SlidersHorizontal size={18} aria-hidden="true" />
-          Bộ lọc và sắp xếp
+          Bộ lọc
           {advancedFilterCount ? <span>{advancedFilterCount}</span> : null}
         </button>
         <div
