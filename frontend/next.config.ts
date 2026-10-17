@@ -6,16 +6,6 @@ const nextConfig: NextConfig = {
   // Keep SEO metadata in <head>, including the dynamic home catalogue.
   htmlLimitedBots: /.*/,
   output: "standalone",
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www\\.kinhthuocanhthi\\.com" }],
-        destination: "https://kinhthuocanhthi.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
   webpack(config) {
     config.module.rules.push({
       test: /\.mp4$/,
