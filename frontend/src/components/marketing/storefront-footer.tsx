@@ -32,8 +32,8 @@ export function StorefrontFooter({
             <Link href="/bang-gia">Bảng giá tròng kính</Link>
           ) : null}
           <Link href="/bac-si">Bác sĩ</Link>
-          <Link href="/#eye-exam">Đo mắt</Link>
-          <Link href="/#locations">Cửa hàng</Link>
+          <Link href="/do-mat">Đo mắt</Link>
+          <Link href="/cua-hang">Cửa hàng</Link>
         </nav>
 
         <div className="site-footer__contact">
