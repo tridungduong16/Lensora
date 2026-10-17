@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import brandLogo from "../../../logo.jpg";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -25,6 +25,9 @@ export function StorefrontHeader({
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
   const middleIndex = Math.floor(navItems.length / 2);
   const leftNavItems = navItems.slice(0, middleIndex);
   const rightNavItems = navItems.slice(middleIndex);
@@ -62,16 +65,37 @@ export function StorefrontHeader({
     const previousOverflow = document.body.style.overflow;
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        menuButtonRef.current?.focus();
+      }
+    };
+    const closeOutsideHeader = (event: Event) => {
+      if (
+        event.target instanceof Node &&
+        !headerRef.current?.contains(event.target)
+      ) {
         closeMenu();
       }
     };
+    const desktopMedia = window.matchMedia?.("(min-width: 1101px)");
+    const closeOnDesktop = () => {
+      if (desktopMedia?.matches) closeMenu();
+    };
 
     document.body.style.overflow = "hidden";
+    menuPanelRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
     document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutsideHeader);
+    document.addEventListener("focusin", closeOutsideHeader);
+    desktopMedia?.addEventListener("change", closeOnDesktop);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutsideHeader);
+      document.removeEventListener("focusin", closeOutsideHeader);
+      desktopMedia?.removeEventListener("change", closeOnDesktop);
     };
   }, [closeMenu, isMenuOpen]);
 
@@ -84,7 +108,7 @@ export function StorefrontHeader({
     .join(" ");
 
   return (
-    <header className={headerClassName}>
+    <header className={headerClassName} ref={headerRef}>
       <div className="desktop-navigation">
         <nav className="desktop-nav desktop-nav--left" aria-label="Điều hướng chính bên trái">
           {leftNavItems.map((item) => (
@@ -134,6 +158,7 @@ export function StorefrontHeader({
           aria-label={isMenuOpen ? "Đóng menu" : "Mở menu"}
           className="mobile-menu"
           onClick={toggleMenu}
+          ref={menuButtonRef}
           type="button"
         >
           {isMenuOpen ? (
@@ -145,7 +170,7 @@ export function StorefrontHeader({
       </div>
 
       {isMenuOpen ? (
-        <div className="mobile-menu-panel" id="mobile-navigation">
+        <div className="mobile-menu-panel" id="mobile-navigation" ref={menuPanelRef}>
           <nav aria-label="Điều hướng trên di động" className="mobile-nav">
             {navItems.map((item) => (
               <Link

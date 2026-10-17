@@ -11,6 +11,7 @@
   --color-muted: #586575;
   --color-border: #d7dfe5;
   --color-on-navy: #fdfdfd;
+  --color-error: #a32929;
   --section-space: clamp(64px, 7vw, 104px);
   --page-gutter: clamp(20px, 4vw, 56px);
   --refresh-tint: #e9eef2;
@@ -28,6 +29,7 @@
   --color-muted: #acbbc8;
   --color-border: #344653;
   --color-on-navy: #122332;
+  --color-error: #ffb4ae;
   --refresh-tint: #20313e;
   --refresh-hover: #2b4151;
   --refresh-focus: #9bc9ef;
@@ -43,6 +45,7 @@
     --color-muted: #acbbc8;
     --color-border: #344653;
     --color-on-navy: #122332;
+    --color-error: #ffb4ae;
     --refresh-tint: #20313e;
     --refresh-hover: #2b4151;
     --refresh-focus: #9bc9ef;
@@ -51,6 +54,14 @@
 body {
   font-size: 15px;
   line-height: 1.65;
+  caret-color: var(--color-navy);
+}
+::selection {
+  background: var(--color-navy);
+  color: var(--color-on-navy);
+}
+html {
+  scrollbar-color: var(--color-muted) var(--color-page);
 }
 h1,
 h2,
@@ -61,13 +72,13 @@ h3 {
 h1 {
   font-size: clamp(40px, 5.6vw, 72px);
   line-height: 1.12;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.03em;
 }
 h2 {
   font-size: clamp(30px, 3.3vw, 46px);
   font-weight: 600;
   line-height: 1.2;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.025em;
 }
 h3 {
   line-height: 1.4;
@@ -199,7 +210,7 @@ svg {
   justify-content: flex-start;
 }
 .desktop-nav a {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
   padding-block: 12px;
@@ -266,6 +277,10 @@ svg {
   min-height: 48px;
   border-color: var(--color-border);
 }
+.mobile-nav a:is(:hover, :focus-visible) {
+  color: var(--color-navy);
+  background: var(--refresh-hover);
+}
 .mobile-appointment {
   background: var(--color-navy);
   color: var(--color-on-navy);
@@ -297,7 +312,7 @@ svg {
   font-size: clamp(34px, 3.3vw, 48px);
   font-weight: 600;
   line-height: 1.24;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.03em;
   text-transform: none;
   white-space: normal;
 }
@@ -464,10 +479,13 @@ svg {
   padding: 10px 20px;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-navy);
   background: transparent;
   transition: background 180ms var(--refresh-ease);
+}
+.catalog__brands button:hover {
+  background: var(--refresh-hover);
 }
 .catalog__brands button[aria-pressed="true"] {
   background: var(--color-navy);
@@ -497,7 +515,7 @@ svg {
   border: 0;
   background: transparent;
   color: var(--color-text);
-  font-size: 12px;
+  font-size: 14px;
   padding: 10px 0;
 }
 .catalog__search input::placeholder {
@@ -511,7 +529,7 @@ svg {
   border-left: 1px solid var(--color-border);
 }
 .catalog__select label {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--color-muted);
 }
 .catalog__select select {
@@ -520,8 +538,29 @@ svg {
   border: 0;
   background: transparent;
   color: var(--color-text);
-  font-size: 12px;
+  font-size: 13px;
   padding: 2px 20px 2px 0;
+}
+.catalog__active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.catalog__active-filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--refresh-tint);
+  color: var(--color-navy);
+  font-size: 12px;
+}
+.catalog__active-filters button:hover {
+  background: var(--refresh-hover);
 }
 .catalog__summary {
   display: flex;
@@ -595,7 +634,7 @@ svg {
 .eyewear-card h3 {
   margin-top: 4px;
   font-size: 21px;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 .eyewear-card h3 a:hover {
   text-decoration: underline;
@@ -685,7 +724,7 @@ svg {
   max-width: 17ch;
   font-size: clamp(30px, 3.4vw, 46px);
   line-height: 1.2;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.03em;
 }
 .clinical-story__intro {
   margin-top: 22px;
@@ -780,14 +819,11 @@ svg {
   outline-color: var(--refresh-focus);
 }
 .appointment-form input[aria-invalid="true"] {
-  border-color: #b03a3a;
+  border-color: var(--color-error);
 }
 .field-error {
-  color: #a32929;
+  color: var(--color-error);
   font-size: 12px;
-}
-[data-theme="dark"] .field-error {
-  color: #ffb4ae;
 }
 .appointment-actions {
   display: flex;
@@ -1150,6 +1186,14 @@ svg {
   height: 400px;
   width: 100%;
 }
+@media (min-width: 1101px) and (max-width: 1279px) {
+  .desktop-navigation {
+    gap: 20px;
+  }
+  .desktop-nav {
+    gap: 16px;
+  }
+}
 @media (max-width: 1100px) {
   .site-header {
     justify-content: space-between;
@@ -1445,7 +1489,7 @@ svg {
     padding-top: 12px;
   }
   .eyewear-card h3 {
-    font-size: 17px;
+    font-size: 18px;
   }
   .eyewear-card__brand,
   .eyewear-card__spec {
@@ -1461,7 +1505,7 @@ svg {
     padding-top: 10px;
   }
   .eyewear-card__price strong {
-    font-size: 13px;
+    font-size: 14px;
   }
   .eyewear-card__price span {
     font-size: 9px;
@@ -2029,7 +2073,7 @@ svg {
   .eyewear-card__brand,
   .eyewear-card__spec,
   .eyewear-card__price span {
-    font-size: 11px;
+    font-size: 12px;
   }
   .catalog__summary {
     align-items: center;

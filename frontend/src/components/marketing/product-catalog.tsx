@@ -29,10 +29,28 @@ export function ProductCatalog({
   const [sort, setSort] = useState("featured");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const filterToggle = useRef<HTMLButtonElement>(null);
-  const advancedFilterCount = [category, budget, sort !== "featured"].filter(
-    Boolean,
-  ).length;
-  const hasFilters = Boolean(brand || query || category || budget);
+  const summaryRef = useRef<HTMLParagraphElement>(null);
+  const activeFilters = [
+    ...(!fixedCategory && category
+      ? [{ key: "category", label: category, clear: () => setCategory("") }]
+      : []),
+    ...(budget
+      ? [{
+          key: "budget",
+          label: `Đến ${Number(budget).toLocaleString("vi-VN")} ₫`,
+          clear: () => setBudget(""),
+        }]
+      : []),
+    ...(sort !== "featured"
+      ? [{
+          key: "sort",
+          label: sort === "price-asc" ? "Giá tăng dần" : "Giá giảm dần",
+          clear: () => setSort("featured"),
+        }]
+      : []),
+  ];
+  const advancedFilterCount = activeFilters.length;
+  const hasFilters = Boolean(brand || query || advancedFilterCount);
   const visibleProducts = useMemo(() => {
     const result = filterProducts(products, {
       brand,
@@ -55,6 +73,7 @@ export function ProductCatalog({
     setCategory("");
     setBudget("");
     setSort("featured");
+    summaryRef.current?.focus();
   }
 
   return (
@@ -153,8 +172,30 @@ export function ProductCatalog({
           </button>
         </div>
       </div>
+      {activeFilters.length ? (
+        <div
+          className="catalog__active-filters"
+          role="group"
+          aria-label="Bộ lọc đang áp dụng"
+        >
+          {activeFilters.map((filter) => (
+            <button
+              key={filter.key}
+              type="button"
+              aria-label={`Bỏ lựa chọn: ${filter.label}`}
+              onClick={() => {
+                filter.clear();
+                summaryRef.current?.focus();
+              }}
+            >
+              {filter.label}
+              <X size={14} aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      ) : null}
       <div className="catalog__summary">
-        <p role="status" aria-live="polite">
+        <p role="status" aria-live="polite" tabIndex={-1} ref={summaryRef}>
           {visibleProducts.length} mẫu kính{brand ? ` ${brand}` : ""}
           {query ? ` phù hợp với “${query}”` : ""}
         </p>

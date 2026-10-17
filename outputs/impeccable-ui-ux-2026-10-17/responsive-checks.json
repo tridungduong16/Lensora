@@ -1,0 +1,50 @@
+[
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "16px",
+    "scrollWidth": 375,
+    "viewport": 375
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "16px",
+    "scrollWidth": 414,
+    "viewport": 414
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "16px",
+    "scrollWidth": 667,
+    "viewport": 667
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "16px",
+    "scrollWidth": 768,
+    "viewport": 768
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "14px",
+    "scrollWidth": 1024,
+    "viewport": 1024
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "14px",
+    "scrollWidth": 1101,
+    "viewport": 1101
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "14px",
+    "scrollWidth": 1280,
+    "viewport": 1280
+  },
+  {
+    "headerLinksOverlap": false,
+    "inputFont": "14px",
+    "scrollWidth": 1920,
+    "viewport": 1920
+  }
+]

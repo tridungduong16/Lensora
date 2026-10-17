@@ -142,6 +142,51 @@ test("locks page scrolling and closes the mobile menu with Escape", async () => 
     screen.queryByRole("navigation", { name: "Điều hướng trên di động" }),
   ).not.toBeInTheDocument();
   expect(document.body.style.overflow).toBe("");
+  expect(screen.getByRole("button", { name: "Mở menu" })).toHaveFocus();
+});
+
+test("moves focus into the menu and closes it when focus leaves the header", async () => {
+  const user = userEvent.setup();
+  render(
+    <>
+      <StorefrontHeader navItems={storefrontNavigation} />
+      <a href="#content">Nội dung trang</a>
+    </>,
+  );
+  await user.click(screen.getByRole("button", { name: "Mở menu" }));
+  const mobileNavigation = screen.getByRole("navigation", {
+    name: "Điều hướng trên di động",
+  });
+  expect(within(mobileNavigation).getAllByRole("link")[0]).toHaveFocus();
+
+  // Leave the navigation through its final link using the keyboard.
+  within(mobileNavigation).getByRole("link", { name: "Đặt lịch đo mắt" }).focus();
+  await user.tab();
+  expect(screen.getByRole("link", { name: "Nội dung trang" })).toHaveFocus();
+  expect(screen.queryByRole("navigation", { name: "Điều hướng trên di động" })).toBeNull();
+  expect(document.body.style.overflow).toBe("");
+});
+
+test("unlocks page scrolling when resizing an open menu to desktop", async () => {
+  let onChange: (() => void) | undefined;
+  const desktopMedia = {
+    matches: false,
+    addEventListener: vi.fn((_event: string, callback: () => void) => {
+      onChange = callback;
+    }),
+    removeEventListener: vi.fn(),
+  };
+  vi.stubGlobal("matchMedia", vi.fn(() => desktopMedia));
+  const user = userEvent.setup();
+  render(<StorefrontHeader navItems={storefrontNavigation} />);
+  await user.click(screen.getByRole("button", { name: "Mở menu" }));
+
+  act(() => {
+    desktopMedia.matches = true;
+    onChange?.();
+  });
+  expect(screen.queryByRole("navigation", { name: "Điều hướng trên di động" })).toBeNull();
+  expect(document.body.style.overflow).toBe("");
 });
 
 test("renders the supplied logo image instead of the header text wordmark", () => {
