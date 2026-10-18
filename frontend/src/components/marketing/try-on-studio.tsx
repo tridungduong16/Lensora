@@ -59,7 +59,7 @@ export default function TryOnStudio({ initialSlug }: { initialSlug: string }) {
   }, [aligned, canvasRef, frame, slug, status]);
 
   const trackingMessage = status === "loading"
-    ? "Đang mở camera và chuẩn bị nhận diện…"
+    ? "Đang chuẩn bị thử kính. Lần đầu có thể mất một chút thời gian…"
     : aligned ? "Kính đã căn theo gương mặt" : "Nhìn thẳng, đưa mặt vào giữa và giữ đủ sáng";
 
   return (

@@ -12,8 +12,10 @@ The package's SIMD and non-SIMD WASM loaders/binaries are copied into `wasm/`
 by `scripts/prepare-try-on.mjs`, automatically before `npm run dev` and
 `npm run build`. That generated directory is ignored by Git and included in
 the deployment's `public/` directory. Deployments must run the normal build.
-The runtime and model are served by this website; the feature uses no external
-CDN and makes no camera-image uploads.
+The runtime loads from the pinned jsDelivr package and the model from Google's
+versioned public storage for faster first use. These downloads contain no camera
+images. The website's local runtime/model are a fallback if CDN initialization
+fails. The feature makes no camera-image uploads.
 
 Model documentation and terms:
 https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker

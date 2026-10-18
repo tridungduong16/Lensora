@@ -92,7 +92,7 @@ export function useTryOnCamera(settings: TryOnSettings) {
       }
       resources.current.stream = stream;
       if (document.hidden) { stop(); return; }
-      resources.current.timeout = setTimeout(() => fail("Khởi động camera mất quá lâu. Kiểm tra camera và kết nối mạng rồi thử lại."), 30000);
+      resources.current.timeout = setTimeout(() => fail("Khởi động camera mất quá lâu. Kiểm tra camera và kết nối mạng rồi thử lại."), 120000);
       stream.getVideoTracks().forEach((track) => track.addEventListener("ended", () => {
         fail("Camera đã ngắt kết nối. Kiểm tra camera rồi bấm bật lại.");
       }, { once: true }));

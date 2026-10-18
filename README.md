@@ -315,9 +315,12 @@ Use HTTPS in production (localhost works for development). Use a recent
 Chrome, Edge or Safari with camera, Web Workers and WebAssembly support.
 Permission denial, missing/busy cameras, model load failures and interruptions
 have retry instructions; the ordinary product gallery and contact links remain
-available. The model and WASM are served locally. `predev`/`prebuild` copy the
-pinned package's WASM into `public/mediapipe/wasm`, including in the Docker
-build; see `frontend/public/mediapipe/README.md` for provenance and checksum.
+available. The pinned WASM runtime loads from jsDelivr and the versioned model
+from Google's public storage, with the website's local files as a fallback if
+CDN initialization fails. Camera frames still stay on the device. Startup allows
+up to two minutes on slower connections. `predev`/`prebuild` copy the pinned
+package's WASM into `public/mediapipe/wasm`, including in the Docker build; see
+`frontend/public/mediapipe/README.md` for provenance and checksum.
 
 Validate using a synthetic camera stream, including actual worker inference,
 frame switching, missing-face handling, PNG export, permissions, closing during
