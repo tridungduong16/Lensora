@@ -34,7 +34,7 @@ Run `node frontend/scripts/import-eyewear-collection.mjs` to regenerate the cata
 
 Clearly legible sticker prices are recorded as `priceValue`; unknown prices remain `null` and display “Liên hệ”. Sticker prices are not confirmed current selling prices. Budget filters exclude unknown prices, and price sorting keeps them after priced items in either direction. Collection names describe the visible frames when an exact model is unverified; do not transfer model specifications from the retired retailer catalogue.
 
-The catalogue supports brand/category/budget filters, accent-insensitive search and numerical price sorting. `/san-pham/[slug]` provides the collection's photographs and related collections. The old 12 researched-product URLs redirect permanently to `/gong-kinh`. The supplied photographs contain optical frames, so `/kinh-ram` offers store contact until sunglass photographs are available. Existing category URLs remain available; the lens-price link stays hidden on the home page.
+The catalogue supports brand/category/budget filters, accent-insensitive search and numerical price sorting. `/san-pham/[slug]` provides the collection's photographs and related collections. The old 12 researched-product URLs redirect permanently to `/gong-kinh`. The supplied photographs contain optical frames, so `/kinh-ram` offers store contact until sunglass photographs are available. Existing category URLs remain available; price-list links are hidden in the shared desktop/mobile navigation and in the footer by default on every page.
 
 Appointment details are checked locally and retained for the customer. Confirmation is through `tel:+84858060789`; the form does not claim to submit a booking to a server.
 

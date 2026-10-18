@@ -7,7 +7,7 @@ type StorefrontFooterProps = {
 };
 
 export function StorefrontFooter({
-  showPriceList = true,
+  showPriceList = false,
 }: StorefrontFooterProps) {
   const store = stores[0];
 
