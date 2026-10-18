@@ -1,0 +1,27 @@
+{
+  "collections": 13,
+  "photos": 38,
+  "testedWidths": [
+    375,
+    414,
+    667,
+    768,
+    1024,
+    1280,
+    1440,
+    1920
+  ],
+  "errors": [],
+  "remoteImages": [],
+  "failures": [],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "build": "passed",
+  "typecheck": "passed",
+  "unitTests": {
+    "passed": 94,
+    "failed": 0
+  }
+}

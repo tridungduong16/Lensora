@@ -5,7 +5,7 @@ export type CatalogProduct = {
   brand?: string;
   material?: string;
   description?: string;
-  priceValue?: number;
+  priceValue?: number | null;
 };
 
 type ProductFilters = {
@@ -43,7 +43,7 @@ export function filterProducts<T extends CatalogProduct>(
       matchesCategory &&
       (!brand || product.brand === brand) &&
       (!maxPrice ||
-        (product.priceValue !== undefined && product.priceValue <= maxPrice)) &&
+        (typeof product.priceValue === "number" && product.priceValue <= maxPrice)) &&
       (!normalizedQuery || searchText.includes(normalizedQuery))
     );
   });

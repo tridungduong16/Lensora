@@ -31,32 +31,32 @@ test("uses the advertising video and preserves service links and information", a
   );
 });
 
-test("provides real product details for all three requested brands", async () => {
+test("presents the supplied store photographs and current collections", async () => {
   await renderHome();
-  expect(screen.getByRole("status")).toHaveTextContent("12 mẫu kính");
-  expect(screen.getByRole("link", { name: "Xem PARIM 85006" })).toHaveAttribute(
+  expect(screen.getByRole("status")).toHaveTextContent("13 mẫu kính");
+  expect(screen.getByRole("link", { name: "Xem BOLON Gọng vuông đen và đồi mồi" })).toHaveAttribute(
     "href",
-    "/san-pham/parim-85006",
+    "/san-pham/bolon-gong-vuong",
   );
   expect(
-    screen.getByRole("link", { name: "Xem EXFASH EF69473" }),
-  ).toHaveAttribute("href", "/san-pham/exfash-ef69473");
+    screen.getByRole("link", { name: "Xem EXFASH EF45402" }),
+  ).toHaveAttribute("href", "/san-pham/exfash-ef45402");
   expect(
-    screen.getByRole("link", { name: "Xem New Balance NB09332" }),
-  ).toHaveAttribute("href", "/san-pham/new-balance-nb09332");
+    screen.getByRole("link", { name: "Xem New Balance Gọng kim loại bo vuông" }),
+  ).toHaveAttribute("href", "/san-pham/new-balance-gong-kim-loai");
   expect(
-    screen.getByText(/Giá và ảnh tham khảo từ các nhà bán lẻ/),
+    screen.getByText(/Ảnh chụp kính tại Anh Thi/),
   ).toBeInTheDocument();
 });
 
 test("opens the intended brand and search from an incoming link", async () => {
-  await renderHome({ brand: "EXFASH", query: "ultem" });
+  await renderHome({ brand: "EXFASH", query: "45402" });
   expect(screen.getByRole("status")).toHaveTextContent("1 mẫu kính EXFASH");
   expect(
-    screen.getByRole("link", { name: "Xem EXFASH EF69473" }),
+    screen.getByRole("link", { name: "Xem EXFASH EF45402" }),
   ).toBeInTheDocument();
   expect(
-    screen.queryByRole("link", { name: "Xem PARIM 85006" }),
+    screen.queryByRole("link", { name: "Xem BOLON Gọng vuông đen và đồi mồi" }),
   ).not.toBeInTheDocument();
 });
 

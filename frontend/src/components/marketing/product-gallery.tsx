@@ -3,13 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { EyewearProduct } from "@/lib/eyewear-catalog";
+import { VirtualTryOn } from "./virtual-try-on";
 
 export function ProductGallery({
   images,
   name,
+  productSlug,
 }: {
   images: EyewearProduct["images"];
   name: string;
+  productSlug?: string;
 }) {
   const [active, setActive] = useState(0);
   return (
@@ -46,6 +49,7 @@ export function ProductGallery({
           </button>
         ))}
       </div>
+      {productSlug && <VirtualTryOn slug={productSlug} />}
     </div>
   );
 }

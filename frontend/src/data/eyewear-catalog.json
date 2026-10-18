@@ -1,358 +1,458 @@
 [
   {
-    "slug": "parim-85006",
-    "name": "PARIM 85006",
-    "brand": "PARIM",
-    "model": "85006",
+    "slug": "velocity-gong-kim-loai",
+    "brand": "Velocity",
+    "model": "Gọng kim loại bo tròn",
+    "shape": "Bo tròn",
+    "material": "Thép không gỉ",
+    "colors": [
+      "Bạc",
+      "Vàng hồng"
+    ],
+    "priceValue": 580000,
+    "description": "Gọng Velocity viền kim loại mảnh, dáng bo tròn và đệm mũi rời. Bộ ảnh gồm góc chụp riêng và các màu đặt cạnh nhau để bạn dễ so sánh.",
+    "name": "Velocity Gọng kim loại bo tròn",
     "category": "Gọng kính",
-    "tag": "Chữ nhật",
-    "material": "Nhựa Ultem",
-    "shape": "Chữ nhật",
-    "colors": [],
-    "description": "Gọng chữ nhật thanh mảnh, có đệm mũi rời; một lựa chọn gọn gàng cho việc học và làm việc.",
-    "priceValue": 1701000,
+    "tag": "Bo tròn",
     "images": [
       {
-        "src": "/images/products/parim-85006-1.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/03/85006_B1-1-1.jpg",
-        "alt": "PARIM 85006, ảnh sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_22-45-14.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-14.jpg",
+        "alt": "Velocity Gọng kim loại bo tròn, ảnh 1 chụp tại Kính thuốc Anh Thi"
       },
       {
-        "src": "/images/products/parim-85006-2.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/03/85006_B1-2-1.jpg",
-        "alt": "PARIM 85006, góc nhìn sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_22-45-28.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-28.jpg",
+        "alt": "Velocity Gọng kim loại bo tròn, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-45-22.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-22.jpg",
+        "alt": "Velocity Gọng kim loại bo tròn, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-45-25.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-25.jpg",
+        "alt": "Velocity Gọng kim loại bo tròn, ảnh 4 chụp tại Kính thuốc Anh Thi"
       }
     ],
-    "sourceUrl": "https://matkinhtamduc.com/gong-kinh-parim-85006/",
-    "sourceName": "Mắt Kính Tâm Đức",
+    "sourceName": "Kính thuốc Anh Thi",
     "checkedAt": "2026-10-17"
   },
   {
-    "slug": "exfash-ef69473",
-    "name": "EXFASH EF69473",
-    "brand": "EXFASH",
-    "model": "EF69473",
-    "category": "Gọng kính",
-    "tag": "Vuông",
-    "material": "Nhựa Ultem",
-    "shape": "Vuông",
+    "slug": "stance-gong-trong",
+    "brand": "Stance",
+    "model": "Gọng trong và chuyển màu",
+    "shape": "Bo vuông và mắt mèo",
+    "material": "Liên hệ tư vấn",
     "colors": [
+      "Xám trong",
+      "Nâu trong",
+      "Trong suốt",
       "Đen"
     ],
-    "description": "Dáng vuông màu đen nhám, đệm mũi liền gọng và cấu trúc Ultem cho phong cách đơn giản mỗi ngày.",
-    "priceValue": 578000,
+    "priceValue": null,
+    "description": "Bộ gọng Stance với sắc trong suốt, xám và nâu, cùng các dáng bo vuông và mắt mèo. Xem ảnh chụp từng gọng và ảnh nhiều mẫu tại cửa hàng.",
+    "name": "Stance Gọng trong và chuyển màu",
+    "category": "Gọng kính",
+    "tag": "Bo vuông và mắt mèo",
     "images": [
       {
-        "src": "/images/products/exfash-ef69473-1.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/ef69473__3__32dfacd762ed44dfa0d846e700653a5e.jpg",
-        "alt": "EXFASH EF69473, ảnh sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_22-45-39.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-39.jpg",
+        "alt": "Stance Gọng trong và chuyển màu, ảnh 1 chụp tại Kính thuốc Anh Thi"
       },
       {
-        "src": "/images/products/exfash-ef69473-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/ef69473__8__5b9d44840f4a48eabdc152b3978a2a77.jpg",
-        "alt": "EXFASH EF69473, góc nhìn sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_22-45-42.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-42.jpg",
+        "alt": "Stance Gọng trong và chuyển màu, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-45-34.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-34.jpg",
+        "alt": "Stance Gọng trong và chuyển màu, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-45-37.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-37.jpg",
+        "alt": "Stance Gọng trong và chuyển màu, ảnh 4 chụp tại Kính thuốc Anh Thi"
       }
     ],
-    "sourceUrl": "https://matkinhshady.com/products/exfash-eyewear-glasses-ef69473",
-    "sourceName": "Mắt Kính Shady",
+    "sourceName": "Kính thuốc Anh Thi",
     "checkedAt": "2026-10-17"
   },
   {
-    "slug": "new-balance-nb09332",
-    "name": "New Balance NB09332",
-    "brand": "New Balance",
-    "model": "NB09332",
+    "slug": "bolon-gong-vuong",
+    "brand": "BOLON",
+    "model": "Gọng vuông đen và đồi mồi",
+    "shape": "Vuông",
+    "material": "Liên hệ tư vấn",
+    "colors": [
+      "Đen",
+      "Đồi mồi"
+    ],
+    "priceValue": 3080000,
+    "description": "Gọng BOLON bản rõ nét với hai sắc đen và đồi mồi. Bộ ảnh có mặt trước và góc càng kính; giá trên tem là của gọng đen trong ảnh đầu.",
+    "name": "BOLON Gọng vuông đen và đồi mồi",
+    "category": "Gọng kính",
+    "tag": "Vuông",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_22-45-46.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-45-46.jpg",
+        "alt": "BOLON Gọng vuông đen và đồi mồi, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-00.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-00.jpg",
+        "alt": "BOLON Gọng vuông đen và đồi mồi, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-10.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-10.jpg",
+        "alt": "BOLON Gọng vuông đen và đồi mồi, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-13.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-13.jpg",
+        "alt": "BOLON Gọng vuông đen và đồi mồi, ảnh 4 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "face2face-gong-kim-loai",
+    "brand": "FACE2FACE",
+    "model": "Gọng kim loại tông hồng",
+    "shape": "Bo tròn",
+    "material": "Thép không gỉ",
+    "colors": [
+      "Vàng hồng",
+      "Hồng",
+      "Tím"
+    ],
+    "priceValue": null,
+    "description": "Gọng FACE2FACE có viền kim loại mảnh, đệm mũi rời và các tông hồng, tím. Xem ảnh riêng từng màu cùng ảnh các gọng đặt cạnh nhau.",
+    "name": "FACE2FACE Gọng kim loại tông hồng",
+    "category": "Gọng kính",
+    "tag": "Bo tròn",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-12.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-12.jpg",
+        "alt": "FACE2FACE Gọng kim loại tông hồng, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-14.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-14.jpg",
+        "alt": "FACE2FACE Gọng kim loại tông hồng, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-15.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-15.jpg",
+        "alt": "FACE2FACE Gọng kim loại tông hồng, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "bolon-gong-xam-trong",
+    "brand": "BOLON",
+    "model": "Gọng vuông xám trong",
+    "shape": "Vuông",
+    "material": "Liên hệ tư vấn",
+    "colors": [
+      "Xám trong"
+    ],
+    "priceValue": null,
+    "description": "Gọng BOLON dáng vuông màu xám trong, phối càng tông kim loại. Hai ảnh chụp mặt trước và bên hông giúp bạn nhìn kỹ đường nét của gọng.",
+    "name": "BOLON Gọng vuông xám trong",
+    "category": "Gọng kính",
+    "tag": "Vuông",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-17.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-17.jpg",
+        "alt": "BOLON Gọng vuông xám trong, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_22-46-20.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_22-46-20.jpg",
+        "alt": "BOLON Gọng vuông xám trong, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "exfash-kids",
+    "brand": "EXFASH",
+    "model": "Kids Special hồng và tím",
+    "shape": "Chữ nhật",
+    "material": "Liên hệ tư vấn",
+    "colors": [
+      "Hồng",
+      "Tím"
+    ],
+    "priceValue": null,
+    "description": "Dòng EXFASH Kids Special với gọng màu hồng và tím, kèm ảnh cận càng kính. Ghé cửa hàng để được kiểm tra độ vừa và căn chỉnh cho trẻ.",
+    "name": "EXFASH Kids Special hồng và tím",
     "category": "Gọng kính",
     "tag": "Chữ nhật",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_23-02-28.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-02-28.jpg",
+        "alt": "EXFASH Kids Special hồng và tím, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-02-04.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-02-04.jpg",
+        "alt": "EXFASH Kids Special hồng và tím, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-02-05.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-02-05.jpg",
+        "alt": "EXFASH Kids Special hồng và tím, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "exfash-ef45402",
+    "brand": "EXFASH",
+    "model": "EF45402",
+    "shape": "Bo tròn",
     "material": "Nhựa TR90",
-    "shape": "Chữ nhật",
     "colors": [
+      "Hồng trong",
+      "Xanh",
+      "Nâu trong"
+    ],
+    "priceValue": 680000,
+    "description": "Gọng EXFASH EF45402 bằng TR90, dáng bo tròn với ba sắc hồng trong, xanh và nâu trong. Bộ ảnh có từng màu riêng và ảnh đối chiếu ba màu.",
+    "name": "EXFASH EF45402",
+    "category": "Gọng kính",
+    "tag": "Bo tròn",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-18.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-18.jpg",
+        "alt": "EXFASH EF45402, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-24.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-24.jpg",
+        "alt": "EXFASH EF45402, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-28.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-28.jpg",
+        "alt": "EXFASH EF45402, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-31.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-31.jpg",
+        "alt": "EXFASH EF45402, ảnh 4 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "ziozia-gong-trong",
+    "brand": "ZIOZIA",
+    "model": "Gọng trong càng tím hồng",
+    "shape": "Bo tròn",
+    "material": "Liên hệ tư vấn",
+    "colors": [
+      "Trong suốt",
+      "Tím nhạt",
+      "Hồng"
+    ],
+    "priceValue": null,
+    "description": "Gọng ZIOZIA có mặt trước trong suốt kết hợp càng tím, hồng. Xem ảnh hai gọng và góc cận để so sánh các chi tiết màu.",
+    "name": "ZIOZIA Gọng trong càng tím hồng",
+    "category": "Gọng kính",
+    "tag": "Bo tròn",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-36.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-36.jpg",
+        "alt": "ZIOZIA Gọng trong càng tím hồng, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-39.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-39.jpg",
+        "alt": "ZIOZIA Gọng trong càng tím hồng, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "stance-gong-tim-do",
+    "brand": "Stance",
+    "model": "Gọng chữ nhật tím và đỏ",
+    "shape": "Chữ nhật",
+    "material": "Ultem",
+    "colors": [
+      "Tím",
+      "Đỏ"
+    ],
+    "priceValue": null,
+    "description": "Gọng Stance dáng chữ nhật với hai màu tím và đỏ, có ảnh chụp riêng từng màu. Liên hệ Anh Thi để chọn kích thước và thử gọng phù hợp.",
+    "name": "Stance Gọng chữ nhật tím và đỏ",
+    "category": "Gọng kính",
+    "tag": "Chữ nhật",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-47.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-47.jpg",
+        "alt": "Stance Gọng chữ nhật tím và đỏ, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-50.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-50.jpg",
+        "alt": "Stance Gọng chữ nhật tím và đỏ, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-43.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-43.jpg",
+        "alt": "Stance Gọng chữ nhật tím và đỏ, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "exfash-gong-chuyen-mau",
+    "brand": "EXFASH",
+    "model": "Gọng chữ nhật chuyển màu",
+    "shape": "Chữ nhật",
+    "material": "Nhựa TR90",
+    "colors": [
+      "Xám",
+      "Xanh",
+      "Hồng"
+    ],
+    "priceValue": null,
+    "description": "Bộ gọng EXFASH TR90 với mặt trước chuyển từ màu sang trong suốt. Hai ảnh chụp nhóm cho thấy các sắc xám, xanh và hồng tại cửa hàng.",
+    "name": "EXFASH Gọng chữ nhật chuyển màu",
+    "category": "Gọng kính",
+    "tag": "Chữ nhật",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-56.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-56.jpg",
+        "alt": "EXFASH Gọng chữ nhật chuyển màu, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-10-53.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-10-53.jpg",
+        "alt": "EXFASH Gọng chữ nhật chuyển màu, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "flyar-gong-trong",
+    "brand": "Flyar",
+    "model": "Gọng trong xanh và hồng",
+    "shape": "Chữ nhật",
+    "material": "Liên hệ tư vấn",
+    "colors": [
+      "Trong suốt",
+      "Xanh ngọc",
+      "Hồng nhạt"
+    ],
+    "priceValue": 480000,
+    "description": "Hai gọng Flyar mặt trong suốt, phối càng xanh ngọc và hồng nhạt trong ảnh chụp tại Anh Thi. Giá trên tem đọc được là của gọng hồng phía trước.",
+    "name": "Flyar Gọng trong xanh và hồng",
+    "category": "Gọng kính",
+    "tag": "Chữ nhật",
+    "images": [
+      {
+        "src": "/images/collections/photo_2026-10-17_23-37-43.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-37-43.jpg",
+        "alt": "Flyar Gọng trong xanh và hồng, ảnh 1 chụp tại Kính thuốc Anh Thi"
+      }
+    ],
+    "sourceName": "Kính thuốc Anh Thi",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "slug": "new-balance-gong-kim-loai",
+    "brand": "New Balance",
+    "model": "Gọng kim loại bo vuông",
+    "shape": "Bo vuông",
+    "material": "Kim loại",
+    "colors": [
+      "Vàng hồng",
       "Đen",
       "Xám"
     ],
-    "description": "Gọng chữ nhật mang tinh thần thể thao, có hai lựa chọn đen nhám và xám, dễ kết hợp với trang phục thường ngày.",
-    "priceValue": 1600000,
-    "images": [
-      {
-        "src": "/images/products/new-balance-nb09332-1.png",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/nb09332_d72a65a0d5344052bf897abc53def58d.png",
-        "alt": "New Balance NB09332, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/new-balance-nb09332-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/g_ng_k_nh_new_balance_nam_n__nb09332__1__1a12c585452f45388eecbcdb8020d159.jpg",
-        "alt": "New Balance NB09332, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhshady.com/products/new-balance-eyewear-glasses-nb09332",
-    "sourceName": "Mắt Kính Shady",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "parim-83444",
-    "name": "PARIM 83444",
-    "brand": "PARIM",
-    "model": "83444",
+    "priceValue": 1700000,
+    "description": "Bộ gọng New Balance viền kim loại với sắc vàng hồng, đen và xám. Giá trên tem là của gọng vàng hồng trong ảnh đầu; xem các ảnh để so sánh những dáng gọng cùng bộ.",
+    "name": "New Balance Gọng kim loại bo vuông",
     "category": "Gọng kính",
-    "tag": "Đa giác",
-    "material": "Nhựa",
-    "shape": "Đa giác",
-    "colors": [],
-    "description": "Đường viền đa giác tạo điểm nhấn vừa phải, kết hợp đệm mũi rời có thể căn chỉnh khi thử kính.",
-    "priceValue": 1431000,
+    "tag": "Bo vuông",
     "images": [
       {
-        "src": "/images/products/parim-83444-1.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/04/83444_B1-2.jpg",
-        "alt": "PARIM 83444, ảnh sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_23-37-46.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-37-46.jpg",
+        "alt": "New Balance Gọng kim loại bo vuông, ảnh 1 chụp tại Kính thuốc Anh Thi"
       },
       {
-        "src": "/images/products/parim-83444-2.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/04/83444_B1-1.jpg",
-        "alt": "PARIM 83444, góc nhìn sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_23-37-56.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-37-56.jpg",
+        "alt": "New Balance Gọng kim loại bo vuông, ảnh 2 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-37-59.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-37-59.jpg",
+        "alt": "New Balance Gọng kim loại bo vuông, ảnh 3 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-37-50.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-37-50.jpg",
+        "alt": "New Balance Gọng kim loại bo vuông, ảnh 4 chụp tại Kính thuốc Anh Thi"
+      },
+      {
+        "src": "/images/collections/photo_2026-10-17_23-38-02.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-38-02.jpg",
+        "alt": "New Balance Gọng kim loại bo vuông, ảnh 5 chụp tại Kính thuốc Anh Thi"
       }
     ],
-    "sourceUrl": "https://matkinhtamduc.com/gong-kinh-parim-83444/",
-    "sourceName": "Mắt Kính Tâm Đức",
+    "sourceName": "Kính thuốc Anh Thi",
     "checkedAt": "2026-10-17"
   },
   {
-    "slug": "exfash-ef75287t",
-    "name": "EXFASH EF75287T",
-    "brand": "EXFASH",
-    "model": "EF75287T",
-    "category": "Gọng kính",
-    "tag": "Cánh bướm",
-    "material": "Titanium",
-    "shape": "Cánh bướm",
-    "colors": [
-      "Hồng",
-      "Bạc"
-    ],
-    "description": "Gọng titanium dáng cánh bướm với đường viền mảnh và ve mũi rời, phù hợp khi bạn muốn thử một dáng kính mềm mại.",
-    "priceValue": 1258000,
-    "images": [
-      {
-        "src": "/images/products/exfash-ef75287t-1.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/ef75287t__13__08c9e23a51df4e78ba43ea67ea370d28.jpg",
-        "alt": "EXFASH EF75287T, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/exfash-ef75287t-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/ef75287t__17__34076b50b97845379bd025aca87e8b66.jpg",
-        "alt": "EXFASH EF75287T, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhshady.com/products/exfash-eyewear-glasses-ef75287t",
-    "sourceName": "Mắt Kính Shady",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "new-balance-nbz07074x",
-    "name": "New Balance NBZ07074X",
+    "slug": "new-balance-gong-tron",
     "brand": "New Balance",
-    "model": "NBZ07074X",
+    "model": "Gọng tròn tông nâu",
+    "shape": "Tròn",
+    "material": "Kim loại",
+    "colors": [
+      "Nâu"
+    ],
+    "priceValue": null,
+    "description": "Gọng New Balance dáng tròn tông nâu, viền kim loại mảnh và đệm mũi rời. Xem ảnh chụp tại cửa hàng và liên hệ Anh Thi để hỏi mã mẫu, kích thước và giá.",
+    "name": "New Balance Gọng tròn tông nâu",
     "category": "Gọng kính",
-    "tag": "Chữ nhật",
-    "material": "Titanium",
-    "shape": "Chữ nhật",
-    "colors": [
-      "Đen",
-      "Bạc"
-    ],
-    "description": "Khung titanium dáng chữ nhật, có phiên bản đen và bạc; thiết kế mảnh dành cho phong cách gọn gàng.",
-    "priceValue": 2320000,
+    "tag": "Tròn",
     "images": [
       {
-        "src": "/images/products/new-balance-nbz07074x-1.png",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/nbz07074x__1__50e5d4cece5a4d3999b3a65a271a51ba.png",
-        "alt": "New Balance NBZ07074X, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/new-balance-nbz07074x-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/g_ng_k_nh_new_balance_nam_n__nbz07074x__1__b9b59a5557b1431892e10c636e4e40e3.jpg",
-        "alt": "New Balance NBZ07074X, góc nhìn sản phẩm"
+        "src": "/images/collections/photo_2026-10-17_23-38-06.webp",
+        "sourceFile": "eyeglassed_collections/photo_2026-10-17_23-38-06.jpg",
+        "alt": "New Balance Gọng tròn tông nâu, ảnh 1 chụp tại Kính thuốc Anh Thi"
       }
     ],
-    "sourceUrl": "https://matkinhshady.com/products/new-balance-eyewear-glasses-nbz07074x",
-    "sourceName": "Mắt Kính Shady",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "parim-85007",
-    "name": "PARIM 85007",
-    "brand": "PARIM",
-    "model": "85007",
-    "category": "Gọng kính",
-    "tag": "Chữ nhật",
-    "material": "Nhựa Ultem",
-    "shape": "Chữ nhật",
-    "colors": [],
-    "description": "Thiết kế nguyên khung dáng chữ nhật với chất liệu Ultem và ve mũi rời, cân bằng nét rõ ràng với đường viền thanh.",
-    "priceValue": 1701000,
-    "images": [
-      {
-        "src": "/images/products/parim-85007-1.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/03/85007_B1-2.jpg",
-        "alt": "PARIM 85007, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/parim-85007-2.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/03/85007_B1-1.jpg",
-        "alt": "PARIM 85007, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhtamduc.com/gong-kinh-parim-85007/",
-    "sourceName": "Mắt Kính Tâm Đức",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "exfash-ef84472",
-    "name": "EXFASH EF84472",
-    "brand": "EXFASH",
-    "model": "EF84472",
-    "category": "Gọng kính",
-    "tag": "Chữ nhật",
-    "material": "Nhựa TR90",
-    "shape": "Chữ nhật",
-    "colors": [
-      "Đen"
-    ],
-    "description": "Gọng nhựa TR90 dáng chữ nhật, đệm mũi liền khung; thiết kế dễ phối cho nhu cầu sử dụng hằng ngày.",
-    "priceValue": 841500,
-    "images": [
-      {
-        "src": "/images/products/exfash-ef84472-1.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/ef84472__3__a6fac4cfc4164b999a440bf7a0f62b41.jpg",
-        "alt": "EXFASH EF84472, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/exfash-ef84472-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/ef84472__10__cf527337aa9946228b8b76f13717a5a5.jpg",
-        "alt": "EXFASH EF84472, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhshady.com/products/exfash-eyewear-glasses-ef84472",
-    "sourceName": "Mắt Kính Shady",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "new-balance-nbo06245z",
-    "name": "New Balance NBO06245Z",
-    "brand": "New Balance",
-    "model": "NBO06245Z",
-    "category": "Gọng kính",
-    "tag": "Chữ nhật",
-    "material": "Acetate & kim loại",
-    "shape": "Chữ nhật",
-    "colors": [
-      "Đen"
-    ],
-    "description": "Mặt gọng acetate màu đen kết hợp càng kim loại, dáng chữ nhật mang nét thể thao và chỉn chu.",
-    "priceValue": 1520000,
-    "images": [
-      {
-        "src": "/images/products/new-balance-nbo06245z-1.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/g_ng_k_nh_new_balance_nam_n__nbo06245z__4__3c23323837e84e028baabf76e9bb8c2e.jpg",
-        "alt": "New Balance NBO06245Z, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/new-balance-nbo06245z-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/g_ng_k_nh_new_balance_nam_n__nbo06245z__1__b0833e9e70814eb7b2b67ab8199b1010.jpg",
-        "alt": "New Balance NBO06245Z, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhshady.com/products/new-balance-eyewear-glasses-nbo06245z",
-    "sourceName": "Mắt Kính Shady",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "parim-84043",
-    "name": "PARIM 84043",
-    "brand": "PARIM",
-    "model": "84043",
-    "category": "Kính mát",
-    "tag": "Mắt mèo",
-    "material": "Acetate",
-    "shape": "Mắt mèo",
-    "colors": [],
-    "description": "Kính mát mắt mèo với khung acetate và đệm mũi liền, tạo đường nét nổi bật cho trang phục ngoài trời.",
-    "priceValue": 1458000,
-    "images": [
-      {
-        "src": "/images/products/parim-84043-1.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/03/84043_B1-2.jpg",
-        "alt": "PARIM 84043, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/parim-84043-2.jpg",
-        "sourceUrl": "https://cdn.matkinhtamduc.com/wp-content/uploads/2025/03/84043_B1-1.jpg",
-        "alt": "PARIM 84043, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhtamduc.com/kinh-mat-parim-84043/",
-    "sourceName": "Mắt Kính Tâm Đức",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "exfash-ef292011",
-    "name": "EXFASH EF292011",
-    "brand": "EXFASH",
-    "model": "EF292011",
-    "category": "Kính mát",
-    "tag": "Cánh bướm",
-    "material": "Nhựa TR90",
-    "shape": "Cánh bướm",
-    "colors": [
-      "Xám",
-      "Đen"
-    ],
-    "description": "Kính mát dáng cánh bướm có các phiên bản xám và đen, phù hợp để thử cùng phong cách dạo phố.",
-    "priceValue": 712000,
-    "images": [
-      {
-        "src": "/images/products/exfash-ef292011-1.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/k_nh_m_t_exfash_n__ef292011__5__7af3ec28290f44aebe9de74a19de4cc4.jpg",
-        "alt": "EXFASH EF292011, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/exfash-ef292011-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/k_nh_m_t_exfash_n__ef292011__1__97157b1e1b05478bbebb06ae33bd83fa.jpg",
-        "alt": "EXFASH EF292011, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhshady.com/products/exfash-eyewear-sunglasses-ef292011",
-    "sourceName": "Mắt Kính Shady",
-    "checkedAt": "2026-10-17"
-  },
-  {
-    "slug": "new-balance-nb08139x",
-    "name": "New Balance NB08139X",
-    "brand": "New Balance",
-    "model": "NB08139X",
-    "category": "Kính mát",
-    "tag": "Chữ nhật thể thao",
-    "material": "Nhựa",
-    "shape": "Chữ nhật thể thao",
-    "colors": [
-      "Đen"
-    ],
-    "description": "Kính mát màu đen dáng chữ nhật thể thao, mắt kính cỡ 63 mm; nên thử trực tiếp để kiểm tra độ ôm.",
-    "priceValue": 1680000,
-    "images": [
-      {
-        "src": "/images/products/new-balance-nb08139x-1.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/k_nh_m_t_new_balance_nam_n__nb08139x__5__95b2065e6b194fb8bfb8ef7af38220e3.jpg",
-        "alt": "New Balance NB08139X, ảnh sản phẩm"
-      },
-      {
-        "src": "/images/products/new-balance-nb08139x-2.jpg",
-        "sourceUrl": "https://cdn.hstatic.net/products/1000096196/k_nh_m_t_new_balance_nam_n__nb08139x__1__d193a9e96f304de5b611f5fb82934222.jpg",
-        "alt": "New Balance NB08139X, góc nhìn sản phẩm"
-      }
-    ],
-    "sourceUrl": "https://matkinhshady.com/products/new-balance-eyewear-sunglasses-nb08139x",
-    "sourceName": "Mắt Kính Shady",
+    "sourceName": "Kính thuốc Anh Thi",
     "checkedAt": "2026-10-17"
   }
 ]

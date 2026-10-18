@@ -7,31 +7,35 @@ test("combines brand, budget and search and recovers from an empty result", asyn
   const user = userEvent.setup();
   render(<ProductCatalog products={eyewearProducts} />);
   await user.click(screen.getByRole("button", { name: /^EXFASH$/ }));
-  expect(screen.getByRole("status")).toHaveTextContent("4 mẫu kính EXFASH");
-  await user.selectOptions(screen.getByLabelText("Ngân sách"), "1000000");
   expect(screen.getByRole("status")).toHaveTextContent("3 mẫu kính EXFASH");
+  await user.selectOptions(screen.getByLabelText("Ngân sách"), "1000000");
+  expect(screen.getByRole("status")).toHaveTextContent("1 mẫu kính EXFASH");
   await user.type(screen.getByRole("searchbox"), "does-not-exist");
   expect(
     screen.getByRole("heading", { name: "Chưa tìm thấy mẫu phù hợp" }),
   ).toBeInTheDocument();
   await user.click(screen.getByRole("button", { name: "Xem tất cả mẫu kính" }));
-  expect(screen.getByRole("status")).toHaveTextContent("12 mẫu kính");
+  expect(screen.getByRole("status")).toHaveTextContent("13 mẫu kính");
 });
 
 test("sorts prices numerically and keeps fixed category results", async () => {
   const user = userEvent.setup();
   render(
-    <ProductCatalog products={eyewearProducts} fixedCategory="Kính mát" />,
+    <ProductCatalog products={eyewearProducts} fixedCategory="Gọng kính" />,
   );
-  expect(screen.getByRole("status")).toHaveTextContent("3 mẫu kính");
+  expect(screen.getByRole("status")).toHaveTextContent("13 mẫu kính");
   await user.selectOptions(screen.getByLabelText("Sắp xếp"), "price-asc");
   const cards = screen.getAllByRole("article");
-  expect(within(cards[0]).getByRole("heading")).toHaveTextContent("EF292011");
-  expect(within(cards[2]).getByRole("heading")).toHaveTextContent("NB08139X");
+  expect(within(cards[0]).getByRole("heading")).toHaveTextContent("Gọng trong xanh và hồng");
+  expect(within(cards[2]).getByRole("heading")).toHaveTextContent("EF45402");
+  expect(within(cards.at(-1)!).getByText("Liên hệ")).toBeInTheDocument();
+  await user.selectOptions(screen.getByLabelText("Sắp xếp"), "price-desc");
+  expect(within(screen.getAllByRole("article")[0]).getByRole("heading")).toHaveTextContent("Gọng vuông đen và đồi mồi");
+  expect(within(screen.getAllByRole("article").at(-1)!).getByText("Liên hệ")).toBeInTheDocument();
   await user.type(screen.getByRole("searchbox"), "mat meo");
   expect(screen.getByRole("status")).toHaveTextContent("1 mẫu kính");
   expect(
-    screen.getByRole("link", { name: "Xem PARIM 84043" }),
+    screen.getByRole("link", { name: "Xem Stance Gọng trong và chuyển màu" }),
   ).toBeInTheDocument();
 });
 
@@ -57,7 +61,7 @@ test("keeps applied options visible and removes one without clearing the others"
   await user.selectOptions(screen.getByLabelText("Loại kính"), "Gọng kính");
   await user.selectOptions(screen.getByLabelText("Ngân sách"), "1000000");
   await user.selectOptions(screen.getByLabelText("Sắp xếp"), "price-desc");
-  await user.click(screen.getByRole("button", { name: "Xem 2 mẫu kính" }));
+  await user.click(screen.getByRole("button", { name: "Xem 1 mẫu kính" }));
 
   const applied = screen.getByRole("group", { name: "Bộ lọc đang áp dụng" });
   expect(within(applied).getAllByRole("button")).toHaveLength(3);
@@ -75,12 +79,12 @@ test("keeps applied options visible and removes one without clearing the others"
 
 test("allows resetting a sort-only selection", async () => {
   const user = userEvent.setup();
-  render(<ProductCatalog products={eyewearProducts} fixedCategory="Kính mát" />);
+  render(<ProductCatalog products={eyewearProducts} fixedCategory="Gọng kính" />);
   await user.selectOptions(screen.getByLabelText("Sắp xếp"), "price-desc");
   await user.click(screen.getByRole("button", { name: "Xóa bộ lọc" }));
 
   expect(screen.getByLabelText("Sắp xếp")).toHaveValue("featured");
   expect(screen.queryByRole("group", { name: "Bộ lọc đang áp dụng" })).toBeNull();
-  expect(screen.getByRole("status")).toHaveTextContent("3 mẫu kính");
+  expect(screen.getByRole("status")).toHaveTextContent("13 mẫu kính");
   expect(screen.getByRole("status")).toHaveFocus();
 });

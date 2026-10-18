@@ -20,19 +20,21 @@
 
 **Buying eyewear online should make shape, fit, prescription needs, price, and style easy to compare without burying products under noisy interface chrome.**
 
-Lensora is a modern e-commerce storefront foundation for an optical retailer. The project pairs a Next.js 15 frontend shell with a documented architecture for product catalog pages, cart and checkout flows, customer accounts, search, filters, analytics, and future eyewear-specific features like virtual try-on and prescription upload.
+Lensora is a modern e-commerce storefront foundation for an optical retailer. The project pairs a Next.js 15 frontend shell with a documented architecture for product catalog pages, cart and checkout flows, customer accounts, search, filters and analytics. Product pages include a camera-based virtual try-on; prescription upload remains planned.
 
 The storefront serves **Kính thuốc Anh Thi** in Vĩnh Long. Its shared interface uses navy, light neutral surfaces, Vietnamese typography, restrained rounded controls, and a persistent light/dark preference.
 
-> Current status: home, searchable product categories, 12 product detail pages, doctor profile, eye-exam information, store contact and lens price sheets are implemented. Checkout, inventory integration and server-side appointment delivery remain outside the current frontend.
+> Current status: home, searchable product categories, 13 collection detail pages, doctor profile, eye-exam information, store contact and lens price sheets are implemented. Checkout, inventory integration and server-side appointment delivery remain outside the current frontend.
 
-## Researched eyewear catalogue
+## Store photography catalogue
 
-The catalogue contains four models each from PARIM, EXFASH and New Balance, with 24 local product photographs. Prices, image URLs, retailer attribution and the observation date (17 October 2026) are recorded in `frontend/src/data/eyewear-catalog.json`. The original photographs are in `frontend/public/images/products/`.
+The catalogue uses all **38 owner-supplied photographs** from `eyeglassed_collections/`, organized into 13 collections across Velocity, Stance, BOLON, FACE2FACE, EXFASH, ZIOZIA, Flyar and New Balance. Every displayed catalogue image comes from this folder. Optimized WebP versions live in `frontend/public/images/collections/`; each image record in `frontend/src/data/eyewear-catalog.json` retains its original `sourceFile` for traceability.
 
-Prices are retailer reference prices from Mắt Kính Tâm Đức and Mắt Kính Shady. They do not represent Anh Thi's confirmed selling price or inventory. Product pages link to their source; optical-frame prices exclude prescription lenses. Recheck the source and update `checkedAt`, price and source assets together when refreshing a record.
+Run `node frontend/scripts/import-eyewear-collection.mjs` to regenerate the catalogue and optimized images. The importer checks for duplicate or unassigned photographs and does not fetch any external assets. It preserves full photographs; responsive cards crop them with CSS, while the detail gallery shows the full frame.
 
-The catalogue supports brand/category/budget filters, accent-insensitive search and numerical price sorting. `/san-pham/[slug]` provides a two-photo gallery and related models. Existing category URLs remain available; the lens-price link stays hidden on the home page.
+Clearly legible sticker prices are recorded as `priceValue`; unknown prices remain `null` and display “Liên hệ”. Sticker prices are not confirmed current selling prices. Budget filters exclude unknown prices, and price sorting keeps them after priced items in either direction. Collection names describe the visible frames when an exact model is unverified; do not transfer model specifications from the retired retailer catalogue.
+
+The catalogue supports brand/category/budget filters, accent-insensitive search and numerical price sorting. `/san-pham/[slug]` provides the collection's photographs and related collections. The old 12 researched-product URLs redirect permanently to `/gong-kinh`. The supplied photographs contain optical frames, so `/kinh-ram` offers store contact until sunglass photographs are available. Existing category URLs remain available; the lens-price link stays hidden on the home page.
 
 Appointment details are checked locally and retained for the customer. Confirmation is through `tel:+84858060789`; the form does not claim to submit a booking to a server.
 
@@ -70,7 +72,7 @@ The home page opens with the supplied 33-second Anh Thi advertisement, served fr
     </td>
     <td width="50%" valign="top">
       <h3>Growth-ready roadmap</h3>
-      <p>Future features include virtual try-on, face shape analysis, AI recommendations, prescription upload, loyalty, gift cards, and a mobile app.</p>
+      <p>Try frames with the front-camera preview. Planned features include face shape analysis, AI recommendations, prescription upload, loyalty, gift cards, and a mobile app.</p>
     </td>
   </tr>
 </table>
@@ -203,7 +205,8 @@ flowchart LR
 | Customer | Account, orders, order tracking |
 | Content | About, contact, FAQ, newsletter, testimonials |
 | Search | Product search, category filters, product filters |
-| Future eyewear tools | Virtual try-on, face shape analysis, prescription upload, AI recommendations |
+| Virtual try-on | Front-camera preview, face tracking, 2 calibrated frame images from the supplied photographs and PNG export |
+| Future eyewear tools | Face shape analysis, prescription upload, AI recommendations |
 
 ---
 
@@ -289,7 +292,38 @@ Also run `npm test -- --run` and inspect the affected routes on desktop and mobi
 
 Mobile catalogue controls keep search and brand selection visible, with category, budget and sorting behind “Bộ lọc và sắp xếp” below 861px. Inputs use 16px text to avoid iOS focus zoom. Brand stories scroll horizontally below 761px; product details reserve space for a bottom contact bar and device safe areas. Check portrait and landscape layouts at 375, 414, 667, 768, 1024, 1280 and 1920px, including full-page scrolling, menu access and footer links.
 
-The fixed social contact buttons are configured in `frontend/src/components/marketing/social-contact-rail.tsx`. Zalo uses the store phone number. Facebook and TikTok require the store's official profile URLs; empty entries stay hidden. The rail hides for printing and while the mobile menu is open, and sits above the product contact bar on small screens.
+The fixed social contact buttons are configured in `frontend/src/components/marketing/social-contact-rail.tsx`. Zalo uses the store phone number; Facebook links to `kinhthuocanhthi` and TikTok to `@kinhthuocanhthivl`, as confirmed by the store owner. Empty entries stay hidden. The rail hides for printing and while the mobile menu is open, and sits above the product contact bar on small screens.
+
+## Virtual try-on
+
+Product pages include **Thử kính bằng camera** for the calibrated BOLON and New Balance collections. The dialog lets visitors enable their front camera, switch frames,
+adjust scale/height, stop/restart the camera and download a PNG. It requests
+video only after an explicit click and never requests a microphone. Camera
+frames and facial landmarks stay on the device; nothing is uploaded or stored
+by the feature. Closing the dialog, leaving the page or hiding the browser tab
+stops all media tracks and terminates the face-tracking worker.
+
+Face Landmarker runs in a dedicated worker, at most 15 inferences per second
+with one frame in flight. A missed or strongly turned face hides the overlay.
+The 2D frame uses each product's photographed front rim, with a calibrated
+contour and transparent lenses. Other collections keep their photo galleries; a
+camera button appears only after a frame has a calibrated mask. This helps
+compare appearance and does not measure physical fit. The dialog states that
+limitation and recommends checking fit at the store.
+
+Use HTTPS in production (localhost works for development). Use a recent
+Chrome, Edge or Safari with camera, Web Workers and WebAssembly support.
+Permission denial, missing/busy cameras, model load failures and interruptions
+have retry instructions; the ordinary product gallery and contact links remain
+available. The model and WASM are served locally. `predev`/`prebuild` copy the
+pinned package's WASM into `public/mediapipe/wasm`, including in the Docker
+build; see `frontend/public/mediapipe/README.md` for provenance and checksum.
+
+Validate using a synthetic camera stream, including actual worker inference,
+frame switching, missing-face handling, PNG export, permissions, closing during
+permission/load, tab hiding and keyboard focus restoration. Test on real iOS
+and Android hardware before making browser compatibility claims. Local browser
+emulation does not establish real-camera accuracy or frame rates on every device.
 
 ## Local search
 
@@ -297,7 +331,7 @@ The fixed social contact buttons are configured in `frontend/src/components/mark
 
 Metadata streaming is disabled through `htmlLimitedBots` in `next.config.ts` so metadata remains in the initial `<head>` even on the dynamic home page. Recheck both browser and crawler HTML responses if that setting changes.
 
-`/robots.txt` points crawlers to `/sitemap.xml`, which lists 23 preferred page URLs and 24 product photos. `/kinh-mat` remains accessible as a catalogue alias but canonicalizes to `/gong-kinh` and is excluded from the sitemap. Filter/query variants canonicalize to the unfiltered page. Do not add new keyword-only copies of these pages.
+`/robots.txt` points crawlers to `/sitemap.xml`, which lists 24 preferred page URLs and 38 collection photos. `/kinh-mat` remains accessible as a catalogue alias but canonicalizes to `/gong-kinh` and is excluded from the sitemap. Filter/query variants canonicalize to the unfiltered page. Do not add new keyword-only copies of these pages.
 
 The root JSON-LD graph identifies the business as `Optician` with the confirmed address, coordinates, phone and hours. Service and breadcrumb data describe the relevant visible pages. Do not mark retailer reference prices as offers sold by Anh Thi or invent ratings, medical services or social profiles. The eye-exam page explicitly asks visitors to confirm the service and doctor schedule by phone; store opening hours are not a doctor schedule.
 

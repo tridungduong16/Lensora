@@ -30,6 +30,8 @@ export function ProductCatalog({
   const [filtersOpen, setFiltersOpen] = useState(false);
   const filterToggle = useRef<HTMLButtonElement>(null);
   const summaryRef = useRef<HTMLParagraphElement>(null);
+  const hasCategoryProducts =
+    filterProducts(products, { category: fixedCategory }).length > 0;
   const activeFilters = [
     ...(!fixedCategory && category
       ? [{ key: "category", label: category, clear: () => setCategory("") }]
@@ -59,11 +61,13 @@ export function ProductCatalog({
       maxPrice: Number(budget) || undefined,
     });
     if (sort !== "featured")
-      result.sort((a, b) =>
-        sort === "price-asc"
+      result.sort((a, b) => {
+        if (a.priceValue === null) return b.priceValue === null ? 0 : 1;
+        if (b.priceValue === null) return -1;
+        return sort === "price-asc"
           ? a.priceValue - b.priceValue
-          : b.priceValue - a.priceValue,
-      );
+          : b.priceValue - a.priceValue;
+      });
     return result;
   }, [products, brand, query, category, fixedCategory, budget, sort]);
 
@@ -221,21 +225,34 @@ export function ProductCatalog({
       ) : (
         <div className="catalog__empty">
           <Search size={32} strokeWidth={1} aria-hidden="true" />
-          <h3>Chưa tìm thấy mẫu phù hợp</h3>
-          <p>Thử một mã kính khác hoặc mở rộng ngân sách của bạn.</p>
-          <button
-            className="outline-button"
-            type="button"
-            onClick={clearFilters}
-          >
-            Xem tất cả mẫu kính
-          </button>
+          <h3>
+            {hasCategoryProducts
+              ? "Chưa tìm thấy mẫu phù hợp"
+              : "Liên hệ để xem mẫu tại cửa hàng"}
+          </h3>
+          <p>
+            {hasCategoryProducts
+              ? "Thử tìm theo thương hiệu, kiểu dáng hoặc liên hệ Anh Thi để được tư vấn thêm."
+              : "Gọi Anh Thi để được tư vấn các mẫu kính hiện có và sắp xếp thời gian thử trực tiếp."}
+          </p>
+          <a className="text-link" href="tel:+84858060789">
+            Gọi Anh Thi: 085 806 0789
+          </a>
+          {hasCategoryProducts && (
+            <button
+              className="outline-button"
+              type="button"
+              onClick={clearFilters}
+            >
+              Xem tất cả mẫu kính
+            </button>
+          )}
         </div>
       )}
       <p className="catalog__note">
-        Giá và ảnh tham khảo từ các nhà bán lẻ, cập nhật ngày 17/10/2026. Giá
-        gọng chưa gồm tròng kính thuốc. Liên hệ Anh Thi để xác nhận giá bán, màu
-        và mẫu hiện có.
+        Ảnh chụp kính tại Anh Thi. Giá trên tem ảnh chưa gồm tròng kính thuốc;
+        mẫu chưa có giá rõ được ghi “Liên hệ”. Gọi cửa hàng để xác nhận giá bán,
+        màu và mẫu hiện có.
       </p>
     </div>
   );

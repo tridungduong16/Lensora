@@ -27,14 +27,14 @@ test("discovers unique canonical routes and local product images without filter 
       absoluteUrl("/"),
       absoluteUrl("/do-mat"),
       absoluteUrl("/cua-hang"),
-      absoluteUrl("/san-pham/parim-85006"),
+      absoluteUrl("/san-pham/bolon-gong-vuong"),
     ]),
   );
   expect(urls).not.toContain(absoluteUrl("/kinh-mat"));
   expect(
     urls.every((url) => url.startsWith(SITE_URL) && !url.includes("?")),
   ).toBe(true);
-  expect(entries.filter((entry) => entry.images?.length)).toHaveLength(12);
+  expect(entries.filter((entry) => entry.images?.length)).toHaveLength(13);
   expect(robots().sitemap).toBe(absoluteUrl("/sitemap.xml"));
 });
 

@@ -28,7 +28,7 @@ export async function generateMetadata({
   return product
     ? pageMetadata({
         title: `${product.name} | Kính thuốc Anh Thi Vĩnh Long`,
-        description: `${product.description} Xem ảnh, thông số và giá tham khảo; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu và màu.`,
+        description: `${product.description} Xem ảnh chụp tại cửa hàng; liên hệ Anh Thi tại Vĩnh Long để xác nhận mẫu, màu và giá.`,
         path: `/san-pham/${product.slug}`,
         image: product.images[0].src,
       })
@@ -69,7 +69,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <span aria-current="page">{product.model}</span>
         </nav>
         <section className="product-detail" aria-labelledby="product-title">
-          <ProductGallery images={product.images} name={product.name} />
+          <ProductGallery images={product.images} name={product.name} productSlug={product.slug} />
           <div className="product-detail__info">
             <p className="eyebrow">{product.brand}</p>
             <h1 id="product-title">{product.model}</h1>
@@ -77,10 +77,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="product-detail__price">
               <strong>{formatVnd(product.priceValue)}</strong>
               <span>
-                Giá tham khảo
-                {product.category === "Gọng kính"
+                {product.priceValue === null ? "Liên hệ cửa hàng để được báo giá" : "Giá trên tem ảnh"}
+                {product.priceValue !== null && product.category === "Gọng kính"
                   ? " / gọng, chưa gồm tròng thuốc"
-                  : " / kính mát"}
+                  : ""}
               </span>
             </div>
             <dl className="product-specs">
@@ -97,7 +97,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <dd>{product.material}</dd>
               </div>
               <div>
-                <dt>Màu tại nguồn</dt>
+                <dt>Màu trong ảnh</dt>
                 <dd>
                   {product.colors.length
                     ? product.colors.join(", ")
@@ -114,18 +114,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
             <aside className="product-source">
-              <h2>Thông tin tham khảo</h2>
+              <h2>Ảnh tại Kính thuốc Anh Thi</h2>
               <p>
-                Ảnh, giá và thông số từ{" "}
-                <a href={product.sourceUrl} target="_blank" rel="noreferrer">
-                  {product.sourceName}
-                </a>
-                , đối chiếu ngày 17/10/2026. Giá tại Anh Thi và tình trạng mẫu,
-                màu cần được cửa hàng xác nhận.
+                Ảnh chụp kính tại cửa hàng, do Anh Thi cung cấp. Giá trên tem
+                ảnh và các màu trong bộ ảnh cần được cửa hàng xác nhận khi tư vấn.
               </p>
               <p>
-                Ảnh minh họa đúng mã mẫu; các góc ảnh có thể là những phiên bản
-                màu khác nhau.
+                Bộ ảnh có thể gồm nhiều mẫu và màu cùng dòng. Liên hệ Anh Thi
+                để chọn đúng mẫu, kiểm tra chất liệu và thử độ vừa trực tiếp.
               </p>
             </aside>
           </div>
@@ -144,7 +140,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <StorefrontFooter />
       <aside className="mobile-product-contact" aria-label="Tư vấn mẫu kính">
         <div>
-          <span>Giá tham khảo</span>
+          <span>{product.priceValue === null ? "Tư vấn giá tại cửa hàng" : "Giá trên tem"}</span>
           <strong>{formatVnd(product.priceValue)}</strong>
         </div>
         <a className="primary-button" href="tel:+84858060789">

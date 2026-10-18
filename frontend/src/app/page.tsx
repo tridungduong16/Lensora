@@ -25,24 +25,24 @@ const homeNavigation = storefrontNavigation.filter(
 );
 const brandStories = [
   {
-    name: "PARIM",
+    name: "BOLON",
     title: "Một chút khác biệt, mỗi ngày.",
-    copy: "Từ gọng đa giác đến kính mát mắt mèo. Khám phá đường nét và chất liệu qua từng mẫu PARIM.",
-    product: "parim-83444",
-    className: "brand-feature--parim",
+    copy: "Gọng đen, đồi mồi hay xám trong. Xem từng đường nét qua ảnh chụp tại cửa hàng.",
+    product: "bolon-gong-vuong",
+    className: "brand-feature--bolon",
   },
   {
     name: "EXFASH",
     title: "Dễ chọn. Dễ phối.",
-    copy: "Ultem, TR90 hay titanium. Tìm thiết kế hợp với nhịp sống và ngân sách của bạn.",
-    product: "exfash-ef69473",
+    copy: "Từ gọng TR90 nhiều màu đến dòng Kids Special. So sánh các lựa chọn qua ảnh kính thật.",
+    product: "exfash-ef45402",
     className: "brand-feature--exfash",
   },
   {
     name: "New Balance",
     title: "Theo nhịp chuyển động.",
-    copy: "Khám phá phong cách thể thao qua gọng chữ nhật, khung titanium và kính mát.",
-    product: "new-balance-nb09332",
+    copy: "Gọng kim loại thanh mảnh, dáng bo vuông và tròn. Tìm sắc màu hợp với phong cách của bạn.",
+    product: "new-balance-gong-kim-loai",
     className: "brand-feature--nb",
   },
 ];
@@ -53,7 +53,7 @@ const questions = [
   },
   {
     title: "Giá trên website đã gồm tròng kính chưa?",
-    copy: "Giá trong danh mục là giá tham khảo của gọng kính hoặc kính mát từ nhà bán lẻ được dẫn nguồn. Tròng kính thuốc được tư vấn riêng theo thông số và lựa chọn của bạn. Gọi Anh Thi để xác nhận tổng chi phí.",
+    copy: "Giá trong danh mục được đọc từ tem trên ảnh chụp tại cửa hàng và chưa gồm tròng kính thuốc. Mẫu chưa có giá rõ được ghi Liên hệ. Tròng kính được tư vấn riêng; gọi Anh Thi để xác nhận tổng chi phí.",
   },
   {
     title: "Làm sao biết kính có vừa khuôn mặt?",
@@ -109,13 +109,13 @@ export default async function Home({ searchParams }: HomeProps) {
         >
           <div className="refresh-heading">
             <h2 id="collections-title">
-              Ba thương hiệu.
+              Kính thật tại cửa hàng.
               <br />
               Nhiều cách là chính bạn.
             </h2>
             <p>
-              Khám phá PARIM, EXFASH và New Balance qua những thiết kế có mã
-              mẫu, ảnh và thông tin cụ thể.
+              Khám phá BOLON, EXFASH, New Balance và nhiều thương hiệu khác
+              qua ảnh chụp kính tại Anh Thi.
             </p>
           </div>
           <p className="brand-section__hint">

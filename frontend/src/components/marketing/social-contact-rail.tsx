@@ -1,7 +1,7 @@
 export const storefrontSocialProfiles = {
   zalo: "https://zalo.me/0858060789",
-  facebook: "",
-  tiktok: "",
+  facebook: "https://www.facebook.com/kinhthuocanhthi",
+  tiktok: "https://www.tiktok.com/@kinhthuocanhthivl",
 };
 
 const channels = [

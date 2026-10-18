@@ -30,7 +30,7 @@ export function ProductCard({ product }: { product: EyewearProduct }) {
           </h3>
           <div className="eyewear-card__price">
             <strong>{formatVnd(product.priceValue)}</strong>
-            <span>Giá tham khảo</span>
+            <span>{product.priceValue === null ? "Hỏi giá tại cửa hàng" : "Giá trên tem"}</span>
           </div>
         </div>
         <p className="eyewear-card__spec">

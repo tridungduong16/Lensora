@@ -5,7 +5,7 @@ export const SITE_NAME = "Kính thuốc Anh Thi";
 export const HOME_TITLE =
   "Kính thuốc Vĩnh Long | Đo mắt tại Kính thuốc Anh Thi";
 export const HOME_DESCRIPTION =
-  "Kính thuốc Anh Thi tại Vĩnh Long: đo mắt, tư vấn kính thuốc, thử gọng PARIM, EXFASH, New Balance. Ghé 85 Phạm Thái Bường, Phường 4. Gọi 085 806 0789.";
+  "Kính thuốc Anh Thi tại Vĩnh Long: đo mắt, tư vấn kính thuốc, xem ảnh gọng BOLON, EXFASH, New Balance tại cửa hàng. Ghé 85 Phạm Thái Bường, Phường 4. Gọi 085 806 0789.";
 export const SHARE_IMAGE = "/images/anh-thi-vinh-long.png";
 
 export function absoluteUrl(path: string) {
