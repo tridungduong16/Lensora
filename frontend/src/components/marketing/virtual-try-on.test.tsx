@@ -3,6 +3,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, vi } from "vitest";
 import { VirtualTryOn } from "./virtual-try-on";
+import { eyewearProducts } from "@/lib/eyewear-catalog";
 
 vi.mock("./try-on-studio", () => ({ default: () => <p>Camera chỉ bật sau khi bạn chọn bật camera.</p> }));
 
@@ -44,4 +45,11 @@ test("closes when the browser sends the native Escape cancellation", async () =>
 test("does not invent a try-on asset for an uncalibrated product", () => {
   render(<VirtualTryOn slug="uncalibrated-model" />);
   expect(screen.queryByRole("button")).not.toBeInTheDocument();
+});
+
+test.each(eyewearProducts.map((product) => [product.slug]))("opens try-on for catalogue collection %s", async (slug) => {
+  render(<VirtualTryOn slug={slug} />);
+  await userEvent.click(screen.getByRole("button", { name: "Thử kính bằng camera" }));
+  expect(await screen.findByRole("dialog", { name: "Thử kính trên gương mặt bạn" })).toBeVisible();
+  expect(await screen.findByText(/Camera chỉ bật/)).toBeVisible();
 });

@@ -205,7 +205,7 @@ flowchart LR
 | Customer | Account, orders, order tracking |
 | Content | About, contact, FAQ, newsletter, testimonials |
 | Search | Product search, category filters, product filters |
-| Virtual try-on | Front-camera preview, face tracking, 2 calibrated frame images from the supplied photographs and PNG export |
+| Virtual try-on | Front-camera preview, face tracking, 13 calibrated frame images from the supplied photographs and PNG export |
 | Future eyewear tools | Face shape analysis, prescription upload, AI recommendations |
 
 ---
@@ -296,7 +296,7 @@ The fixed social contact buttons are configured in `frontend/src/components/mark
 
 ## Virtual try-on
 
-Product pages include **Thử kính bằng camera** for the calibrated BOLON and New Balance collections. The dialog lets visitors enable their front camera, switch frames,
+All 13 catalogue collections include **Thử kính bằng camera**, with one representative front rim calibrated from each collection's own photograph. The dialog lets visitors enable their front camera, switch frames,
 adjust scale/height, stop/restart the camera and download a PNG. It requests
 video only after an explicit click and never requests a microphone. Camera
 frames and facial landmarks stay on the device; nothing is uploaded or stored
@@ -306,8 +306,8 @@ stops all media tracks and terminates the face-tracking worker.
 Face Landmarker runs in a dedicated worker, at most 15 inferences per second
 with one frame in flight. A missed or strongly turned face hides the overlay.
 The 2D frame uses each product's photographed front rim, with a calibrated
-contour and transparent lenses. Other collections keep their photo galleries; a
-camera button appears only after a frame has a calibrated mask. This helps
+contour and transparent lenses. Catalogue coverage tests require a mask and a
+working camera-dialog trigger for every collection. This helps
 compare appearance and does not measure physical fit. The dialog states that
 limitation and recommends checking fit at the store.
 

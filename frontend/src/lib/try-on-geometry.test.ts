@@ -1,5 +1,6 @@
 import { cameraErrorMessage, getGlassesPose, smoothPose, type FacePoint } from "./try-on-geometry";
 import { tryOnFrames, tryOnProducts } from "./try-on-frames";
+import { eyewearProducts } from "./eyewear-catalog";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
@@ -52,9 +53,10 @@ test("gives actionable recovery for permission denial and unavailable cameras", 
   expect(cameraErrorMessage(new DOMException("busy", "NotReadableError"))).toMatch(/Đóng ứng dụng khác/);
 });
 
-test("every supported model uses its own locally stored photograph and calibrated mask", () => {
-  expect(tryOnProducts).toHaveLength(Object.keys(tryOnFrames).length);
-  expect(tryOnProducts.length).toBeGreaterThan(0);
+test("every catalogue collection has its own local photograph and calibrated try-on mask", () => {
+  const catalogueSlugs = eyewearProducts.map((product) => product.slug).sort();
+  expect(Object.keys(tryOnFrames).sort()).toEqual(catalogueSlugs);
+  expect(tryOnProducts.map((product) => product.slug).sort()).toEqual(catalogueSlugs);
   for (const product of tryOnProducts) {
     const config = tryOnFrames[product.slug];
     expect(product.images.map((image) => image.src)).toContain(config.image);
