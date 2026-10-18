@@ -1241,27 +1241,6 @@ svg {
   display: flex;
   margin-top: 14px;
 }
-.product-source {
-  margin-top: 30px;
-  padding: 22px;
-  background: var(--refresh-tint);
-  border-radius: 8px;
-}
-.product-source h2 {
-  font-size: 14px;
-  letter-spacing: 0;
-}
-.product-source p {
-  margin-top: 10px;
-  color: var(--color-muted);
-  font-size: 11px;
-  line-height: 1.9;
-}
-.product-source a {
-  color: var(--color-navy);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
 .product-related {
   padding-top: var(--section-space);
 }
@@ -2389,13 +2368,6 @@ svg {
     align-items: center;
     gap: 8px;
     margin-bottom: 24px;
-  }
-  .product-source a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    min-width: 44px;
-    vertical-align: middle;
   }
   .product-detail-shell {
     padding-bottom: calc(88px + env(safe-area-inset-bottom));

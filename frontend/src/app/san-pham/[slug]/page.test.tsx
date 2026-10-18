@@ -17,7 +17,7 @@ test("renders supplied photography, sticker price context and direct store conta
   expect(
     screen.getByText(/Giá trên tem ảnh \/ gọng, chưa gồm tròng thuốc/),
   ).toBeInTheDocument();
-  expect(screen.getByRole("heading", { name: "Ảnh tại Kính thuốc Anh Thi" })).toBeInTheDocument();
+  expect(screen.queryByRole("heading", { name: "Ảnh tại Kính thuốc Anh Thi" })).not.toBeInTheDocument();
   expect(screen.queryByRole("link", { name: "Mắt Kính Tâm Đức" })).not.toBeInTheDocument();
   expect(
     screen.getByRole("link", { name: "Gọi tư vấn mẫu này" }),

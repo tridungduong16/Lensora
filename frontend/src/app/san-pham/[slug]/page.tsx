@@ -113,17 +113,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               Thử kính tại cửa hàng
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
-            <aside className="product-source">
-              <h2>Ảnh tại Kính thuốc Anh Thi</h2>
-              <p>
-                Ảnh chụp kính tại cửa hàng, do Anh Thi cung cấp. Giá trên tem
-                ảnh và các màu trong bộ ảnh cần được cửa hàng xác nhận khi tư vấn.
-              </p>
-              <p>
-                Bộ ảnh có thể gồm nhiều mẫu và màu cùng dòng. Liên hệ Anh Thi
-                để chọn đúng mẫu, kiểm tra chất liệu và thử độ vừa trực tiếp.
-              </p>
-            </aside>
           </div>
         </section>
         <section className="product-related" aria-labelledby="related-title">
