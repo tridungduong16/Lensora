@@ -6,21 +6,15 @@ import { useEffect, useState } from "react";
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
   useEffect(() => {
-    const media = window.matchMedia?.("(prefers-color-scheme: dark)");
-    function sync() {
-      let preference: string | null | undefined;
-      try {
-        preference = window.localStorage.getItem?.("anh-thi-theme");
-      } catch {
-        /* Use the system preference when storage is unavailable. */
-      }
-      const next = preference ? preference === "dark" : Boolean(media?.matches);
-      setDark(next);
-      document.documentElement.dataset.theme = next ? "dark" : "light";
+    let preference: string | null | undefined;
+    try {
+      preference = window.localStorage.getItem?.("anh-thi-theme");
+    } catch {
+      /* Keep the light default when storage is unavailable. */
     }
-    sync();
-    media?.addEventListener("change", sync);
-    return () => media?.removeEventListener("change", sync);
+    const next = preference === "dark";
+    setDark(next);
+    document.documentElement.dataset.theme = next ? "dark" : "light";
   }, []);
   function toggle() {
     const next = !dark;

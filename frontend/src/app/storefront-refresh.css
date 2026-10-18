@@ -34,23 +34,6 @@
   --refresh-hover: #2b4151;
   --refresh-focus: #9bc9ef;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --color-page: #121d26;
-    --color-surface: #192731;
-    --color-text: #e6edf3;
-    --color-navy: #b4d7f0;
-    --color-navy-soft: #d0e6f6;
-    --color-muted: #acbbc8;
-    --color-border: #344653;
-    --color-on-navy: #122332;
-    --color-error: #ffb4ae;
-    --refresh-tint: #20313e;
-    --refresh-hover: #2b4151;
-    --refresh-focus: #9bc9ef;
-  }
-}
 body {
   font-size: 15px;
   line-height: 1.65;

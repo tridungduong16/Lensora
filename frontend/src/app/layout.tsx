@@ -63,6 +63,7 @@ export default function RootLayout({
   return (
     <html
       className={`${uiFont.variable} ${editorialFont.variable}`}
+      data-theme="light"
       data-scroll-behavior="smooth"
       lang="vi"
     >
